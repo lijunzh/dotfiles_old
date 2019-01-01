@@ -1,0 +1,5 @@
+# ignore the bare git repo
+.cfg
+
+# ignore vim bundle diretory
+.vim/bundle
