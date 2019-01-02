@@ -1,22 +1,22 @@
 ################################################################################
 #
-#							General Behavior
+#                           General Behavior
 #
 ################################################################################
 
-shell -$SHELL					# force login shell
-defscrollback 5000				# huge scrollback buffer
-defutf8	on						# defaut UTF-8 ('screen -U')
-bind s split					# split binding
+shell -$SHELL                   # force login shell
+defscrollback 5000              # huge scrollback buffer
+defutf8 on                      # defaut UTF-8 ('screen -U')
+bind s split                    # split binding
 
 ################################################################################
 #
-#								Appearnce
+#                               Appearnce
 #
 ################################################################################
 
-startup_message off				# no welcome message
-altscreen on					# alternative screen, reset after quit vim
+startup_message off             # no welcome message
+altscreen on                    # alternative screen, reset after quit vim
 
 # two-line status, with the current window highlighted
 hardstatus alwayslastline
