@@ -90,7 +90,7 @@ augroup END
 "                           General Settings
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set autoindent                  " compy indent from current line fro new line
+set autoindent                  " copy indent from current line fro new line
 set autowrite                   " automatically :w before running commands
 set clipboard=unnamed           " use OS clipboard by default
 
@@ -100,8 +100,8 @@ set expandtab                   " repace tab by spaces
 set shiftwidth=4                " leading tab is measured in 4 spaces
 set smarttab                    " delete one shiftwidth for leading spaces
 
-set nojoinspaces				" one space, not two, after punctuation
-set complete+=kspell			" complete with dictionary when spell check on
+set nojoinspaces                " one space, not two, after punctuation
+set complete+=kspell            " complete with dictionary when spell check on
 
 set ttyfast                     " optimize for fast tty
 set path+=**
@@ -136,11 +136,11 @@ set mouse=a                     " enable mouse in all modes
 
 " Strip tailing whitespace (\ss)
 function! StripWhitespace()
-	let save_cursor = getpos(".")
-	let old_query = getreg('/')
-	:%s/\s\+$//e
-	call setpos('.', save_cursor)
-	call setreg('/', old_query)
+    let save_cursor = getpos(".")
+    let old_query = getreg('/')
+    :%s/\s\+$//e
+    call setpos('.', save_cursor)
+    call setreg('/', old_query)
 endfunction
 noremap <leader>ss :call StripWhitespace()<CR>
 
@@ -149,10 +149,10 @@ noremap <leader>W :w !sudo tee % > /dev/null<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
-" 							Local Configuration
+"                       Local Configuration
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if filereadable($HOME . "/.vimrc.local")
-	source ~/.vimrc.local
+    source ~/.vimrc.local
 endif
 
