@@ -26,7 +26,7 @@ HISTFILESIZE=2000
 shopt -s checkwinsize
 
 # custom aliases
-[[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
+[[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 
 ################################################################################
 #
@@ -44,6 +44,11 @@ if [[ $(uname -s) == "Darwin" ]]; then
 
     # homebrew sbin
     export PATH="/usr/local/sbin:$PATH"
+
+	# enable programmable completion feature
+	if [ -f /usr/local/share/bash-completion/bash_completion ]; then
+		. /usr/local/share/bash-completion/bash_completion
+	fi
 
 fi
 
