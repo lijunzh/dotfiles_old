@@ -25,15 +25,8 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# ls alias
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
 # custom aliases
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
+[[ -f ~/.bash_aliases ]] && source ~/.bash_aliases
 
 ################################################################################
 #
