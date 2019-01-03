@@ -1,6 +1,9 @@
 # manage dotfiles in bare git repo
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
+# default editor
+export EDITOR=vim
+
 # added /home/lijun/bin
 export PATH="$HOME/bin:$PATH"
 
