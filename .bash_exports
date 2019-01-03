@@ -1,0 +1,19 @@
+# manage dotfiles in bare git repo
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+# added /home/lijun/bin
+export PATH="$HOME/bin:$PATH"
+
+# Anaconda setup
+if [[ -d "$HOME/anaconda3" ]]; then
+
+    # added by Anaconda3 installer
+    export PATH="$HOME/anaconda3/bin:$PATH"
+
+    # add Anaconda to python path
+    export PYTHONPATH="$PATHONPATH:$HOME/anaconda3/lib/python3.6/site-packages"
+
+fi
+
+# Include custom aliases
+[[ -f ~/.bash_aliases.local ]] && source ~/.bash_aliases.local

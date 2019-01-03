@@ -79,6 +79,8 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile *.md set filetype=markdown
   autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
   autocmd BufRead,BufNewFile bash_aliases.local set filetype=sh
+  autocmd BufRead,BufNewFile bash_exports set filetype=sh
+  autocmd BufRead,BufNewFile bash_exports.local set filetype=sh
   autocmd BufRead,BufNewFile *.screen set filetype=screen
   autocmd BufRead,BufNewFile gitconfig.local set filetype=gitconfig
   autocmd BufRead,BufNewFile tmux.conf.local set filetype=tmux

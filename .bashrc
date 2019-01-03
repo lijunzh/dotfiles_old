@@ -4,12 +4,6 @@
 #
 ################################################################################
 
-# manage dotfiles in bare git repo
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-
-# added /home/lijun/bin
-export PATH="$HOME/bin:$PATH"
-
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -31,6 +25,11 @@ shopt -s checkwinsize
 
 # custom aliases
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
+
+# custom exports
+[[ -f ~/.bash_exports ]] && . ~/.bash_exports
+
+
 
 ################################################################################
 #
@@ -135,22 +134,6 @@ if [[ $(uname -s) == "Linux" ]]; then
             . /etc/bash_completion
         fi
     fi
-
-fi
-
-################################################################################
-#
-#                           Anaconda Setup
-#
-################################################################################
-
-if [[ -d "$HOME/anaconda3" ]]; then
-
-    # added by Anaconda3 installer
-    export PATH="$HOME/anaconda3/bin:$PATH"
-
-    # add Anaconda to python path
-    export PYTHONPATH="$PATHONPATH:$HOME/anaconda3/lib/python3.6/site-packages"
 
 fi
 
