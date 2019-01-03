@@ -212,10 +212,6 @@
 	# https://git-scm.com/docs/git-config/2.17.0#git-config-coretrustctime
 	prune = true
 
-[gpg]
-
-	program = /usr/local/bin/gpg
-
 [include]
 
 	path = ~/.gitconfig.local
