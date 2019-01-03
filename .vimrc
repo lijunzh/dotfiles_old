@@ -80,7 +80,6 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
   autocmd BufRead,BufNewFile bash_aliases.local set filetype=sh
   autocmd BufRead,BufNewFile *.screen set filetype=screen
-  autocmd BufRead,BufNewFile gitexclude set filetype=gitignore
   autocmd BufRead,BufNewFile gitconfig.local set filetype=gitconfig
   autocmd BufRead,BufNewFile tmux.conf.local set filetype=tmux
   autocmd BufRead,BufNewFile vimrc.local set filetype=vim
