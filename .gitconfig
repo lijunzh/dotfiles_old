@@ -152,7 +152,7 @@
 
 	# Verify commits has been signed by a valid key
 	# https://git-scm.com/docs/git-config#git-config-mergeverifySignatures
-	verifySignatures = true
+	# verifySignatures = true
 
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
