@@ -138,10 +138,12 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # fetch github for latest updates
 if ssh -T git@github.com &>/dev/null; [ $? -eq 255 ]; then
-	echo "No connection to git@github.com. Configuration is not synced."
+	printf "No connection to git@github.com. Configuration is not synced.\n"
 else
+	printf "Syncing configuration with github ...\n\n"
 	config fetch
 	config status
+	printf "\n"
 fi
 
 ################################################################################
