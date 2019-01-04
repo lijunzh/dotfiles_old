@@ -19,4 +19,4 @@ if [[ -d "$HOME/anaconda3" ]]; then
 fi
 
 # Include custom aliases
-[[ -f ~/.bash_aliases.local ]] && source ~/.bash_aliases.local
+[[ -f ~/.bash_exports.local ]] && source ~/.bash_exports.local
