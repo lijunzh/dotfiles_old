@@ -11,7 +11,9 @@ alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p="cd ~/projects"
 alias g="git"
+__git_complete g _git		# force git completion
 alias c="config"
+__git_complete c _git		# force git completion
 
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
