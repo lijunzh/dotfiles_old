@@ -120,6 +120,7 @@
 	# Detect whitespace errors when applying a patch
 	whitespace = fix
 
+
 [push]
 
 	# Safest centralized option
@@ -153,17 +154,20 @@
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
 
+
 [color]
 
 	# Use colors in Git commands that are capable of colored output when
 	# outputting to the terminal. (This is the default setting in Git ≥ 1.8.4.)
 	ui = auto
 
+
 [color "branch"]
 
 	current = yellow ul
 	local = white
 	remote = green dim bold
+
 
 [color "diff"]
 
@@ -172,15 +176,18 @@
 	old = red
 	new = green
 
+
 [color "status"]
 
 	added = yellow
 	changed = green
 	untracked = cyan
 
+
 [commit]
 
 	gpgsign = true
+
 
 [diff]
 
@@ -193,10 +200,12 @@
 	# Hight moved lines with dimmed color
 	colorMoved = dimmed_zebra
 
+
 [diff "bin"]
 
 	# Use `hexdump` to diff binary files
 	textconv = hexdump -v -C
+
 
 [fetch]
 
@@ -208,7 +217,9 @@
 	# https://git-scm.com/docs/git-config/2.17.0#git-config-coretrustctime
 	prune = true
 
+
 [include]
 
 	path = ~/.gitconfig.local
+
 
