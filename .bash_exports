@@ -1,8 +1,8 @@
-# manage dotfiles in bare git repo
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-
 # default editor
 export EDITOR=vim
+
+# default tab width = 4 spaces
+export LESS=Rx1,5
 
 # added /home/lijun/bin
 export PATH="$HOME/bin:$PATH"

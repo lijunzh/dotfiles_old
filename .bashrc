@@ -23,13 +23,6 @@ shopt -s checkwinsize
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
 
-# custom aliases
-[[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
-
-# custom exports
-[[ -f ~/.bash_exports ]] && . ~/.bash_exports
-
-
 
 ################################################################################
 #
@@ -133,4 +126,33 @@ if [[ $(uname -s) == "Linux" ]]; then
     fi
 
 fi
+
+################################################################################
+#
+#						GitHub Sync Config Setting
+#
+################################################################################
+
+# manage dotfiles in bare git repo
+alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+# fetch github for latest updates
+if ssh -T git@github.com &>/dev/null; [ $? -eq 255 ]; then
+	echo "No connection to git@github.com. Configuration is not synced."
+else
+	config fetch
+	config status
+fi
+
+################################################################################
+#
+#						Custom Convenience Setting
+#
+################################################################################
+
+# custom aliases
+[[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
+
+# custom exports
+[[ -f ~/.bash_exports ]] && . ~/.bash_exports
 

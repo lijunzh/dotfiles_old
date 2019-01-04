@@ -10,6 +10,8 @@ alias ln="ln -v"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p="cd ~/projects"
+
+# git shortcuts
 alias g="git"
 __git_complete g _git		# force git completion
 alias c="config"
