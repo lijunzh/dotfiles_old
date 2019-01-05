@@ -17,6 +17,9 @@ __git_complete g _git		# force git completion
 alias c="config"
 __git_complete c _git		# force git completion
 
+# use dtach and vim together
+alias v="dtach -A /tmp/dtach-vim -r winch vim"
+
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
 
