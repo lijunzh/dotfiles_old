@@ -10,10 +10,6 @@
 
 [core]
 
-	# Unicode precompose for Mac OS
-	# https://git-scm.com/docs/git-config/2.17.0#git-config-coreprecomposeUnicode
-	precomposeUnicode = true
-
 	# Make `git rebase` safer on macOS
 	# More info: <http://www.git-tower.com/blog/make-git-rebase-safe-on-osx/>
 	# https://git-scm.com/docs/git-config/2.17.0#git-config-coretrustctime
@@ -24,9 +20,9 @@
 	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
 	whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 
-	# Prevent showing files whose names contain non-ASCII symbols as unversioned.
-	# http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
-	precomposeunicode = false
+	# For sharing git repo between Mac OS and Linux
+	# https://git-scm.com/docs/git-config/2.20.0#git-config-coreprecomposeUnicode
+	precomposeUnicode = true
 
 	# Speed up commands involving untracked files such as `git status`.
 	# https://git-scm.com/docs/git-update-index#_untracked_cache
