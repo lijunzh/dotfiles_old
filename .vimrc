@@ -151,7 +151,7 @@ noremap <leader>W :w !sudo tee % > /dev/null<CR>
 
 " Automatically close brackets
 inoremap " ""<left>
-inoremap ' ''<left>
+" inoremap ' ''<left>
 inoremap ( ()<left>
 inoremap [ []<left>
 inoremap { {}<left>
