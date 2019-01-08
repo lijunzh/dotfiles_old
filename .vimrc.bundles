@@ -16,6 +16,9 @@ call plug#begin('~/.vim/bundle')
 
 " Define bundles via Github repos
 Plug 'vim-scripts/Zenburn'
+Plug 'vim-scripts/delimitMate.vim'
+Plug 'pbrisbin/vim-mkdir'
+Plug 'vim-scripts/tComment'
 
 if g:has_async
   Plug 'w0rp/ale'

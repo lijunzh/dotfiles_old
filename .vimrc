@@ -8,27 +8,6 @@
 "                           General Settings
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set autoindent                  " copy indent from current line fro new line
-set autowrite                   " automatically :w before running commands
-set clipboard=unnamed           " use OS clipboard by default
-
-" Expand tab to 4 spaces
-set tabstop=4                   " tab = 4 spaces
-set expandtab                   " repace tab by spaces
-set shiftwidth=4                " leading tab is measured in 4 spaces
-set smarttab                    " delete one shiftwidth for leading spaces
-
-set nojoinspaces                " one space, not two, after punctuation
-set complete+=kspell            " complete with dictionary when spell check on
-
-set ttyfast                     " optimize for fast tty
-set path+=**
-set wildmenu                    " command completion
-set encoding=utf-8 nobomb       " use UTF-8 without BOM
-
-" Do not add empty newline at the end of files
-set binary
-set noeol
 
 " Generalize backups, swapfiles and undo history
 set backupdir=~/.vim/backups
@@ -40,17 +19,40 @@ endif
 " Do not create backups when editing certain directories
 set backupskip=/tmp/*,/private/tmp/*
 
-" Respect modeline in files
-set modeline
-set modelines=4
+" Expand tab to 4 spaces
+set tabstop=4                   " tab = 4 spaces
+set expandtab                   " repace tab by spaces
+set shiftwidth=4                " leading tab is measured in 4 spaces
+set smarttab                    " delete one shiftwidth for leading spaces
+
+" Do not add empty newline at the end of files
+set binary
+set noeol
+
+" Do not respect modeline in source files
+set nomodeline
 
 " Enable per-directory .vimrc files and disable unsafe commands in them
 set exrc
 set secure
 
+" Search setup
 set incsearch                   " incremental search
 set ignorecase                  " ignore case in search
+
 set mouse=a                     " enable mouse in all modes
+set autoindent                  " copy indent from current line fro new line
+set autowrite                   " automatically :w before running commands
+set clipboard=unnamed           " use OS clipboard by default
+
+set nojoinspaces                " one space, not two, after punctuation
+set complete+=kspell            " complete with dictionary when spell check on
+
+set ttyfast                     " optimize for fast tty
+set path+=**					" add current directory to path
+set wildmenu                    " command completion
+set encoding=utf-8 nobomb       " use UTF-8 without BOM
+
 
 " Vim-Plug 
 if filereadable(expand("~/.vimrc.bundles"))
