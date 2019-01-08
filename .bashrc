@@ -129,7 +129,7 @@ fi
 
 ################################################################################
 #
-#						GitHub Sync Config Setting
+#						Config Setting (GitHub Sync)
 #
 ################################################################################
 
@@ -137,12 +137,12 @@ fi
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # fetch github for latest updates
-if ssh -T git@github.com &>/dev/null; [ $? -eq 255 ]; then
-	echo "No connection to git@github.com. Configuration is not synced."
-else
-	config fetch
-	config status -s
-fi
+# if ssh -T git@github.com &>/dev/null; [ $? -eq 255 ]; then
+# 	echo "No connection to git@github.com. Configuration is not synced."
+# else
+# 	config fetch
+# 	config status -s
+# fi
 
 ################################################################################
 #
