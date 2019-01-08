@@ -66,7 +66,7 @@ endif
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Toggle relative mode only in normal mode
-set number relativenumber
+set number relativenumber		" more in autocmd section below
 
 " Set the statusline
 set laststatus=2                " always display the status line
@@ -91,7 +91,7 @@ highlight ColorColumn ctermbg=235 guibg=#2c2d27
 highlight LineNr ctermfg=darkgrey
 highlight Pmenu ctermfg=gray ctermbg=black
 
-" Set list character but no enable list by default
+" Set list character but not enable list by default
 set lcs+=tab:>-,trail:~,extends:>,precedes:<
 
 " Switch syntax highlighting on, when the terminal has colors
