@@ -159,14 +159,6 @@ noremap <leader>ss :call StripWhitespace()<CR>
 " Save a file as root (\W)
 noremap <leader>W :w !sudo tee % > /dev/null<CR>
 
-" Automatically close brackets
-" inoremap " ""<left>
-" inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
