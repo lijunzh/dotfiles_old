@@ -65,6 +65,9 @@ endif
 "                              Appearance
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Color scheme
+color Zenburn
+
 " Toggle relative mode only in normal mode
 set number relativenumber		" more in autocmd section below
 

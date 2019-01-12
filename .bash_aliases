@@ -17,8 +17,11 @@ __git_complete g _git		# force git completion
 alias c="config"
 __git_complete c _git		# force git completion
 
-# use dtach and vim together
-alias v="dtach -A /tmp/dtach-vim -r winch vim"
+# use neovim instead of vim
+alias vim="nvim"
+
+# use dtach and nvim together
+alias v="dtach -A /tmp/dtach-nvim -r winch nvim"
 
 # Pretty print the path
 alias path='echo $PATH | tr -s ":" "\n"'
