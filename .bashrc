@@ -125,6 +125,9 @@ if [[ $(uname -s) == "Linux" ]]; then
 		fi
 	fi
 
+	# git completion for ubuntu
+	[ -f /usr/share/bash-completion/completions/git ] && . /usr/share/bash-completion/completions/git
+
 fi
 
 ################################################################################
