@@ -146,7 +146,7 @@
 
 	# Only fast-forward merges are allowed
 	# https://git-scm.com/docs/git-config#git-config-mergeff
-	ff = only
+	#ff = only
 
 	# Verify commits has been signed by a valid key
 	# https://git-scm.com/docs/git-config#git-config-mergeverifySignatures
