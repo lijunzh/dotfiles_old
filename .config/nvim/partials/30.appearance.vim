@@ -28,6 +28,11 @@ set shell=$SHELL
 set title
 set showmatch
 
+" 80 column line
+set textwidth=80
+set colorcolumn=+1
+highlight ColorColumn ctermbg=238 guibg=lightgrey
+
 " default tab
 set noexpandtab				" insert tabs instead of spaces
 set smarttab					" tab respects 'tabstop', 'shiftwidth', and 'softtabstop'

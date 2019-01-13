@@ -1,7 +1,7 @@
 set autoread	" detect when a file is changed
 
 set history=1000	
-set textwidth=80
+set autochdir
 
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
