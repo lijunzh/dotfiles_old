@@ -48,6 +48,9 @@
 	# `git di $number` shows the diff between the state `$number` revisions ago and the current state
 	di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d"
 
+	# diff latex file
+	dt = difftool -y -t latex
+
 	# Pull in remote changes for the current repository and all its submodules
 	p = !"git pull; git submodule foreach git pull origin master"
 
@@ -208,6 +211,10 @@
 	textconv = hexdump -v -C
 
 
+[difftool.latex]
+	cmd = latexdiff "$LOCAL" "$REMOTE"
+
+
 [fetch]
 
 	# Recursive fetch submodule
@@ -226,3 +233,4 @@
 
 [gpg]
 	program = /usr/local/bin/gpg
+
