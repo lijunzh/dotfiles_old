@@ -75,3 +75,11 @@ augroup vimLastCursorPosition
 
 augroup END
 
+" automatically remove tailing whitespace on save
+augroup vimRemoveTail
+	autocmd!
+
+	autocmd BufWrite * :%s/\s\+$//e
+
+augroup END
+
