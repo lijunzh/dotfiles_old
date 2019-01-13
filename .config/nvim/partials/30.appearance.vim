@@ -14,8 +14,7 @@ augroup vimHybridLN
 augroup END
 
 " line wrap
-"set wrap	" turn on line warpping
-"set wrapmargin=8	" wrap lines when coming within n characters from side
+set nowrap	" turn line warpping
 set linebreak	" soft wrapping
 set showbreak=…	" show ellipsis at breaking
 
