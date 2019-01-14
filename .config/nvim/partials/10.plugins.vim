@@ -10,4 +10,8 @@ call plug#begin('~/.config/nvim/plugged')
 	" auto closing quotes, paranthesis, etc.
 	Plug 'vim-scripts/delimitMate.vim'
 
+	" code snippets
+	Plug 'SirVer/ultisnips'
+	Plug 'honza/vim-snippets'
+
 call plug#end()
