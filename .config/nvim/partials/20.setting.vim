@@ -1,7 +1,6 @@
 set autoread	" detect when a file is changed
 
-set history=1000	
-set autochdir
+set history=1000
 
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
@@ -16,7 +15,7 @@ set backupskip=/tmp/*,/private/tmp/*
 set binary
 se noeol
 
-" do not respect modeline in source file  
+" do not respect modeline in source file
 set nomodeline
 set secure
 
