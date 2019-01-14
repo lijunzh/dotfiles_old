@@ -20,6 +20,7 @@ set showbreak=…	" show ellipsis at breaking
 
 set autoindent	" autoindent
 set laststatus=2	" show the status line all the time
+let g:airline_theme='zenburn'
 set wildmenu
 set hidden
 set showcmd
@@ -54,6 +55,7 @@ set shiftwidth=2
 set shiftround
 
 " language-speicific tab setting
+"
 augroup vimTabLanguage
 	autocmd!
 
