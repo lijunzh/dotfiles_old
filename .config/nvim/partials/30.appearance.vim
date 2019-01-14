@@ -28,6 +28,11 @@ set shell=$SHELL
 set title
 set showmatch
 
+" split bottom and right
+set splitright
+set splitbelow
+
+
 " 80 column line
 set textwidth=80
 set colorcolumn=+1
