@@ -32,6 +32,13 @@ set showmatch
 set textwidth=80
 set colorcolumn=+1
 highlight ColorColumn ctermbg=238 guibg=lightgrey
+augroup texNoWrap
+	autocmd!
+
+	" remove 80 textwidth for tex files
+	autocmd Filetype tex,plaintex,latex setlocal tw=0 wrap
+
+augroup END
 
 " default tab
 set noexpandtab				" insert tabs instead of spaces
@@ -45,7 +52,7 @@ set shiftround
 augroup vimTabLanguage
 	autocmd!
 
-" python always use 4 spaces instead of 1 tab
+	" python always use 4 spaces instead of 1 tab
 	autocmd Filetype python setlocal ts=4 sts=4 sw=4 expandtab
 
 augroup END
