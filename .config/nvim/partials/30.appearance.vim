@@ -14,7 +14,7 @@ augroup vimHybridLN
 augroup END
 
 " line wrap
-set nowrap	" turn line warpping
+set nowrap	" turn line wrap off
 set linebreak	" soft wrapping
 set showbreak=…	" show ellipsis at breaking
 
@@ -41,8 +41,8 @@ highlight ColorColumn ctermbg=238 guibg=lightgrey
 augroup texNoWrap
 	autocmd!
 
-	" remove 80 textwidth for tex files
-	autocmd Filetype tex,plaintex,latex setlocal tw=0 wrap
+	" remove 80 textwidth for text files
+	autocmd Filetype tex,plaintex,markdown,text setlocal tw=0 wrap
 
 augroup END
 
