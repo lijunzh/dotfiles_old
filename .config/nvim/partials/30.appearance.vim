@@ -66,7 +66,7 @@ augroup END
 
 " list
 set list
-set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
+set listchars=tab:→\ ,eol:¬,trail:⋅,extends:❯,precedes:❮,space:·
 set showbreak=↪
 
 " highlight conflicts
