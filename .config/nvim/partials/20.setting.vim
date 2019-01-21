@@ -53,3 +53,15 @@ augroup vimAutoSave
 	autocmd FocusLost * silent wa
 
 augroup END
+
+" automatically remove tailing whitespace on save
+augroup vimRemoveTail
+	autocmd!
+
+	autocmd BufWritePre * :%s/\s\+$//e
+
+augroup END
+
+" force latex flavor
+let g:tex_flavor="latex"
+
