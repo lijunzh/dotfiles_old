@@ -1,5 +1,5 @@
 " color scheme
-color Zenburn
+color zenburn
 
 
 set number	" line number
