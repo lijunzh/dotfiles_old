@@ -17,6 +17,7 @@ se noeol
 
 " do not respect modeline in source file
 set nomodeline
+set exrc
 set secure
 
 if has('mouse')
