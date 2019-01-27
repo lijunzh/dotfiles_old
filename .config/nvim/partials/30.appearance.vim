@@ -54,6 +54,17 @@ set softtabstop=2			" edit as if the tabs are
 set shiftwidth=2
 set shiftround
 
+" hightlight cursor line
+set cursorline
+highlight cursorline cterm=none term=none
+augroup cursorLineCurrentWin
+	autocmd!
+
+	autocmd WinEnter * setlocal cursorline
+	autocmd WinLeave * setlocal nocursorline
+
+augroup END
+
 " language-speicific tab setting
 "
 augroup vimTabLanguage
