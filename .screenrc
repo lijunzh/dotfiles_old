@@ -4,7 +4,7 @@
 #
 ################################################################################
 
-shell -$SHELL                   # force login shell
+defshell -bash									# dash force a login shell
 defscrollback 5000              # huge scrollback buffer
 defutf8 on                      # defaut UTF-8 ('screen -U')
 bind s split                    # split binding
