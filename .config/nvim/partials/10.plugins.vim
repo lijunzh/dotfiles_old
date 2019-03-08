@@ -32,14 +32,10 @@ call plug#begin('~/.config/nvim/plugged')
 	let g:deoplete#auto_complete_delay = 100
 
 	" python syntax semantic highlighting
+	let python_highlight_all=1
 	Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
-	" auto foramt python code
-	Plug 'sbdchd/neoformat'
-
-	augroup fmt
-		autocmd!
-		autocmd BufWritePre * undojoin | Neoformat
-	augroup END
+	" python indent
+	Plug 'vim-scripts/indentpython.vim'
 
 call plug#end()

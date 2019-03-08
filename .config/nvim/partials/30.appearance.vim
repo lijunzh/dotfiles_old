@@ -34,8 +34,8 @@ set splitright
 set splitbelow
 
 
-" 80 column line
-set textwidth=80
+" 79 column line
+set textwidth=79
 set colorcolumn=+1
 highlight ColorColumn ctermbg=238 guibg=lightgrey
 augroup texNoWrap
@@ -71,7 +71,7 @@ augroup vimTabLanguage
 	autocmd!
 
 	" python always use 4 spaces instead of 1 tab
-	autocmd Filetype python setlocal ts=4 sts=4 sw=4 expandtab
+	autocmd Filetype python setlocal ts=4 sts=4 sw=4 expandtab ff=unix
 
 augroup END
 

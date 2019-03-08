@@ -1,3 +1,6 @@
+" ecnoding
+set encoding=utf-8
+
 " set python program
 let g:python2_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
