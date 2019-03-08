@@ -36,6 +36,6 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
 	" python indent
-	Plug 'vim-scripts/indentpython.vim'
+	Plug 'vimjas/vim-python-pep8-indent'
 
 call plug#end()
