@@ -20,4 +20,26 @@ call plug#begin('~/.config/nvim/plugged')
 	let g:UltiSnipsJumForwardTrigger="<tab>"
 	let g:UltiSnipsListSnippets="<c-tab>"
 
+	" autocompletion
+	if has('nvim')
+		Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+	else
+		Plug 'Shougo/deplete.nvim'
+		Plug 'roxma/nvim-yarp'
+		Plug 'roxma/vim-hug-neovim-rpc'
+	endif
+	let g:deoplete#enable_at_startup = 1
+	let g:deoplete#auto_complete_delay = 100
+
+	" python syntax semantic highlighting
+	Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+
+	" auto foramt python code
+	Plug 'sbdchd/neoformat'
+
+	augroup fmt
+		autocmd!
+		autocmd BufWritePre * undojoin | Neoformat
+	augroup END
+
 call plug#end()
