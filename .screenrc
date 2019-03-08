@@ -9,6 +9,7 @@ defscrollback 5000							# huge scrollback buffer
 defutf8 on											# defaut UTF-8 ('screen -U')
 bind s split										# split binding
 defmousetrack on								# shift window focus by mouse click
+mousetrack on
 bind l layout next							# switch layout
 
 ################################################################################
