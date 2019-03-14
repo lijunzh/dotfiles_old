@@ -55,10 +55,11 @@ set ttyfast	" optimize for fast tty
 set path+=**	" add current directory to path
 
 " save all file on focus lost
+set autowriteall
 augroup vimAutoSave
 	autocmd!
 
-	autocmd FocusLost * silent wa
+	autocmd FocusLost * silent! wa
 
 augroup END
 
@@ -72,4 +73,5 @@ augroup END
 
 " force latex flavor
 let g:tex_flavor="latex"
+
 
