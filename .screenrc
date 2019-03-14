@@ -9,8 +9,10 @@ defscrollback 5000							# huge scrollback buffer
 defutf8 on											# defaut UTF-8 ('screen -U')
 bind s split										# split binding
 defmousetrack on								# shift window focus by mouse click
-mousetrack on
+termcapinfo xterm* ti@:te@			# mouse scroll
+mousetrack on										# mouse swtich region focus
 bind l layout next							# switch layout
+
 
 ################################################################################
 #
@@ -29,5 +31,39 @@ hardstatus string '%{= kG}[%{G}%H%? %1`%?%{g}][%= %{= kw}%-w%{+b yk} %n*%t%?(%u)
 attrcolor b ".I"
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 defbce on
-termcapinfo xterm* ti@:te@			# mouse scroll
+
+################################################################################
+#
+#														Sessions and Layout
+#
+################################################################################
+
+# sessions
+screen -t local_main			0	bash
+screen -t local_top				1 bash
+screen -t local_bottom		2	bash
+screen -t local_upload		3 bash
+screen -t remote_monitor	4 bash
+screen -t remote_main			5 bash
+
+# layout
+layout autosave on
+layout new main
+select 0
+layout new local
+split
+select 1
+focus down
+select 2
+resize -v 15
+layout new remote
+select 3
+split
+focus down
+select 4
+focus up
+split -v
+focus right
+select 5
+layout select main
 
