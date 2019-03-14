@@ -11,6 +11,9 @@ call plug#begin('~/.config/nvim/plugged')
 	" auto closing quotes, paranthesis, etc.
 	Plug 'vim-scripts/delimitMate.vim'
 
+	" surroundings
+	Plug 'tpope/vim-surround'
+
 	" code snippets
 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
@@ -38,4 +41,16 @@ call plug#begin('~/.config/nvim/plugged')
 	" python indent
 	Plug 'vimjas/vim-python-pep8-indent'
 
+	" python folding
+	Plug 'tmhedberg/SimpylFold'
+	set foldlevelstart=20
+
+	" netrw enchance
+	Plug 'tpope/vim-vinegar'
+	"let g:netrw_liststyle = 3
+	"let g:netrw_browse_split = 4
+	"let g:netrw_altv = 1
+	"let g:netrw_winsize = 10
+
 call plug#end()
+
