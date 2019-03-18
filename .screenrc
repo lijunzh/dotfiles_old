@@ -21,6 +21,7 @@ bind l layout next							# switch layout
 ################################################################################
 
 startup_message off             # no welcome message
+chdir														# always start at home directory
 altscreen on                    # alternative screen, reset after quit vim
 
 # two-line status, with the current window highlighted
@@ -38,6 +39,7 @@ defbce on
 #
 ################################################################################
 
+screen -t default		0	bash
 # sessions
 # screen -t local_main			0	bash
 # screen -t local_top				1 bash
