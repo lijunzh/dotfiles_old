@@ -39,31 +39,31 @@ defbce on
 ################################################################################
 
 # sessions
-screen -t local_main			0	bash
-screen -t local_top				1 bash
-screen -t local_bottom		2	bash
-screen -t local_upload		3 bash
-screen -t remote_monitor	4 bash
-screen -t remote_main			5 bash
-
-# layout
-layout autosave on
-layout new main
-select 0
-layout new local
-split
-select 1
-focus down
-select 2
-resize -v 15
-layout new remote
-select 3
-split
-focus down
-select 4
-focus up
-split -v
-focus right
-select 5
-layout select main
+# screen -t local_main			0	bash
+# screen -t local_top				1 bash
+# screen -t local_bottom		2	bash
+# screen -t local_upload		3 bash
+# screen -t remote_monitor	4 bash
+# screen -t remote_main			5 bash
+#
+# # layout
+# layout autosave on
+# layout new main
+# select 0
+# layout new local
+# split
+# select 1
+# focus down
+# select 2
+# resize -v 15
+# layout new remote
+# select 3
+# split
+# focus down
+# select 4
+# focus up
+# split -v
+# focus right
+# select 5
+# layout select main
 
