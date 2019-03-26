@@ -5,12 +5,6 @@ set encoding=utf-8
 let g:python2_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
-" map ; to :
-nnoremap ; :
-nnoremap : ;
-vnoremap ; :
-vnoremap : ;
-
 set autoread	" detect when a file is changed
 
 set history=1000
