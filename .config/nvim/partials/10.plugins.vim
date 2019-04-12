@@ -36,7 +36,8 @@ call plug#begin('~/.config/nvim/plugged')
 
 	" python syntax semantic highlighting
 	let python_highlight_all=1
-	Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
+	Plug 'Kareeeeem/python-docstring-comments'
+	Plug 'tweekmonster/impsort.vim'
 
 	" python indent
 	Plug 'vimjas/vim-python-pep8-indent'
