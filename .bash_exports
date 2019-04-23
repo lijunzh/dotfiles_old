@@ -6,3 +6,4 @@ export PATH="$HOME/bin:$PATH"
 
 # Include custom aliases
 [[ -f ~/.bash_exports.local ]] && source ~/.bash_exports.local
+
