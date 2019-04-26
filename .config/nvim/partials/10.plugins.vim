@@ -53,5 +53,8 @@ call plug#begin('~/.config/nvim/plugged')
 	"let g:netrw_altv = 1
 	"let g:netrw_winsize = 10
 
+	" rust plugin
+	"Plug 'rust-lang/rust.vim'
+
 call plug#end()
 
