@@ -56,5 +56,10 @@ call plug#begin('~/.config/nvim/plugged')
 	" rust plugin
 	"Plug 'rust-lang/rust.vim'
 
+	" Neomake
+	Plug 'neomake/neomake'
+
 call plug#end()
+
+call neomake#configure#automake('nrwi', 500)
 
