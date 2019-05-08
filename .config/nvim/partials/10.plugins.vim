@@ -59,6 +59,9 @@ call plug#begin('~/.config/nvim/plugged')
 	" Neomake
 	Plug 'neomake/neomake'
 
+	" ctags
+	Plug 'ludovicchabant/vim-gutentags'
+
 call plug#end()
 
 call neomake#configure#automake('nrwi', 500)
