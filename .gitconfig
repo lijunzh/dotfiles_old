@@ -232,7 +232,7 @@
 
 
 [gpg]
-	program = gpg
+	program = /usr/local/bin/gpg
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
