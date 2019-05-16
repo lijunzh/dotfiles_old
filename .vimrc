@@ -54,7 +54,7 @@ set wildmenu                    " command completion
 set encoding=utf-8 nobomb       " use UTF-8 without BOM
 
 
-" Vim-Plug 
+" Vim-Plug
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
@@ -66,7 +66,7 @@ endif
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Color scheme
-color Zenburn
+color zenburn
 
 " Toggle relative mode only in normal mode
 set number relativenumber		" more in autocmd section below
