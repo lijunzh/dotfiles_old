@@ -27,8 +27,8 @@ alias v="dtach -A /tmp/dtach-nvim -r winch nvim"
 alias path='echo $PATH | tr -s ":" "\n"'
 
 # source conda
-alias sa="source ${HOME}/conda/bin/activate"
-alias sd="source ${HOME}/conda/bin/deactivate"
+alias sa="conda activate"
+alias sd="conda deactivate"
 
 # Include custom aliases
 [[ -f ~/.bash_aliases.local ]] && source ~/.bash_aliases.local
