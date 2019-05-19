@@ -28,7 +28,7 @@ alias path='echo $PATH | tr -s ":" "\n"'
 
 # source conda
 alias sa="source ${HOME}/conda/bin/activate"
-alias sd="conda deactivate"
+alias sd="source ${HOME}/conda/bin/deactivate"
 
 # Include custom aliases
 [[ -f ~/.bash_aliases.local ]] && source ~/.bash_aliases.local
