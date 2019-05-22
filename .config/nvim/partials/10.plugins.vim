@@ -68,6 +68,7 @@ call plug#begin('~/.config/nvim/plugged')
 	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 	" vimtex plugin
 	Plug 'lervag/vimtex'
+	let g:vimtex_compiler_progname = 'nvr'
 
 call plug#end()
 
