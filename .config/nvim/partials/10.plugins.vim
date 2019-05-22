@@ -1,5 +1,10 @@
 call plug#begin('~/.config/nvim/plugged')
 
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	"
+	"	Appearance
+	"
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 	" color scheme
 	Plug 'vim-scripts/Zenburn'
 
@@ -8,20 +13,13 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'vim-airline/vim-airline-themes'
 	set noshowmode
 
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	"
+	"	Utilities
+	"
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 	" auto closing quotes, paranthesis, etc.
 	Plug 'vim-scripts/delimitMate.vim'
-
-	" surroundings
-	Plug 'tpope/vim-surround'
-
-	" code snippets
-	Plug 'SirVer/ultisnips'
-	Plug 'honza/vim-snippets'
-
-	" trigger configuration
-	let g:UltiSnipsExpandTrigger="<tab>"
-	let g:UltiSnipsJumForwardTrigger="<tab>"
-	let g:UltiSnipsListSnippets="<c-tab>"
 
 	" autocompletion
 	if has('nvim')
@@ -34,6 +32,27 @@ call plug#begin('~/.config/nvim/plugged')
 	let g:deoplete#enable_at_startup = 1
 	let g:deoplete#auto_complete_delay = 100
 
+	" snippet
+	Plug 'Shougo/neosnippet.vim'
+	Plug 'Shougo/neosnippet-snippets'
+	Plug 'honza/vim-snippets'
+
+	Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+
+	" netrw enchance
+	Plug 'tpope/vim-vinegar'
+
+	" Neomake
+	Plug 'neomake/neomake'
+
+	" ctags
+	Plug 'ludovicchabant/vim-gutentags'
+
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	"
+	"	Python
+	"
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 	" python syntax semantic highlighting
 	let python_highlight_all=1
 	Plug 'Kareeeeem/python-docstring-comments'
@@ -42,25 +61,13 @@ call plug#begin('~/.config/nvim/plugged')
 	" python indent
 	Plug 'vimjas/vim-python-pep8-indent'
 
-	" python folding
-	Plug 'tmhedberg/SimpylFold'
-	set foldlevelstart=20
-
-	" netrw enchance
-	Plug 'tpope/vim-vinegar'
-	"let g:netrw_liststyle = 3
-	"let g:netrw_browse_split = 4
-	"let g:netrw_altv = 1
-	"let g:netrw_winsize = 10
-
-	" rust plugin
-	"Plug 'rust-lang/rust.vim'
-
-	" Neomake
-	Plug 'neomake/neomake'
-
-	" ctags
-	Plug 'ludovicchabant/vim-gutentags'
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	"
+	"	LaTeX
+	"
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" vimtex plugin
+	Plug 'lervag/vimtex'
 
 call plug#end()
 

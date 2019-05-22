@@ -1,9 +1,10 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+"	Basic Settings
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ecnoding
 set encoding=utf-8
-
-" set python program
-let g:python2_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
 
 " trigger `autoread` when files changes on disk
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
@@ -58,6 +59,12 @@ set complete+=kspell
 set ttyfast	" optimize for fast tty
 set path+=**	" add current directory to path
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+"	Automation
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " save all file on focus lost
 set autowriteall
 augroup vimAutoSave
@@ -75,7 +82,47 @@ augroup vimRemoveTail
 
 augroup END
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+"	Language Specific
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" set python program
+let g:python2_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
 " force latex flavor
 let g:tex_flavor="latex"
 
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"
+" Snippet Setting
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" reference: https://github.com/Shougo/neosnippet.vim
+" Plugin key-mappings.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#snippets_directory='~/.config/nvim/plugged/vim-snippets/snippets'
