@@ -4,6 +4,9 @@ export EDITOR=vim
 # added /home/lijun/bin
 export PATH="$HOME/bin:$PATH"
 
+# rust source file
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+
 # Include custom aliases
 [[ -f ~/.bash_exports.local ]] && source ~/.bash_exports.local
 
