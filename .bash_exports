@@ -5,8 +5,9 @@ export EDITOR=vim
 export PATH="$HOME/bin:$PATH"
 
 # rust source file
+export PATH="$HOME/.cargo/bin:$PATH"
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
-# Include custom aliases
+# Include custom export
 [[ -f ~/.bash_exports.local ]] && source ~/.bash_exports.local
 
