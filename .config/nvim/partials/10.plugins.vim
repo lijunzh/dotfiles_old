@@ -35,12 +35,15 @@ call plug#begin('~/.config/nvim/plugged')
 	" snippet
 	Plug 'Shougo/neosnippet.vim'
 	Plug 'Shougo/neosnippet-snippets'
-	Plug 'honza/vim-snippets'
+	"Plug 'honza/vim-snippets'
 
 	Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 	" netrw enchance
 	Plug 'tpope/vim-vinegar'
+
+  " surround
+  Plug 'tpope/vim-surround'
 
 	" Neomake
 	Plug 'neomake/neomake'
