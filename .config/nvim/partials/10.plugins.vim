@@ -78,7 +78,16 @@ call plug#begin('~/.config/nvim/plugged')
 	"	Rust
 	"
 	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	" rust.vim
+	Plug 'rust-lang/rust.vim'
+
+	" rustfmt
+	let g:rustfmt_autosave = 1
+	let g:rustfmt_command = 'rustup run stable rustfmt'
+
+	" Racer for completion
 	Plug 'racer-rust/vim-racer'
+	let g:racer_cmd = '~/.cargo/bin/racer'
 	set hidden
 	let g:racer_experimental_completer = 1
 
@@ -86,6 +95,10 @@ call plug#begin('~/.config/nvim/plugged')
 	au FileType rust nmap gs <Plug>(rust-def-split)
 	au FileType rust nmap gx <Plug>(rust-def-vertical)
 	au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
+	" rusty-tags
+	autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
+	autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
 call plug#end()
 
