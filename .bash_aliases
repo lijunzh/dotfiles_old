@@ -18,7 +18,7 @@ alias c="config"
 __git_complete c _git		# force git completion
 
 # use neovim instead of vim
-alias vim="nvim"
+type nvim >/dev/nul 2>&1 && alias vim="nvim"
 
 # use dtach and nvim together
 alias v="dtach -A /tmp/dtach-nvim -r winch nvim"
