@@ -155,11 +155,11 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 #
 ################################################################################
 
+# Enable conda command in minconda installation
+. ${HOME}/conda/etc/profile.d/conda.sh
+
 # custom aliases
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 
 # custom exports
 [[ -f ~/.bash_exports ]] && . ~/.bash_exports
-
-# Enable conda command in minconda installation
-. ${HOME}/conda/etc/profile.d/conda.sh
