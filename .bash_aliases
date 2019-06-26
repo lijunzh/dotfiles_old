@@ -7,9 +7,7 @@ alias mkdir="mkdir -p"
 alias ln="ln -v"
 
 # cd shortcuts
-alias dl="cd ~/Downloads"
-alias dt="cd ~/Desktop"
-alias p="cd ~/projects"
+alias ..="cd .."
 
 # git shortcuts
 alias g="git"
