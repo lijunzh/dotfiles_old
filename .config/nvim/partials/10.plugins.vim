@@ -36,6 +36,9 @@ call plug#begin('~/.config/nvim/plugged')
 	" echodoc
 	Plug 'Shougo/echodoc.vim'
 
+	" tabnine
+	Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+
 	" snippet
 	Plug 'Shougo/neosnippet.vim'
 	Plug 'Shougo/neosnippet-snippets'

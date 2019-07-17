@@ -8,7 +8,15 @@ let g:deoplete#auto_complete_delay = 100
 
 " Echodoc settings
 let g:echodoc_enable_at_startup = 1
-let g:echodoc#type = 'virtual'
+"let g:echodoc#type = 'virtual'
+let g:echodoc#type = 'floating'
+highlight link EchoDocFloat Pmenu
+
+" TabNine
+call deoplete#custom#var('tabnine', {
+\ 'line_limit': 500,
+\ 'max_num_results': 20,
+\ })
 
 " Jedi (python) settings
 let g:deoplete#sources#jedi#statement_length = 30
