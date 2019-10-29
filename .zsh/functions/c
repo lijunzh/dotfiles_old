@@ -1,0 +1,12 @@
+# manage dotfiles in bare git rep
+alias config="/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME"
+
+# No arguments: `config status`
+# With arguments: acts like `config`
+c() {
+  if [[ $# -gt 0 ]]; then
+    config "$@"
+  else
+    config status
+  fi
+}
