@@ -1,0 +1,20 @@
+# ls alias
+alias ll="ls -alF"
+alias la="ls -A"
+alias l="ls -CF"
+
+alias mkdir="mkdir -p"
+alias ln="ln -v"
+
+# use neovim instead of vim
+type nvim >/dev/null 2>&1 && alias vim="nvim"
+
+# Pretty print the path
+alias path='echo $PATH | tr -s ":" "\n"'
+
+# source conda
+alias sa="conda activate"
+alias sd="conda deactivate"
+
+# Include custom aliases
+[[ -f ~/.aliases.local ]] && source ~/.aliases.local
