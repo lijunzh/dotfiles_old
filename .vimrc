@@ -142,6 +142,9 @@ augroup vimrcEx
     autocmd BufRead,BufNewFile gitconfig.local set filetype=gitconfig
     autocmd BufRead,BufNewFile tmux.conf.local set filetype=tmux
     autocmd BufRead,BufNewFile vimrc.local set filetype=vim
+
+    " Format git commit
+    autocmd Filetype gitcommit setlocal spell textwidth=72
 augroup END
 
 

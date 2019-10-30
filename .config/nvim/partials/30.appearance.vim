@@ -103,3 +103,37 @@ augroup vimLastCursorPosition
 
 augroup END
 
+" Format git commit
+augroup gitCommit
+	autocmd!
+
+	autocmd Filetype gitcommit setlocal spell textwidth=72
+
+augroup END
+
+" Syntax Highlight
+augroup syntaxHighlight
+	autocmd!
+
+	autocmd BufRead,BufNewFile *.md set filetype=markdown
+	autocmd BufRead,BufNewFile .{jscs,jshint,eslint}rc set filetype=json
+	autocmd BufRead,BufNewFile bash_aliases.local set filetype=sh
+	autocmd BufRead,BufNewFile bash_exports set filetype=sh
+	autocmd BufRead,BufNewFile bash_exports.local set filetype=sh
+	autocmd BufRead,BufNewFile zshrc.local set filetype=sh
+	autocmd BufRead,BufNewFile aliases set filetype=sh
+	autocmd BufRead,BufNewFile aliases.local set filetype=sh
+	autocmd BufRead,BufNewFile *.screen set filetype=screen
+	autocmd BufRead,BufNewFile gitconfig.local set filetype=gitconfig
+	autocmd BufRead,BufNewFile tmux.conf.local set filetype=tmux
+	autocmd BufRead,BufNewFile vimrc.local set filetype=vim
+
+augroup END
+
+" Git commit textwidth
+augroup gitCommitTextWdith
+	autocmd!
+
+	autocmd Filetype gitcommit setlocal spell textwidth=72
+
+augroup END
