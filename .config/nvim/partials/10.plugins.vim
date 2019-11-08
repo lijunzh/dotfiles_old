@@ -49,14 +49,27 @@ call plug#begin('~/.config/nvim/plugged')
 	" netrw enchance
 	Plug 'tpope/vim-vinegar'
 
-  " surround
-  Plug 'tpope/vim-surround'
+	" surround
+	Plug 'tpope/vim-surround'
 
 	" Neomake
 	Plug 'neomake/neomake'
 
 	" ctags
 	Plug 'ludovicchabant/vim-gutentags'
+
+	" markdown
+	function! BuildComposer(info)
+		if a:info.status != 'unchanged' || a:info.force
+			if has('nvim')
+				!cargo build --release --locked
+			else
+				!cargo build --release --locked --no-default-features --features json-rpc
+			endif
+		endif
+	endfunction
+
+	Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 
 	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 	"
