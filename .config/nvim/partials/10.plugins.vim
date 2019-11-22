@@ -20,6 +20,9 @@ call plug#begin('~/.config/nvim/plugged')
 	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 	" auto closing quotes, paranthesis, etc.
 	Plug 'vim-scripts/delimitMate.vim'
+	" Python docstring
+	let delimitMate_nesting_quotes = ['"','`']
+	au FileType python let b:delimitMate_nesting_quotes = ['"']
 
 	" autocompletion
 	if has('nvim')
@@ -49,14 +52,27 @@ call plug#begin('~/.config/nvim/plugged')
 	" netrw enchance
 	Plug 'tpope/vim-vinegar'
 
-  " surround
-  Plug 'tpope/vim-surround'
+	" surround
+	Plug 'tpope/vim-surround'
 
 	" Neomake
 	Plug 'neomake/neomake'
 
 	" ctags
 	Plug 'ludovicchabant/vim-gutentags'
+
+	" Markdown
+	function! BuildComposer(info)
+		if a:info.status != 'unchanged' || a:info.force
+			if has('nvim')
+				!cargo build --release
+			else
+				!cargo build --release --no-default-features --features json-rpc
+			endif
+		endif
+	endfunction
+
+	Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 
 	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 	"
