@@ -196,6 +196,9 @@
 
 [diff]
 
+	# Specify difftool
+	tool = vimdiff
+
 	# Detect copies as well as renames
 	renames = copy
 
