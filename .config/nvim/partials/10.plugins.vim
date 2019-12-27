@@ -20,6 +20,9 @@ call plug#begin('~/.config/nvim/plugged')
 	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 	" auto closing quotes, paranthesis, etc.
 	Plug 'vim-scripts/delimitMate.vim'
+	" Python docstring
+	let delimitMate_nesting_quotes = ['"','`']
+	au FileType python let b:delimitMate_nesting_quotes = ['"']
 
 	" autocompletion
 	if has('nvim')
@@ -58,13 +61,13 @@ call plug#begin('~/.config/nvim/plugged')
 	" ctags
 	Plug 'ludovicchabant/vim-gutentags'
 
-	" markdown
+	" Markdown
 	function! BuildComposer(info)
 		if a:info.status != 'unchanged' || a:info.force
 			if has('nvim')
-				!cargo build --release --locked
+				!cargo build --release
 			else
-				!cargo build --release --locked --no-default-features --features json-rpc
+				!cargo build --release --no-default-features --features json-rpc
 			endif
 		endif
 	endfunction
