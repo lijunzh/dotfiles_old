@@ -12,7 +12,7 @@ defmousetrack on								# shift window focus by mouse click
 termcapinfo xterm* ti@:te@			# mouse scroll
 mousetrack on										# mouse swtich region focus
 bind l layout next							# switch layout
-shell "/usr/bin/zsh"						# default shell
+shell "/bin/zsh"								# default shell
 
 
 ################################################################################
