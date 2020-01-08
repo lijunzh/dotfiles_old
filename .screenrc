@@ -1,6 +1,6 @@
 ################################################################################
 #
-#                           General Behavior
+#														General Behavior
 #
 ################################################################################
 
@@ -12,11 +12,12 @@ defmousetrack on								# shift window focus by mouse click
 termcapinfo xterm* ti@:te@			# mouse scroll
 mousetrack on										# mouse swtich region focus
 bind l layout next							# switch layout
+shell "/usr/bin/zsh"						# default shell
 
 
 ################################################################################
 #
-#                               Appearnce
+#																Appearnce
 #
 ################################################################################
 
@@ -39,7 +40,7 @@ defbce on
 #
 ################################################################################
 
-screen -t default		0	bash
+# screen -t default		0		zsh
 # sessions
 # screen -t local_main			0	bash
 # screen -t local_top				1 bash
