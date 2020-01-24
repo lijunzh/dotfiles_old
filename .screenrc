@@ -49,25 +49,26 @@ defbce on
 # screen -t local_upload		3 bash
 # screen -t remote_monitor	4 bash
 # screen -t remote_main			5 bash
-#
-# # layout
-# layout autosave on
-# layout new main
-# select 0
-# layout new local
-# split
+
+# layout
+layout autosave on
+layout new main
+select 0
+layout new horizontal
+split
 # select 1
-# focus down
+focus down
 # select 2
-# resize -v 15
-# layout new remote
+resize -v 15
+focus up
+layout new vertical
 # select 3
 # split
 # focus down
 # select 4
 # focus up
-# split -v
+split -v
 # focus right
 # select 5
-# layout select main
+layout select main
 
