@@ -56,19 +56,10 @@ layout new main
 select 0
 layout new horizontal
 split
-# select 1
 focus down
-# select 2
 resize -v 15
 focus up
 layout new vertical
-# select 3
-# split
-# focus down
-# select 4
-# focus up
 split -v
-# focus right
-# select 5
 layout select main
 
