@@ -54,4 +54,4 @@ shell:
   args:
     - --login
     - '-c'
-    - 'screen'
+    - 'source ~/.zshrc && screen'
