@@ -22,9 +22,9 @@ shell "/bin/zsh"								# default shell
 #
 ################################################################################
 
-startup_message off             # no welcome message
+startup_message off							# no welcome message
 chdir														# always start at home directory
-altscreen on                    # alternative screen, reset after quit vim
+altscreen on										# alternative screen, reset after quit vim
 
 # two-line status, with the current window highlighted
 hardstatus alwayslastline
@@ -34,21 +34,13 @@ hardstatus string '%{= kG}[%{G}%H%? %1`%?%{g}][%= %{= kw}%-w%{+b yk} %n*%t%?(%u)
 attrcolor b ".I"
 termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 defbce on
+term screen-256color-bce
 
 ################################################################################
 #
 #														Sessions and Layout
 #
 ################################################################################
-
-# screen -t default		0		zsh
-# sessions
-# screen -t local_main			0	bash
-# screen -t local_top				1 bash
-# screen -t local_bottom		2	bash
-# screen -t local_upload		3 bash
-# screen -t remote_monitor	4 bash
-# screen -t remote_main			5 bash
 
 # layout
 layout autosave on
@@ -57,7 +49,6 @@ select 0
 layout new horizontal
 split
 focus down
-resize -v 15
 focus up
 layout new vertical
 split -v
