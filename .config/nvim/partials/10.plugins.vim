@@ -7,6 +7,7 @@ call plug#begin('~/.config/nvim/plugged')
 	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 	" color scheme
 	Plug 'vim-scripts/Zenburn'
+	Plug 'crusoexia/vim-monokai'
 
 	" status bar
 	Plug 'vim-airline/vim-airline'

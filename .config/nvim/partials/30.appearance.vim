@@ -1,6 +1,6 @@
 " color scheme
-color zenburn
-
+" color zenburn
+color monokai
 
 set number	" line number
 
