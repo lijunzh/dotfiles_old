@@ -134,29 +134,34 @@ fi
 
 ################################################################################
 #
-#						Config Setting (GitHub Sync)
+#						Custom Settings
 #
 ################################################################################
 
 # manage dotfiles in bare git repo
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
-# fetch github for latest updates
-# if ssh -T git@github.com &>/dev/null; [ $? -eq 255 ]; then
-#	echo "No connection to git@github.com. Configuration is not synced."
-# else
-#	config fetch
-#	config status -s
-# fi
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/lijun/conda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/lijun/conda/etc/profile.d/conda.sh" ]; then
+        . "/home/lijun/conda/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/lijun/conda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
 
 ################################################################################
 #
 #						Custom Convenience Setting
 #
 ################################################################################
-
-# Enable conda command in minconda installation
-. ${HOME}/conda/etc/profile.d/conda.sh
 
 # custom aliases
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
