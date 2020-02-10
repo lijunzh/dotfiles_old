@@ -66,4 +66,4 @@ shell:
   args:
     - --login
     - '-c'
-    - 'source ~/.zshrc && screen'
+    - 'TERM=xterm-256color; source ~/.zshrc && screen'
