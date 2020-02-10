@@ -37,7 +37,7 @@ Alternatively, you can run the following instructions line by line:
 - clone the bare repo
 
 ```bash
-git clone --bare git@github.com:lijunzh/dotfiles.git ~/.cfg
+git clone --bare https://github.com/lijunzh/dotfiles.git ~/.cfg
 ```
 
 - set temporary alias for bare repo
