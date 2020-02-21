@@ -59,6 +59,9 @@ set complete+=kspell
 set ttyfast	" optimize for fast tty
 set path+=**	" add current directory to path
 
+" map <C-L> to <Esc> to avoid double press in GNU Screen
+inoremap <expr> <C-L> (pumvisible() <bar><bar> &insertmode) ? '<C-L>' : '<Esc>'
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
