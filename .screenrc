@@ -14,7 +14,7 @@ mousetrack off									# no mouse swtich region focus but mouse copy
 #mousetrack on									# mouse swtich region focus but no mouse copy
 bind l layout next							# switch layout
 shell "/bin/zsh"								# default shell
-maptimeout 5										# reduce ESC timeout to 5 msec for vim
+maptimeout 5										# reduce ESC wait time in vim
 
 
 ################################################################################
