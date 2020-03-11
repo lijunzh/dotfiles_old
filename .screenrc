@@ -7,7 +7,7 @@
 defshell -bash									# dash force a login shell
 defscrollback 5000							# huge scrollback buffer
 defutf8 on											# defaut UTF-8 ('screen -U')
-bind s split										# split binding
+#bind s split										# split binding
 defmousetrack on								# shift window focus by mouse click
 termcapinfo xterm* ti@:te@			# mouse scroll
 mousetrack off									# no mouse swtich region focus but mouse copy
