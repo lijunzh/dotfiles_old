@@ -1,6 +1,6 @@
 # ssh remote and then start tmux
 
 function ssht() {
-	ssh -t $1 "tmux attach || tmux new";
+	ssh -t $1 "TERM=xterm-256color; tmux attach || tmux new";
 }
 
