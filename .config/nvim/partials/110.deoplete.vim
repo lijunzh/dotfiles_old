@@ -4,7 +4,8 @@
 " General settings
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_ignore_case = 1
-let g:deoplete#auto_complete_delay = 100
+"let g:deoplete#auto_complete_delay = 100
+call deoplete#custom#option('auto_complete_delay', 100)
 
 " Echodoc settings
 let g:echodoc_enable_at_startup = 1
