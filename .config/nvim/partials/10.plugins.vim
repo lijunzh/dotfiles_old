@@ -34,8 +34,9 @@ call plug#begin('~/.config/nvim/plugged')
 		Plug 'roxma/vim-hug-neovim-rpc'
 	endif
 
-	" jedi for python
+	" language plugins
 	Plug 'deoplete-plugins/deoplete-jedi'
+	Plug 'deoplete-plugins/deoplete-go'
 
 	" echodoc
 	Plug 'Shougo/echodoc.vim'
@@ -52,6 +53,9 @@ call plug#begin('~/.config/nvim/plugged')
 
 	" netrw enchance
 	Plug 'tpope/vim-vinegar'
+
+	" bracekts mapping
+	Plug 'tpope/vim-unimpaired'
 
 	" surround
 	Plug 'tpope/vim-surround'
