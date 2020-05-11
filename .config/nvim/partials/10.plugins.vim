@@ -19,6 +19,11 @@ call plug#begin('~/.config/nvim/plugged')
 	"	Utilities
 	"
 	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+	" fuzzy search
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'junegunn/fzf.vim'
+
 	" auto closing quotes, paranthesis, etc.
 	Plug 'vim-scripts/delimitMate.vim'
 	" Python docstring
