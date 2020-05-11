@@ -16,6 +16,7 @@ set history=1000
 
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
+set undofile
 if exists("&undodir")
 	set undodir=~/vim/undo
 endif
