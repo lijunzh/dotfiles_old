@@ -24,6 +24,9 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
 
+	" comments
+	Plug 'tomtom/tcomment_vim'
+
 	" auto closing quotes, paranthesis, etc.
 	Plug 'vim-scripts/delimitMate.vim'
 	" Python docstring
