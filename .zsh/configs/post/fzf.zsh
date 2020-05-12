@@ -13,7 +13,7 @@ fi
 source "/usr/local/opt/fzf/shell/key-bindings.zsh"
 
 # Configuration
-export FZF_DEFAULT_COMMAND='rg --files --no-ignore-vcs --hidden'
+export FZF_DEFAULT_COMMAND='rg --files --ignore-case'
 export FZF_DEFAULT_OPTS='
 	--multi --layout=reverse --border --inline-info
 	--bind ctrl-f:page-down,ctrl-b:page-up
