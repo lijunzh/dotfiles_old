@@ -23,6 +23,9 @@ call plug#begin('~/.config/nvim/plugged')
 	" fuzzy search
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
+	" mapping for fzf, <C-w>f is replaced, use ,f instead.
+	nnoremap <C-w>f :Files<Cr>
+	nnoremap <C-w>g :Rg<Cr>
 
 	" comments
 	Plug 'tomtom/tcomment_vim'
