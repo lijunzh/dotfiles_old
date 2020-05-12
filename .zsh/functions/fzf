@@ -1,0 +1,45 @@
+# fo [FUZZY PATTERN] - Open the selected file with the default editor
+#	- Bypass fuzzy finder if there's only one match (--select-1)
+#	- Exit if there's no match (--exit-0)
+#	- CTRL-O to open with `open` command,
+#	- CTRL-E or Enter key to open with the $EDITOR
+fo() (
+	IFS=$'\n' out=("$(fzf-tmux --query="$1" --exit-0 --expect=ctrl-o,ctrl-e)")
+	key=$(head -1 <<< "$out")
+	file=$(head -2 <<< "$out" | tail -1)
+	if [ -n "$file" ]; then
+		[ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-vim} "$file"
+	fi
+)
+
+# cdf - cd into the directory of the selected file
+cdf() {
+	local file
+	local dir
+	file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+}
+
+##
+# Interactive search.
+# Usage: `ff` or `ff <folder>`.
+#
+ff() {
+	[[ -n $1 ]] && cd $1 # go to provided folder or noop
+	RG_DEFAULT_COMMAND="rg -i -l --hidden --no-ignore-vcs"
+
+	selected=$(
+	FZF_DEFAULT_COMMAND="rg --files" fzf \
+		-m \
+		-e \
+		--ansi \
+		--phony \
+		--reverse \
+		--bind "ctrl-a:select-all" \
+		--bind "f12:execute-silent:(subl -b {})" \
+		--bind "change:reload:$RG_DEFAULT_COMMAND {q} || true" \
+		--preview "rg -i --pretty --context 2 {q} {}" | cut -d":" -f1,2
+	)
+
+	cd -
+	[[ -n $selected ]] && ${EDITOR:-vim} $1/$selected # open multiple files in editor
+}
