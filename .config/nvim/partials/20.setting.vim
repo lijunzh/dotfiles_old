@@ -83,6 +83,13 @@ augroup vimRemoveTail
 
 augroup END
 
+" navigate file in vertical split.
+" use ,] to jump to tag in a vertical split
+nnoremap <silent> ,] :let word=expand("<cword>")<CR>:vsp<CR>:wincmd w<cr>:exec("tag ". word)<cr>
+" use ,f to go to file in a vertical split
+nnoremap <silent> ,f :vertical botright wincmd f<CR>
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
