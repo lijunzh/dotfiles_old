@@ -18,7 +18,7 @@ set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
 set undofile
 if exists("&undodir")
-	set undodir=~/vim/undo
+	set undodir=~/.vim/undo
 endif
 
 " do not create backups when editing certain directories
