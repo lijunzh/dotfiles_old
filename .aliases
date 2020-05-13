@@ -12,9 +12,6 @@ alias ln="ln -v"
 # previous directory
 alias -- -="cd -"
 
-# use fuzz open
-alias open="fo"
-
 # use neovim instead of vim
 type nvim >/dev/null 2>&1 && alias vim="nvim"
 
