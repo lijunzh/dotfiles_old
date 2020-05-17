@@ -52,6 +52,9 @@ call plug#begin('~/.config/nvim/plugged')
 	" tabnine
 	Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 
+	" table
+	Plug 'dhruvasagar/vim-table-mode'
+
 	" snippet
 	Plug 'Shougo/neosnippet.vim'
 	Plug 'Shougo/neosnippet-snippets'
