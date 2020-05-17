@@ -1,4 +1,4 @@
-# Reference:
+# Referenc:
 # https://git-scm.com/docs/git-config#git-config-[tag]-[key]
 
 [user]
@@ -31,6 +31,9 @@
 	# Set git diff default to tab=4 spaces
 	# https://stackoverflow.com/questions/39352644/how-to-change-tab-width-in-git-diff
 	pager = less -x1,5
+
+	# global gitignore
+	excludesfile = ${HOME}/.gitignore
 
 
 [alias]
