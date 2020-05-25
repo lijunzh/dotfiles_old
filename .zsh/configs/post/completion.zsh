@@ -1,6 +1,6 @@
 # load our own completion functions
 fpath=(~/.zsh/completion $fpath)
-if [[ brew 2>/dev/null ]]; then
+if hash brew 2>/dev/null; then
 	fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 fi;
 
