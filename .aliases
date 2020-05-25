@@ -6,8 +6,10 @@ alias ll="ls -alF"
 alias la="ls -A"
 alias l="ls -CF"
 
-alias mkdir="mkdir -p"
-alias ln="ln -v"
+alias mkdir="mkdir -p"			# mkdir parent directory if not exists
+alias ln="ln -v"						# ln always verbose
+alias cp="cp -i"						# confirm before overwriting something
+alias df="df -h"						# human readable sizes
 
 # previous directory
 alias -- -="cd -"
