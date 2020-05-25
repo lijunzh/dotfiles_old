@@ -45,6 +45,7 @@ call plug#begin('~/.config/nvim/plugged')
 	" language plugins
 	Plug 'deoplete-plugins/deoplete-jedi'
 	Plug 'deoplete-plugins/deoplete-go'
+	Plug 'zchee/deoplete-clang'
 
 	" echodoc
 	Plug 'Shougo/echodoc.vim'
@@ -141,6 +142,10 @@ call plug#begin('~/.config/nvim/plugged')
 	" rusty-tags
 	autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
 	autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
+
+	" Clang
+	Plug 'justmao945/vim-clang'
+	let g:clang_auto = 0
 
 call plug#end()
 
