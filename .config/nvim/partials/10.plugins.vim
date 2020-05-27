@@ -2,7 +2,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 	"
-	"	Appearance
+	"	appearance
 	"
 	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 	" color scheme
@@ -16,7 +16,45 @@ call plug#begin('~/.config/nvim/plugged')
 
 	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 	"
-	"	Utilities
+	" autocompletion
+	"
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+	" deoplete setup
+	" if has('nvim')
+	" 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+	" else
+	" 	Plug 'Shougo/deoplete.nvim'
+	" 	Plug 'roxma/nvim-yarp'
+	" 	Plug 'roxma/vim-hug-neovim-rpc'
+	" endif
+  "
+	" " language plugins
+	" Plug 'deoplete-plugins/deoplete-jedi'
+	" Plug 'deoplete-plugins/deoplete-go'
+	" " Plug 'zchee/deoplete-clang'
+	" Plug 'tweekmonster/deoplete-clang2'
+  "
+	" " echodoc
+	" Plug 'Shougo/echodoc.vim'
+  "
+	" " tabnine
+	" if has('win32') || has('win64')
+	" 	Plug 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1' }
+	" else
+	" 	Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+	" endif
+	" call deoplete#custom#var('tabnine', {
+	" \ 'line_limit': 500,
+	" \ 'max_num_results': 5,
+	" \ })
+
+	" coc
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+	"
+	"	utilities
 	"
 	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -33,35 +71,8 @@ call plug#begin('~/.config/nvim/plugged')
 	let delimitMate_nesting_quotes = ['"','`']
 	au FileType python let b:delimitMate_nesting_quotes = ['"']
 
-	" autocompletion
-	if has('nvim')
-		Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-	else
-		Plug 'Shougo/deoplete.nvim'
-		Plug 'roxma/nvim-yarp'
-		Plug 'roxma/vim-hug-neovim-rpc'
-	endif
-
-	" language plugins
-	Plug 'deoplete-plugins/deoplete-jedi'
-	Plug 'deoplete-plugins/deoplete-go'
-	Plug 'zchee/deoplete-clang'
-
-	" echodoc
-	Plug 'Shougo/echodoc.vim'
-
-	" tabnine
-	Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-
 	" table
 	Plug 'dhruvasagar/vim-table-mode'
-
-	" snippet
-	Plug 'Shougo/neosnippet.vim'
-	Plug 'Shougo/neosnippet-snippets'
-	"Plug 'honza/vim-snippets'
-
-	Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
 	" netrw enchance
 	Plug 'tpope/vim-vinegar'
@@ -73,7 +84,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'tpope/vim-surround'
 
 	" Neomake
-	Plug 'neomake/neomake'
+	" Plug 'neomake/neomake'
 
 	" ctags
 	Plug 'ludovicchabant/vim-gutentags'
@@ -143,11 +154,7 @@ call plug#begin('~/.config/nvim/plugged')
 	autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
 	autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
-	" Clang
-	Plug 'justmao945/vim-clang'
-	let g:clang_auto = 0
-
 call plug#end()
 
-call neomake#configure#automake('nrwi', 500)
+"call neomake#configure#automake('nrwi', 500)
 
