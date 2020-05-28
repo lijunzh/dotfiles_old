@@ -11,5 +11,6 @@
       "filetypes": ["dockerfile"],
       "args": ["--stdio"]
     }
-  }
+  },
+  "python.formatting.provider": "black"
 }
