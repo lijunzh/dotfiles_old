@@ -9,3 +9,5 @@ noremap <A-t> :sp<CR>:resize 10<CR>:term<CR>
 noremap <A-=> :resize +5<CR>
 noremap <A--> :resize -5<CR>
 
+" quick save
+noremap <Leader>s :update<CR>
