@@ -33,7 +33,7 @@
 	pager = less -x1,5
 
 	# global gitignore
-	excludesfile = ${HOME}/.gitignore
+	excludesFile = ~/.gitignore
 
 
 [alias]
