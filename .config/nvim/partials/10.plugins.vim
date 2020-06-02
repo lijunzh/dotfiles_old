@@ -28,16 +28,16 @@ call plug#begin('~/.config/nvim/plugged')
 	" 	Plug 'roxma/nvim-yarp'
 	" 	Plug 'roxma/vim-hug-neovim-rpc'
 	" endif
-  "
+	"
 	" " language plugins
 	" Plug 'deoplete-plugins/deoplete-jedi'
 	" Plug 'deoplete-plugins/deoplete-go'
 	" " Plug 'zchee/deoplete-clang'
 	" Plug 'tweekmonster/deoplete-clang2'
-  "
+	"
 	" " echodoc
 	" Plug 'Shougo/echodoc.vim'
-  "
+	"
 	" " tabnine
 	" if has('win32') || has('win64')
 	" 	Plug 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1' }
@@ -83,8 +83,8 @@ call plug#begin('~/.config/nvim/plugged')
 	" surround
 	Plug 'tpope/vim-surround'
 
-	" Neomake
-	" Plug 'neomake/neomake'
+	" git
+	Plug 'tpope/vim-fugitive'
 
 	" ctags
 	Plug 'ludovicchabant/vim-gutentags'
