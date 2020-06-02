@@ -46,4 +46,4 @@ Session.vim
 *~
 # ignore vim bundle diretory
 .vim/bundle
-
+.vim
