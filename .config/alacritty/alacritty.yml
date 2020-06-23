@@ -78,4 +78,4 @@ shell:
   args:
     - --login
     - '-c'
-    - 'tmux'
+    - 'tmux attach -t default || tmux new -s default'
