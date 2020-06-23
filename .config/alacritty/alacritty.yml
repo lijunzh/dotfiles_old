@@ -3,6 +3,18 @@ draw_bold_text_with_bright_colors: true
 
 # Font configuration (changes require restart)
 font:
+  normal:
+    family: SF Mono
+    style: Regular
+
+  bold:
+    family: SF Mono
+    style: Bold
+
+  italic:
+    family: SF Mono
+    style: Italic
+
   # Point size of the font
   size: 14
 
@@ -16,7 +28,7 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Maximized
+  startup_mode: Windowed
 
 # Base16 Zenburn 256 - alacritty color config
 # elnawe
@@ -66,4 +78,4 @@ shell:
   args:
     - --login
     - '-c'
-    - 'TERM=xterm-256color; source ~/.zshrc && screen'
+    - 'tmux'
