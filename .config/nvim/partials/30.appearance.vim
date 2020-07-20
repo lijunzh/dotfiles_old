@@ -73,6 +73,9 @@ augroup vimTabLanguage
 	" python always use 4 spaces instead of 1 tab
 	autocmd Filetype python setlocal ts=4 sts=4 sw=4 expandtab ff=unix
 
+	" markdown expand tab into spaces
+	autocmd Filetype markdown setlocal ts=2 sts=2 sw=2 expandtab ff=unix
+
   " latex always use 2 space instead 1 tab
   autocmd Filetype tex setlocal ts=2 sts=2 sw=2 expandtab ff=unix
 
