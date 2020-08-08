@@ -29,7 +29,7 @@ alias screen="TERM=xterm-256color; screen"
 alias screen_kill_all_detached="screen -ls | grep Detached | cut -d. -f1 | awk '{print $1}' | xargs kill"
 
 # tmux
-alias tmux="TERM=xterm-256color; tmux"
+# alias tmux="TERM=xterm-256color; tmux"
 
 # Include custom aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
