@@ -12,10 +12,5 @@
 			"args": ["--stdio"]
 		}
 	},
-	"python": {
-		"formating": {
-				"provider": "black"
-			}
-		},
-		"pythonPath": "~/conda/bin/python"
+	"python.formatting.provider": "black"
 }
