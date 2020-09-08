@@ -1,6 +1,4 @@
 " color scheme
-" color zenburn
-set termguicolors
 color monokai
 highlight Comment cterm=italic gui=italic
 
