@@ -77,6 +77,9 @@ call plug#begin('~/.config/nvim/plugged')
 	" netrw enchance
 	Plug 'tpope/vim-vinegar'
 
+	" File system
+	Plug 'KenN7/vim-arsync'
+
 	" bracekts mapping
 	Plug 'tpope/vim-unimpaired'
 
@@ -104,6 +107,7 @@ call plug#begin('~/.config/nvim/plugged')
 	endfunction
 
 	Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+
 
 
 	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
