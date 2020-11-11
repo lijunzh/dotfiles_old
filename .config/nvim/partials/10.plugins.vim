@@ -95,20 +95,6 @@ call plug#begin('~/.config/nvim/plugged')
 	" cscope
 	Plug 'gnattishness/cscope_maps'
 
-	" Markdown
-	function! BuildComposer(info)
-		if a:info.status != 'unchanged' || a:info.force
-			if has('nvim')
-				!cargo build --release
-			else
-				!cargo build --release --no-default-features --features json-rpc
-			endif
-		endif
-	endfunction
-
-	Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
-
-
 
 	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 	"
@@ -128,7 +114,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'tweekmonster/impsort.vim'
 
 	" python indent
-	Plug 'vimjas/vim-python-pep8-indent'
+	" Plug 'vimjas/vim-python-pep8-indent'
 
 	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 	"
