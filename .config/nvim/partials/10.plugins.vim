@@ -6,7 +6,6 @@ call plug#begin('~/.config/nvim/plugged')
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " color scheme
-Plug 'vim-scripts/Zenburn'
 Plug 'crusoexia/vim-monokai'
 Plug 'phanviet/vim-monokai-pro'
 
@@ -59,15 +58,7 @@ Plug 'tpope/vim-fugitive'
 " ctags
 Plug 'ludovicchabant/vim-gutentags'
 
-" cscope
-Plug 'gnattishness/cscope_maps'
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"
-"	TOML
-"
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" toml
 Plug 'cespare/vim-toml'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -78,7 +69,7 @@ Plug 'cespare/vim-toml'
 " python syntax semantic highlighting
 let python_highlight_all=1
 Plug 'Kareeeeem/python-docstring-comments'
-Plug 'tweekmonster/impsort.vim'
+Plug 'tweekmonster/impsort.vim', {'for': 'python'}
 
 " python indent
 " Plug 'vimjas/vim-python-pep8-indent'
@@ -98,7 +89,7 @@ let g:vimtex_compiler_progname = 'nvr'
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " rust.vim
-Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim', {'for': 'rust'}
 
 " rustfmt
 let g:rustfmt_autosave = 1
