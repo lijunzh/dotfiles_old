@@ -1,5 +1,7 @@
 " color scheme
-color monokai
+set termguicolors
+colorscheme monokai
+" colorscheme monokai_pro
 highlight Comment cterm=italic gui=italic
 
 set number	" line number
@@ -20,7 +22,7 @@ set showbreak=…	" show ellipsis at breaking
 
 set autoindent	" autoindent
 set laststatus=2	" show the status line all the time
-let g:airline_theme='zenburn'
+let g:airline_theme='base16_monokai'
 set wildmenu
 set hidden
 set showcmd
@@ -76,8 +78,8 @@ augroup vimTabLanguage
 	" markdown expand tab into spaces
 	autocmd Filetype markdown setlocal ts=2 sts=2 sw=2 expandtab ff=unix
 
-  " latex always use 2 space instead 1 tab
-  autocmd Filetype tex setlocal ts=2 sts=2 sw=2 expandtab ff=unix
+	" latex always use 2 space instead 1 tab
+	autocmd Filetype tex setlocal ts=2 sts=2 sw=2 expandtab ff=unix
 
 augroup END
 
@@ -100,9 +102,9 @@ augroup vimLastCursorPosition
 	autocmd!
 
 	autocmd BufReadPost *
-	  \ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
-	  \   exe "normal g`\"" |
-	  \ endif
+				\ if &ft != 'gitcommit' && line("'\"") > 0 && line("'\"") <= line("$") |
+				\   exe "normal g`\"" |
+				\ endif
 
 augroup END
 
