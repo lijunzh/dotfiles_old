@@ -61,6 +61,10 @@ Plug 'ludovicchabant/vim-gutentags'
 " toml
 Plug 'cespare/vim-toml'
 
+" tabularize
+Plug 'godlygeek/tabular'
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 "	Python
