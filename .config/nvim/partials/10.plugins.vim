@@ -16,47 +16,13 @@ call plug#begin('~/.config/nvim/plugged')
 
 	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 	"
-	" autocompletion
-	"
-	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-	" deoplete setup
-	" if has('nvim')
-	" 	Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-	" else
-	" 	Plug 'Shougo/deoplete.nvim'
-	" 	Plug 'roxma/nvim-yarp'
-	" 	Plug 'roxma/vim-hug-neovim-rpc'
-	" endif
-	"
-	" " language plugins
-	" Plug 'deoplete-plugins/deoplete-jedi'
-	" Plug 'deoplete-plugins/deoplete-go'
-	" " Plug 'zchee/deoplete-clang'
-	" Plug 'tweekmonster/deoplete-clang2'
-	"
-	" " echodoc
-	" Plug 'Shougo/echodoc.vim'
-	"
-	" " tabnine
-	" if has('win32') || has('win64')
-	" 	Plug 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1' }
-	" else
-	" 	Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-	" endif
-	" call deoplete#custom#var('tabnine', {
-	" \ 'line_limit': 500,
-	" \ 'max_num_results': 5,
-	" \ })
-
-	" coc
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-	"
 	"	utilities
 	"
 	"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+	" programming language
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	Plug 'sheerun/vim-polyglot'
 
 	" fuzzy search
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -153,6 +119,3 @@ call plug#begin('~/.config/nvim/plugged')
 	autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
 call plug#end()
-
-"call neomake#configure#automake('nrwi', 500)
-
