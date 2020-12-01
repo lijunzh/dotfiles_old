@@ -1,7 +1,7 @@
 " color scheme
 set termguicolors
-colorscheme monokai
-" colorscheme monokai_pro
+" colorscheme monokai
+colorscheme monokai_pro
 highlight Comment cterm=italic gui=italic
 
 set number	" line number
@@ -22,7 +22,7 @@ set showbreak=…	" show ellipsis at breaking
 
 set autoindent	" autoindent
 set laststatus=2	" show the status line all the time
-let g:airline_theme='base16_monokai'
+let g:airline_theme='wombat'
 set wildmenu
 set hidden
 set showcmd
