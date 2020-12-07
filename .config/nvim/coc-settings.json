@@ -12,5 +12,8 @@
 			"args": ["--stdio"]
 		}
 	},
+	"python.linting.enabled": true,
+	"python.linting.mypyEnabled": true,
+	"python.linting.pylintEnabled": false,
 	"python.formatting.provider": "black"
 }
