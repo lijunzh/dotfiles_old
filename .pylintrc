@@ -7,3 +7,7 @@ generated-members=torch.*,cv2.*
 
 [FORMAT]
 max-line-length=120
+
+[MASTER]
+disable=
+	W0105, # String statement has no effect
