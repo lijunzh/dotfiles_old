@@ -6,6 +6,9 @@
 " ecnoding
 set encoding=utf-8
 
+" leader key
+let mapleader=","
+
 " trigger `autoread` when files changes on disk
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
 " notification after file change
