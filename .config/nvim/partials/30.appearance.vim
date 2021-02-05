@@ -19,12 +19,13 @@ augroup END
 set nowrap	" turn line wrap off
 set linebreak	" soft wrapping
 set showbreak=…	" show ellipsis at breaking
-
 set autoindent	" autoindent
-set laststatus=2	" show the status line all the time
-let g:airline_theme='wombat'
+
+" set laststatus=2	" show the status line all the time
+" let g:airline_theme='wombat'
+
+" command line
 set wildmenu
-set hidden
 set showcmd
 set wildmode=list:longest	" complete files like a shell
 set shell=$SHELL

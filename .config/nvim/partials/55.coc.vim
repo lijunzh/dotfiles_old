@@ -127,7 +127,7 @@ command! -nargs=0 Run :call CocAction('runCommand', 'python.execInTerminal')
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_currnt_function','')}
+" set statusline^=%{coc#status()}%{get(b:,'coc_currnt_function','')}
 
 " Mappings using CoCList:
 " Show all diagnostics.
