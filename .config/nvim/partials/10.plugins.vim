@@ -54,6 +54,7 @@ Plug 'tpope/vim-surround'
 
 " git
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 " ctags
 Plug 'ludovicchabant/vim-gutentags'
