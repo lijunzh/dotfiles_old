@@ -81,6 +81,9 @@ Plug 'tpope/vim-unimpaired'
 " surround
 Plug 'tpope/vim-surround'
 
+" repeat plugin map (for surround)
+Plug 'tpope/vim-repeat'
+
 " git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
