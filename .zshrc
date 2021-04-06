@@ -34,8 +34,11 @@ _load_settings() {
 }
 _load_settings "$HOME/.zsh/configs"
 
-# Local config
+# local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
+
+# starship
+[[ -x "$(command -v starship)" ]] && eval "$(starship init zsh)"
