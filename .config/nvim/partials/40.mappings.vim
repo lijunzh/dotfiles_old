@@ -11,3 +11,6 @@ noremap <A--> :resize -5<CR>
 
 " quick save
 noremap <Leader>s :update<CR>
+
+" rust clippy
+nnoremap <Leader>c :!cargo clippy<CR>
