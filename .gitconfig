@@ -238,8 +238,8 @@
 	path = ~/.gitconfig.local
 
 
-[gpg]
-	program = /usr/local/bin/gpg
+# [gpg]
+# 	program = /usr/local/bin/gpg
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
