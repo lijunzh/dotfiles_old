@@ -1,6 +1,5 @@
 " color scheme
 set termguicolors
-" colorscheme monokai
 colorscheme monokai_pro
 highlight Comment cterm=italic gui=italic
 

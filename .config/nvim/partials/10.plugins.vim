@@ -6,12 +6,9 @@ call plug#begin('~/.config/nvim/plugged')
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " color scheme
-Plug 'crusoexia/vim-monokai'
 Plug 'phanviet/vim-monokai-pro'
 
 " status bar
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
 Plug 'itchyny/lightline.vim'
 let g:lightline = {
   \   'colorscheme': 'monokai_pro',
@@ -108,8 +105,6 @@ let python_highlight_all=1
 Plug 'Kareeeeem/python-docstring-comments'
 Plug 'tweekmonster/impsort.vim', {'for': 'python'}
 
-" python indent
-" Plug 'vimjas/vim-python-pep8-indent'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
