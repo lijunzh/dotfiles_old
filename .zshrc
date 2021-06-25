@@ -40,5 +40,3 @@ _load_settings "$HOME/.zsh/configs"
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
-# starship
-[[ -x "$(command -v starship)" ]] && eval "$(starship init zsh)"
