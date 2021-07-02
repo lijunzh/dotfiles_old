@@ -4,8 +4,6 @@ if [[ $(uname -s) == "Linux" ]]; then
 	alias ls="ls --color"
 fi
 alias ll="ls -alF"
-alias la="ls -a"
-alias l="ls -CF"
 
 alias mkdir="mkdir -p"			# mkdir parent directory if not exists
 alias ln="ln -v"						# ln always verbose
