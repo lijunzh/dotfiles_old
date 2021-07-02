@@ -103,7 +103,7 @@ Plug 'godlygeek/tabular'
 " python syntax semantic highlighting
 let python_highlight_all=1
 Plug 'Kareeeeem/python-docstring-comments'
-Plug 'tweekmonster/impsort.vim', {'for': 'python'}
+" Plug 'tweekmonster/impsort.vim', {'for': 'python'}
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
