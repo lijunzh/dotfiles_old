@@ -49,7 +49,8 @@ set noshowmode
 
 " programming language
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " fuzzy search
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -102,8 +103,8 @@ Plug 'godlygeek/tabular'
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " python syntax semantic highlighting
-let python_highlight_all=1
-Plug 'Kareeeeem/python-docstring-comments'
+" let python_highlight_all=1
+" Plug 'Kareeeeem/python-docstring-comments'
 " Plug 'tweekmonster/impsort.vim', {'for': 'python'}
 
 
@@ -144,3 +145,15 @@ autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.
 autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
 call plug#end()
+
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  -- ignore_install = { "javascript" }, -- List of parsers to ignore installing
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    -- disable = { "c", "rust" },  -- list of language that will be disabled
+  },
+}
+EOF
