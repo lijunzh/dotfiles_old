@@ -7,6 +7,7 @@ call plug#begin('~/.config/nvim/plugged')
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " color scheme
 Plug 'phanviet/vim-monokai-pro'
+Plug 'tomasiser/vim-code-dark'
 
 " status bar
 Plug 'itchyny/lightline.vim'

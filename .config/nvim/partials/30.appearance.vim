@@ -1,6 +1,9 @@
 " color scheme
 set termguicolors
-colorscheme monokai_pro
+" colorscheme monokai_pro
+set t_Co=256
+set t_ut=
+colorscheme codedark
 highlight Comment cterm=italic gui=italic
 
 set number	" line number
