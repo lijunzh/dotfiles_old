@@ -30,10 +30,28 @@
 
 	# Set git diff default to tab=4 spaces
 	# https://stackoverflow.com/questions/39352644/how-to-change-tab-width-in-git-diff
-	pager = less -x1,5
+	# pager = less -x1,5
 
 	# global gitignore
 	excludesFile = ~/.gitignore
+
+[pager]
+	diff = delta
+	log = delta
+	reflog = delta
+	show = delta
+
+[interactive]
+	iffFilter = delta --color-only
+
+[delta]
+	features = side-by-side line-numbers decorations
+	whitespace-error-style = 22 reverse
+
+[delta "decorations"]
+	commit-decoration-style = bold yellow box ul
+	file-style = bold yellow ul
+	file-decoration-style = none
 
 
 [alias]
