@@ -6,7 +6,7 @@ call plug#begin('~/.config/nvim/plugged')
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " color scheme
-Plug 'phanviet/vim-monokai-pro'
+" Plug 'phanviet/vim-monokai-pro'
 Plug 'tomasiser/vim-code-dark'
 
 " status bar
@@ -66,22 +66,22 @@ let delimitMate_nesting_quotes = ['"','`']
 au FileType python let b:delimitMate_nesting_quotes = ['"']
 
 " table
-Plug 'dhruvasagar/vim-table-mode'
+" Plug 'dhruvasagar/vim-table-mode'
 
 " netrw enchance
 Plug 'tpope/vim-vinegar'
 
-" File system
+" sync remote
 Plug 'KenN7/vim-arsync'
 
-" bracekts mapping
-Plug 'tpope/vim-unimpaired'
-
-" surround
-Plug 'tpope/vim-surround'
-
-" repeat plugin map (for surround)
-Plug 'tpope/vim-repeat'
+" " bracekts mapping
+" Plug 'tpope/vim-unimpaired'
+"
+" " surround
+" Plug 'tpope/vim-surround'
+"
+" " repeat plugin map (for surround)
+" Plug 'tpope/vim-repeat'
 
 " git
 Plug 'tpope/vim-fugitive'
@@ -90,11 +90,11 @@ Plug 'airblade/vim-gitgutter'
 " ctags
 Plug 'ludovicchabant/vim-gutentags'
 
-" toml
-Plug 'cespare/vim-toml'
-
-" tabularize
-Plug 'godlygeek/tabular'
+" " toml
+" Plug 'cespare/vim-toml'
+"
+" " tabularize
+" Plug 'godlygeek/tabular'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -123,26 +123,26 @@ let g:vimtex_compiler_progname = 'nvr'
 "
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " rust.vim
-Plug 'rust-lang/rust.vim', {'for': 'rust'}
+" Plug 'rust-lang/rust.vim', {'for': 'rust'}
 
-" rustfmt
-let g:rustfmt_autosave = 1
-let g:rustfmt_command = 'rustup run stable rustfmt'
-
-" Racer for completion
-Plug 'racer-rust/vim-racer'
-let g:racer_cmd = '~/.cargo/bin/racer'
-set hidden
-let g:racer_experimental_completer = 1
-
-au FileType rust nmap gd <Plug>(rust-def)
-au FileType rust nmap gs <Plug>(rust-def-split)
-au FileType rust nmap gx <Plug>(rust-def-vertical)
-au FileType rust nmap <leader>gd <Plug>(rust-doc)
-
-" rusty-tags
-autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
-autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
+" " rustfmt
+" let g:rustfmt_autosave = 1
+" let g:rustfmt_command = 'rustup run stable rustfmt'
+"
+" " Racer for completion
+" Plug 'racer-rust/vim-racer'
+" let g:racer_cmd = '~/.cargo/bin/racer'
+" set hidden
+" let g:racer_experimental_completer = 1
+"
+" au FileType rust nmap gd <Plug>(rust-def)
+" au FileType rust nmap gs <Plug>(rust-def-split)
+" au FileType rust nmap gx <Plug>(rust-def-vertical)
+" au FileType rust nmap <leader>gd <Plug>(rust-doc)
+"
+" " rusty-tags
+" autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
+" autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
 call plug#end()
 
@@ -157,3 +157,4 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 EOF
+
