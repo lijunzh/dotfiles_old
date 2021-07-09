@@ -22,6 +22,7 @@ return require('packer').startup(function()
 		end,
 		requires = 'nvim-lua/plenary.nvim'
 	}
+
 	-- Color scheme
 	use {'kyazdani42/nvim-web-devicons'}
 	use {'sainnhe/gruvbox-material'}
@@ -76,7 +77,7 @@ return require('packer').startup(function()
 
 
 	-- Dashboard
-	use {'glepnir/dashboard-nvim'}
+	-- use {'glepnir/dashboard-nvim'}
 
 	-- Status line
 	use {
@@ -87,3 +88,4 @@ return require('packer').startup(function()
 	}
 
 end)
+
