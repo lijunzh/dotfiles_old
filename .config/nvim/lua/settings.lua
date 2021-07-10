@@ -60,8 +60,8 @@ if fn.has('mouse') then o.mouse = 'a' end			-- mouse support
 o.clipboard = 'unnamed'								-- use system clipboard
 o.backspace = ''									-- use legacy vim backspace settings
 o.smartcase = true									-- case-sensitive if expression contains a captial letter
-cmd 'set complete+=kspell' 							-- complete with dictionary words
-cmd 'set path+=**' 									-- add current directory to path
+cmd 'set complete+=kspell'							-- complete with dictionary words
+cmd 'set path+=**'									-- add current directory to path
 
 -- search highlight only when search
 vim.api.nvim_exec([[
@@ -150,7 +150,7 @@ o.showbreak = '↪'
 -- auto formating
 vim.api.nvim_exec([[
 augroup auto_fmt
-    autocmd!
-    autocmd BufWritePre *.py,*.lua try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
+	autocmd!
+	autocmd BufWritePre *.py,*.lua try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
 aug END
 ]], false)

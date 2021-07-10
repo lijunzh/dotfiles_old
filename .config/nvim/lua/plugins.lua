@@ -11,10 +11,20 @@ return require('packer').startup(function()
 	}
 
 	-- Development
-	use {'tpope/vim-fugitive'}
 	use {'tpope/vim-vinegar'}
 	use {'tpope/vim-commentary'}
 	use {'nvim-lua/plenary.nvim'}
+	use {'jiangmiao/auto-pairs'}
+	use {'tpope/vim-fugitive'}
+	use {
+		'lewis6991/gitsigns.nvim',
+		requires = {
+			'nvim-lua/plenary.nvim'
+		},
+		config = function()
+			require('gitsigns').setup()
+		end
+	}
 	use {
 		'TimUntersberger/neogit',
 		config = function()
@@ -22,6 +32,12 @@ return require('packer').startup(function()
 		end,
 		requires = 'nvim-lua/plenary.nvim'
 	}
+	use {
+		'folke/which-key.nvim',
+		config = function() require("which-key").setup {} end
+	}
+	use {'KenN7/vim-arsync'}
+
 
 	-- Color scheme
 	use {'kyazdani42/nvim-web-devicons'}
@@ -53,12 +69,6 @@ return require('packer').startup(function()
 	use {'sbdchd/neoformat'}
 	use {'p00f/nvim-ts-rainbow'}
 	use {'ray-x/lsp_signature.nvim'}
-	use {'szw/vim-maximizer'}
-	use {'dyng/ctrlsf.vim'}
-	use {'dbeniamine/cheat.sh-vim'}
-	use {'pechorin/any-jump.vim'}
-	use {'kshenoy/vim-signature'}
-	use {'kevinhwang91/nvim-bqf'}
 	use {
 	"folke/trouble.nvim",
 	config = function() require("trouble").setup {} end
@@ -70,6 +80,8 @@ return require('packer').startup(function()
 
 	-- Snippets
 	use {'hrsh7th/vim-vsnip'}
+	use {'cstrap/python-snippets'}
+	use {'ylcnfrht/vscode-python-snippet-pack'}
 
 	-- Better syntax
 	use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
