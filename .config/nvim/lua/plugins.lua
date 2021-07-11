@@ -73,6 +73,7 @@ return require('packer').startup(function()
 	"folke/trouble.nvim",
 	config = function() require("trouble").setup {} end
 	}
+	use {'simrat39/symbols-outline.nvim'}
 
 	-- Completion
 	use {'hrsh7th/nvim-compe'}
