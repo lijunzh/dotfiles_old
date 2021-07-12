@@ -16,6 +16,10 @@ local indent = 4
 cmd 'syntax enable'
 cmd 'filetype plugin indent on'
 
+o.backupdir = '~/.vim/backups'
+o.directory = '~/.vim/swaps'
+o.undodir = '~/.vim/udno'
+
 -- file change (autoread on change + notification on change)
 vim.api.nvim_exec([[
 augroup file_change
