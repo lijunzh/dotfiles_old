@@ -64,7 +64,7 @@ return require('packer').startup(function()
 	use {'neovim/nvim-lspconfig'}
 
 	-- Better LSP experience
-	use {'glepnir/lspsaga.nvim'}
+	-- use {'glepnir/lspsaga.nvim'}
 	use {'onsails/lspkind-nvim'}
 	use {'sbdchd/neoformat'}
 	use {'p00f/nvim-ts-rainbow'}
