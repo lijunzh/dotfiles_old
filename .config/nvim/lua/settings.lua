@@ -16,11 +16,16 @@ local indent = 4
 cmd 'syntax enable'
 cmd 'filetype plugin indent on'
 
+o.directory = '~/.vim/swaps/'
+o.undofile = true
+o.undodir = '~/.vim/undo/'
+
 -- file change (autoread on change + notification on change)
+o.autoread = true
 vim.api.nvim_exec([[
 augroup file_change
 	autocmd!
-	autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
+	autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
 	autocmd FileChangedShellPost * echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 augroup END
 ]], false)
