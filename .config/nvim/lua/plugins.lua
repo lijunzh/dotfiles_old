@@ -26,13 +26,6 @@ return require('packer').startup(function()
 		end
 	}
 	use {
-		'TimUntersberger/neogit',
-		config = function()
-			require('neogit').setup {integrations = {diffview = true}}
-		end,
-		requires = 'nvim-lua/plenary.nvim'
-	}
-	use {
 		'folke/which-key.nvim',
 		config = function() require("which-key").setup {} end
 	}
@@ -48,6 +41,7 @@ return require('packer').startup(function()
 
 	-- Telescope
 	use {'nvim-lua/popup.nvim'}
+	use {'jremmen/vim-ripgrep'}
 	use {'nvim-telescope/telescope.nvim'}
 	use {
 		'nvim-telescope/telescope-frecency.nvim',

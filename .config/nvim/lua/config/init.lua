@@ -1,6 +1,5 @@
 require('config.colorscheme')
 require('config.fugitive')
-require('config.neogit')
 require('config.devicon')
 require('config.telescope')
 require('config.compe')
