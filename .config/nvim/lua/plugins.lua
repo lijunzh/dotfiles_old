@@ -22,7 +22,7 @@ return require('packer').startup(function()
 			'nvim-lua/plenary.nvim'
 		},
 		config = function()
-			require('gitsigns').setupa {
+			require('gitsigns').setup {
 				current_line_blame = true,
 			}
 		end
