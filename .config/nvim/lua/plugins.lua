@@ -16,15 +16,15 @@ return require('packer').startup(function()
 	use {'nvim-lua/plenary.nvim'}
 	use {'jiangmiao/auto-pairs'}
 	use {'tpope/vim-fugitive'}
-	-- use {
-	-- 	'lewis6991/gitsigns.nvim',
-	-- 	requires = {
-	-- 		'nvim-lua/plenary.nvim'
-	-- 	},
-	-- 	config = function()
-	-- 		require('gitsigns').setup()
-	-- 	end
-	-- }
+	use {
+		'lewis6991/gitsigns.nvim',
+		requires = {
+			'nvim-lua/plenary.nvim'
+		},
+		config = function()
+			require('gitsigns').setup()
+		end
+	}
 	use {
 		'folke/which-key.nvim',
 		config = function() require("which-key").setup {} end
