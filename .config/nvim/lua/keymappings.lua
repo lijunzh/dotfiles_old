@@ -1,9 +1,6 @@
 local cmd = vim.cmd
 local utils = require('utils')
 
--- clear highlights
-utils.map('n', '<C-l>', '<cmd>noh<CR>')
-
 -- Save file
 utils.map('n', '<Leader>s', '<Cmd>update<CR>')
 utils.map('n', '<Leader>q', '<Cmd>q<CR>')
