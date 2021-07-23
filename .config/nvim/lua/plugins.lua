@@ -7,11 +7,11 @@ return require('packer').startup(function()
 	use 'famiu/nvim-reload'
 
 	-- Config
-	use {
-		'dstein64/vim-startuptime',
-		cmd = 'StartupTime',
-		config = [[vim.g.startuptime_tries = 10]]
-	}
+	-- use {
+	-- 	'dstein64/vim-startuptime',
+	-- 	cmd = 'StartupTime',
+	-- 	config = [[vim.g.startuptime_tries = 10]]
+	-- }
 
 	-- Development
 	use {'tpope/vim-vinegar'}
@@ -69,8 +69,8 @@ return require('packer').startup(function()
 	use {'p00f/nvim-ts-rainbow'}
 	use {'ray-x/lsp_signature.nvim'}
 	use {
-	"folke/trouble.nvim",
-	config = function() require("trouble").setup {} end
+		"folke/trouble.nvim",
+		config = function() require("trouble").setup {} end
 	}
 	use {'simrat39/symbols-outline.nvim'}
 
@@ -86,6 +86,13 @@ return require('packer').startup(function()
 	-- Better syntax
 	use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 	use {'nvim-treesitter/nvim-treesitter-textobjects'}
+	use {
+		'romgrk/nvim-treesitter-context',
+		config = function()
+			require('treesitter-context.config').setup {enable = true}
+		end
+	}
+	use {'JoosepAlviste/nvim-ts-context-commentstring'}
 
 
 	-- Dashboard
