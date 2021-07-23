@@ -82,11 +82,6 @@ augroup auto_save_remove_white_space
 	autocmd BufWritePre * :%s/\s\+$//e
 augroup END
 ]], false)
--- navigate file in vertical split:
---	<Leader>] to jump to tag in a vertical split
---	<Leader>f to jump to file in a vertical split
-cmd 'nnoremap <silent> <Leader>] :let word=expand("<cword>")<CR>:vsp<CR>:wincmd w<cr>:exec("tag ". word)<cr>'
-cmd 'nnoremap <silent> <Leader>f :vertical botright wincmd f<CR>'
 
 --------------------------------------------------------------------------------
 --
@@ -148,11 +143,3 @@ augroup END
 wo.list = true
 o.listchars = 'tab:→ ,eol:¬,trail:⋅,extends:❯,precedes:❮,space:·'
 o.showbreak = '↪'
-
--- auto formating
-vim.api.nvim_exec([[
-augroup auto_fmt
-	autocmd!
-	autocmd BufWritePre *.py,*.lua try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry
-aug END
-]], false)

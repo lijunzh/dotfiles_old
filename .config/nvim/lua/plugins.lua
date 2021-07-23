@@ -3,6 +3,9 @@ return require('packer').startup(function()
 	-- Packer can manage itself as an optional plugin
 	use {'wbthomason/packer.nvim', opt = true}
 
+	-- Manually reload init.lua and its content
+	use 'famiu/nvim-reload'
+
 	-- Config
 	use {
 		'dstein64/vim-startuptime',
