@@ -33,3 +33,6 @@ require('config')
 -- secure source file
 o.exrc = true
 o.secure = true
+
+-- speed up startup time
+o.foldenable = false
