@@ -190,9 +190,13 @@ return packer.startup(
 		}
 
 		-- LSP config
-		use {"neovim/nvim-lspconfig"}
-
-		-- Better LSP experience
+		use {"kabouzeid/nvim-lspinstall"}
+		use {
+			"neovim/nvim-lspconfig",
+			config = function()
+				require("configs.lspconfig")
+			end
+		}
 		use {"onsails/lspkind-nvim"}
 		use {"sbdchd/neoformat"}
 		use {"ray-x/lsp_signature.nvim"}
