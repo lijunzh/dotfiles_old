@@ -2,7 +2,7 @@ local chad_modules = {
 	"settings",
 	"mappings",
 	"lang",
-	"config",
+	"configs",
 }
 
 for i = 1, #chad_modules, 1 do

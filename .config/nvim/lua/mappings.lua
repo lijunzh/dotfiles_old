@@ -8,7 +8,7 @@ end
 
 local opt = {}
 
--- Save file
+-- save file
 map("n", "<Leader>s", "<Cmd>update<CR>")
 map("n", "<Leader>q", "<Cmd>q<CR>")
 map("n", "<Leader>w", "<Cmd>w<CR>")
@@ -23,6 +23,10 @@ vim.cmd("nnoremap <silent> <Leader>f :vertical botright wincmd f<CR>")
 map("n", "<Leader>/", "<Cmd>Commentary<CR>", opt)
 map("v", "<Leader>/", "<Cmd>Commentary<CR>", opt)
 
+-- Truezen.nvim
+map("n", "<leader>zz", ":TZAtaraxis<CR>", opt)
+map("n", "<leader>zm", ":TZMinimalist<CR>", opt)
+map("n", "<leader>zf", ":TZFocus<CR>", opt)
 
 -- Packer commands till because we are not loading it at startup
 vim.cmd("silent! command PackerCompile lua require 'plugins' require('packer').compile()")

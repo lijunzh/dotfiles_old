@@ -19,12 +19,78 @@ return packer.startup(
 			opt = true
 		}
 
-		-- Config
+		-- Dashboard
+		use {
+			"glepnir/dashboard-nvim",
+			cmd = {
+				"Dashboard",
+				"DashboardNewFile",
+				"DashboardJumpMarks",
+				"SessionLoad",
+				"SessionSave"
+			},
+			setup = function()
+				require "configs.dashboard"
+			end
+		}
+
+		-- status line
+		use {
+			"glepnir/galaxyline.nvim",
+			branch = "main",
+			config = function()
+				require("configs.statusline")
+			end,
+			requires = {"kyazdani42/nvim-web-devicons", opt = true}
+		}
+
+		-- startup time
 		use {
 			"dstein64/vim-startuptime",
 			cmd = "StartupTime",
 			config = "vim.g.startuptime_tries = 10"
 		}
+
+		-- smooth scroll
+		use {
+			"karb94/neoscroll.nvim",
+			event = "WinScrolled",
+			config = function()
+				require("configs.others").neoscroll()
+			end
+		}
+
+		-- indent blankline
+		use {
+			"lukas-reineke/indent-blankline.nvim",
+			event = "BufRead",
+			setup = function()
+				require("configs.others").blankline()
+			end
+		}
+
+		-- zen mode
+        use {
+            "Pocco81/TrueZen.nvim",
+            cmd = {
+                "TZAtaraxis",
+                "TZMinimalist",
+                "TZFocus"
+            },
+            config = function()
+                require "configs.zenmode"
+            end
+        }
+
+		-- color highlighter
+        use {
+            "norcalli/nvim-colorizer.lua",
+            event = "BufRead",
+            config = function()
+                require("configs.others").colorizer()
+            end
+        }
+
 
 		-- Development
 		use {"tpope/vim-vinegar"}
@@ -151,18 +217,6 @@ return packer.startup(
 		use {
 			"JoosepAlviste/nvim-ts-context-commentstring",
 			event = "BufRead",
-		}
-
-
-		-- Dashboard
-		-- use {"glepnir/dashboard-nvim"}
-
-		-- Status line
-		use {
-			"glepnir/galaxyline.nvim",
-			branch = "main",
-			config = function() require "statusline" end,
-			requires = {"kyazdani42/nvim-web-devicons", opt = true}
 		}
 	end
 )
