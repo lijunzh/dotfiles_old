@@ -19,7 +19,7 @@ return packer.startup(
 			opt = true
 		}
 
-		-- Dashboard
+		-- dashboard
 		use {
 			"glepnir/dashboard-nvim",
 			cmd = {
@@ -70,31 +70,55 @@ return packer.startup(
 		}
 
 		-- zen mode
-        use {
-            "Pocco81/TrueZen.nvim",
-            cmd = {
-                "TZAtaraxis",
-                "TZMinimalist",
-                "TZFocus"
-            },
-            config = function()
-                require "configs.zenmode"
-            end
-        }
+		use {
+			"Pocco81/TrueZen.nvim",
+			cmd = {
+				"TZAtaraxis",
+				"TZMinimalist",
+				"TZFocus"
+			},
+			config = function()
+				require "configs.zenmode"
+			end
+		}
 
 		-- color highlighter
-        use {
-            "norcalli/nvim-colorizer.lua",
-            event = "BufRead",
+		use {
+			"norcalli/nvim-colorizer.lua",
+			event = "BufRead",
+			config = function()
+				require("configs.others").colorizer()
+			end
+		}
+
+		-- file navigator
+		use {"tpope/vim-vinegar"}
+
+		-- lua version of commentary
+		use {
+            "terrortylor/nvim-comment",
+            cmd = "CommentToggle",
             config = function()
-                require("configs.others").colorizer()
+                require("configs.others").comment()
             end
         }
 
+		-- lua version of autopairs
+		use {
+            "windwp/nvim-autopairs",
+            after = "nvim-compe",
+            config = function()
+                require "configs.autopairs"
+            end
+        }
+
+		-- highlight/move on matching text
+		use {
+            "andymass/vim-matchup",
+            event = "CursorMoved"
+        }
 
 		-- Development
-		use {"tpope/vim-vinegar"}
-		use {"tpope/vim-commentary"}
 		use {
 			"tpope/vim-fugitive",
 			cmd = {
@@ -109,7 +133,6 @@ return packer.startup(
 			"nvim-lua/popup.nvim",
 			after = "plenary.nvim",
 		}
-		use {"jiangmiao/auto-pairs"}
 		use {
 			"lewis6991/gitsigns.nvim",
 			after = "plenary.nvim",
@@ -199,6 +222,7 @@ return packer.startup(
 				require("configs.treesitter")
 			end,
 		}
+		-- TODO: Somehow, this plugin does not have effect for now.
 		use {
 			"p00f/nvim-ts-rainbow",
 			event = "BufRead",
