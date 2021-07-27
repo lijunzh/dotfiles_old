@@ -1,24 +1,24 @@
 local utils = require('utils')
 
-local fn = vim.fn
-local cmd = vim.cmd
-local o = vim.o
-local wo = vim.wo
-local bo = vim.bo
 
 --------------------------------------------------------------------------------
 --
 -- Editing
 --
 --------------------------------------------------------------------------------
+
+-- speed up startup time
+vim.opt.foldenable = false
+
+-- Map leader to space
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ','
+
 local indent = 4
 
-cmd 'syntax enable'
-cmd 'filetype plugin indent on'
-
 -- file change (autoread on change + notification on change)
-o.undofile = true
-o.autoread = true
+vim.opt.undofile = true
+vim.opt.autoread = true
 vim.api.nvim_exec([[
 augroup file_change
 	autocmd!
@@ -28,12 +28,12 @@ augroup END
 ]], false)
 
 -- indent default to tab
-bo.expandtab = false
-bo.tabstop = indent
-bo.softtabstop = indent
-bo.shiftwidth = indent
-o.smarttab = true
-o.shiftround = true
+vim.opt.expandtab = false
+vim.opt.tabstop = indent
+vim.opt.softtabstop = indent
+vim.opt.shiftwidth = indent
+vim.opt.smarttab = true
+vim.opt.shiftround = true
 
 -- language specific tab settings
 vim.api.nvim_exec([[
@@ -50,20 +50,20 @@ augroup END
 
 
 -- split bottom and right
-o.splitright = true
-o.splitbelow = true
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 
 -- do no add empty newline at the end of files
-bo.binary = true
-bo.eol = false
+vim.opt.binary = true
+vim.opt.eol = false
 
 -- control settings
-if fn.has('mouse') then o.mouse = 'a' end			-- mouse support
-o.clipboard = 'unnamed'								-- use system clipboard
-o.backspace = ''									-- use legacy vim backspace settings
-o.smartcase = true									-- case-sensitive if expression contains a captial letter
-cmd 'set complete+=kspell'							-- complete with dictionary words
-cmd 'set path+=**'									-- add current directory to path
+if vim.fn.has('mouse') then vim.opt.mouse = 'a' end			-- mouse support
+vim.opt.clipboard = 'unnamed'								-- use system clipboard
+vim.opt.backspace = ''									-- use legacy vim backspace settings
+vim.opt.smartcase = true									-- case-sensitive if expression contains a captial letter
+vim.cmd('set complete+=kspell')							-- complete with dictionary words
+vim.cmd('set path+=**')									-- add current directory to path
 
 -- search highlight only when search
 vim.api.nvim_exec([[
@@ -89,16 +89,16 @@ augroup END
 --
 --------------------------------------------------------------------------------
 
-o.termguicolors = true								-- color
-o.scrolloff = 8										-- have some line above and below cursor
-cmd 'highlight Comment cterm=italic gui=italic'		-- comment font
-o.cmdheight = 2										-- make command window height of 2 rows
-o.title = true										-- show title
-o.showmatch = true									-- show matched brackets
-o.wildmode = 'longest,list,full'					-- complete files like a sheel
+vim.opt.termguicolors = true								-- color
+vim.opt.scrolloff = 8										-- have some line above and below cursor
+vim.opt.cmdheight = 2										-- make command window height of 2 rows
+vim.opt.title = true										-- show title
+vim.opt.showmatch = true									-- show matched brackets
+vim.opt.wildmode = 'longest,list,full'					-- complete files like a sheel
+vim.cmd 'highlight Comment cterm=italic gui=italic'		-- comment font
 
 -- line number
-wo.number = true
+vim.opt.number = true
 vim.api.nvim_exec([[
 augroup hybrid_line_number
 	autocmd!
@@ -108,16 +108,16 @@ augroup END
 ]], false)
 
 -- line wrap
-wo.wrap = false
-wo.linebreak = true
-o.showbreak='…'
+vim.opt.wrap = false
+vim.opt.linebreak = true
+vim.opt.showbreak = '↪'
 
 -- highlight on yank
-cmd 'au TextYankPost * silent! lua vim.highlight.on_yank()'
+vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank()')
 
 -- 79 column line
-bo.textwidth = 79
-wo.colorcolumn = '+1'
+vim.opt.textwidth = 79
+vim.opt.colorcolumn = '+1'
 vim.api.nvim_exec([[
 augroup column_width
 	autocmd!
@@ -129,7 +129,7 @@ augroup END
 ]], false)
 
 -- hightlight cursor line
-wo.cursorline = true
+vim.opt.cursorline = true
 vim.api.nvim_exec([[
 augroup cursor_line_current_window
 	autocmd!
@@ -140,6 +140,5 @@ augroup END
 
 
 -- list
-wo.list = true
-o.listchars = 'tab:→ ,eol:¬,trail:⋅,extends:❯,precedes:❮,space:·'
-o.showbreak = '↪'
+vim.opt.list = true
+vim.opt.listchars = 'tab:→ ,eol:¬,trail:⋅,extends:❯,precedes:❮,space:·'
