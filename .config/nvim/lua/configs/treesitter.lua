@@ -1,14 +1,18 @@
-require'nvim-treesitter.configs'.setup {
-	ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+local present, ts_config = pcall(require, "nvim-treesitter.configs")
+if not present then
+    return
+end
+
+ts_config.setup {
+	ensure_installed = {
+		"bash",
+		"lua",
+		"python",
+		"rust",
+	},
 	highlight = {
 		enable = true, -- false will disable the whole extension
 		disable = {} -- list of language that will be disabled
-	},
-	playground = {
-		enable = true,
-		disable = {},
-		updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-		persist_queries = false -- Whether the query persists across vim sessions
 	},
 	rainbow = {
 		enable = true,

@@ -1,0 +1,7 @@
+require('configs.colorscheme')
+-- require('configs.fugitive')
+require('configs.devicon')
+-- require('config.telescope')
+-- require('configs.compe')
+require('configs.lspkind')
+-- require('configs.treesitter')
