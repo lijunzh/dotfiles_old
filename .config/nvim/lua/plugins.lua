@@ -41,7 +41,15 @@ return packer.startup(
 			config = function()
 				require("configs.statusline")
 			end,
-			requires = {"kyazdani42/nvim-web-devicons", opt = true}
+			requires = {
+				{
+					"kyazdani42/nvim-web-devicons",
+					config = function()
+						require("configs.icons")
+					end,
+				},
+				opt = true
+			}
 		}
 
 		-- startup time
@@ -152,7 +160,6 @@ return packer.startup(
 		}
 
 		-- Color scheme
-		use {"kyazdani42/nvim-web-devicons"}
 		use {"sainnhe/gruvbox-material"}
 		use {"tomasiser/vim-code-dark"}
 		use {"phanviet/vim-monokai-pro"}
