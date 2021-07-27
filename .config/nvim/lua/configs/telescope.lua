@@ -18,13 +18,8 @@ telescope.setup {
 	grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
 	qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
 	extensions = {
-		arecibo = {
-			["selected_engine"] = 'google',
-			["url_open_command"] = 'open',
-			["show_http_headers"] = false,
-			["show_domain_icons"] = false
-		},
 		fzf = {
+			fuzzy = true, -- false will only do exact matching
 			override_generic_sorter = false,
 			override_file_sorter = true,
 			case_mode = "smart_case"
