@@ -1,7 +1,7 @@
 local chad_modules = {
 	"settings",
 	"mappings",
-	"configs",
+    "colorscheme",
 }
 
 for i = 1, #chad_modules, 1 do
