@@ -19,13 +19,10 @@ return packer.startup(
 		}
 
 		-- color scheme and theme
-		use {
-            "sainnhe/gruvbox-material",
-            after = "VimEnter",
-        }
+		use {"sainnhe/gruvbox-material"}
         use {
             "kyazdani42/nvim-web-devicons",
-            after = "bruvbox-material",
+            after = "gruvbox-material",
             config = function()
                 require("configs.icons")
             end,
