@@ -42,7 +42,7 @@ vim.cmd("nnoremap <silent> <Leader>f :vertical botright wincmd f<CR>")
 -- terminals
 map("n", "<C-l>", ":vnew +terminal | setlocal nobuflisted <CR>", opt) -- term over right
 map("n", "<C-x>", ":10new +terminal | setlocal nobuflisted <CR>", opt) --  term bottom
-map("n", "<C-t>t", ":<Cmd> terminal <CR>", opt) -- term buffer
+map("n", "<C-t>t", ":terminal <CR>", opt) -- term buffer
 
 -- get out of terminal with jk
 map("t", "jk", "<C-\\><C-n>", opt)
