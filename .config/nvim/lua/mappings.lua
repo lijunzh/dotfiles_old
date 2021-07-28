@@ -13,15 +13,16 @@ map("n", "<Leader>s", "<Cmd>update<CR>")
 map("n", "<Leader>q", "<Cmd>q<CR>")
 map("n", "<Leader>w", "<Cmd>w<CR>")
 map("n", "<Leader>v", "<Cmd>Reload<CR>")
+
+-- nvimtree
+map("n", "<C-n>", ":NvimTreeToggle<CR>", opt)
+
+-- format code
 map("n", "<Leader>fm", "<Cmd>Neoformat<CR>")
 
 -- navigate file in vertical split:
 vim.cmd("nnoremap <silent> <Leader>] :let word=expand('<cword>')<CR>:vsp<CR>:wincmd w<cr>:exec('tag '. word)<cr>")
 vim.cmd("nnoremap <silent> <Leader>f :vertical botright wincmd f<CR>")
-
--- -- Commentary
--- map("n", "<Leader>/", "<Cmd>Commentary<CR>", opt)
--- map("v", "<Leader>/", "<Cmd>Commentary<CR>", opt)
 
 -- Truezen.nvim
 map("n", "<leader>zz", ":TZAtaraxis<CR>", opt)

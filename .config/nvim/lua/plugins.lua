@@ -33,6 +33,16 @@ return packer.startup(
 			end
 		}
 
+        -- file managing , picker etc
+        use {
+            "kyazdani42/nvim-tree.lua",
+            cmd = "NvimTreeToggle",
+            config = function()
+                require "configs.nvimtree"
+            end
+        }
+
+
 		-- status line
 		use {
 			"glepnir/galaxyline.nvim",
