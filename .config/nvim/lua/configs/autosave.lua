@@ -7,7 +7,7 @@ autosave.setup(
     {
         enabled = vim.g.auto_save, -- takes boolean value from init.lua
         execution_message = "autosaved at : " .. vim.fn.strftime("%H:%M:%S"),
-        events = {"InsertLeave", "TextChanged"},
+        events = {"FocusLost"},
         conditions = {
             exists = true,
             filetype_is_not = {},
