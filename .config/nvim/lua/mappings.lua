@@ -9,10 +9,25 @@ end
 local opt = {}
 
 -- save file
-map("n", "<Leader>s", "<Cmd>update<CR>")
-map("n", "<Leader>q", "<Cmd>q<CR>")
-map("n", "<Leader>w", "<Cmd>w<CR>")
-map("n", "<Leader>v", "<Cmd>Reload<CR>")
+map("n", "<Leader>s", "<Cmd>update<CR>", opt)
+map("n", "<Leader>q", "<Cmd>q<CR>", opt)
+map("n", "<Leader>w", "<Cmd>w<CR>", opt)
+map("n", "<Leader>v", "<Cmd>Reload<CR>", opt)
+
+-- git (fugitive)
+map("n", "<Leader>gs", ":Git<CR>", opt)
+map("n", "<Leader>ga", ":Git add %<CR>", opt)
+map("n", "<Leader>gc", ":Git commit<CR>", opt)
+map("n", "<Leader>gp", ":Git push<CR>", opt)
+map("n", "<Leader>gb", ":GBranches<CR>", opt)
+map("n", "<Leader>gd", ":Gvdiffsplit<CR>", opt)
+map("n", "<Leader>gf", ":Git fetch --all<CR>", opt)
+
+-- Don't copy the replaced text after pasting in visual mode
+map("v", "p", '"_dP', opt)
+
+-- copy whole file content
+map("n", "<C-a>", ":%y+<CR>", opt)
 
 -- nvimtree
 map("n", "<C-n>", ":NvimTreeToggle<CR>", opt)
@@ -23,6 +38,14 @@ map("n", "<Leader>fm", "<Cmd>Neoformat<CR>")
 -- navigate file in vertical split:
 vim.cmd("nnoremap <silent> <Leader>] :let word=expand('<cword>')<CR>:vsp<CR>:wincmd w<cr>:exec('tag '. word)<cr>")
 vim.cmd("nnoremap <silent> <Leader>f :vertical botright wincmd f<CR>")
+
+-- terminals
+map("n", "<C-l>", ":vnew +terminal | setlocal nobuflisted <CR>", opt) -- term over right
+map("n", "<C-x>", ":10new +terminal | setlocal nobuflisted <CR>", opt) --  term bottom
+map("n", "<C-t>t", ":<Cmd> terminal <CR>", opt) -- term buffer
+
+-- get out of terminal with jk
+map("t", "jk", "<C-\\><C-n>", opt)
 
 -- Truezen.nvim
 map("n", "<leader>zz", ":TZAtaraxis<CR>", opt)
