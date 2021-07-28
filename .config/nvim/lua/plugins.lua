@@ -161,9 +161,9 @@ return packer.startup(
 
 		-- Color scheme
 		use {"sainnhe/gruvbox-material"}
-		use {"tomasiser/vim-code-dark"}
-		use {"phanviet/vim-monokai-pro"}
-		use {"NLKNguyen/papercolor-theme"}
+		-- use {"tomasiser/vim-code-dark"}
+		-- use {"phanviet/vim-monokai-pro"}
+		-- use {"NLKNguyen/papercolor-theme"}
 
 		-- Telescope
 		use {

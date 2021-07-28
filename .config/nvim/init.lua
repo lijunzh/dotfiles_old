@@ -1,7 +1,6 @@
 local chad_modules = {
 	"settings",
 	"mappings",
-	"lang",
 	"configs",
 }
 
