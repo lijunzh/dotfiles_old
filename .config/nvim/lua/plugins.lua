@@ -18,6 +18,20 @@ return packer.startup(
 			event = "VimEnter",
 		}
 
+		-- color scheme and theme
+		use {
+            "sainnhe/gruvbox-material",
+            after = "VimEnter",
+        }
+        use {
+            "kyazdani42/nvim-web-devicons",
+            after = "bruvbox-material",
+            config = function()
+                require("configs.icons")
+            end,
+
+        }
+
 		-- dashboard
 		use {
 			"glepnir/dashboard-nvim",
@@ -42,23 +56,16 @@ return packer.startup(
             end
         }
 
-
 		-- status line
 		use {
 			"glepnir/galaxyline.nvim",
+            after = "nvim-web-devicons",
 			branch = "main",
 			config = function()
 				require("configs.statusline")
 			end,
-			requires = {
-				{
-					"kyazdani42/nvim-web-devicons",
-					config = function()
-						require("configs.icons")
-					end,
-				},
-			}
 		}
+
 
         -- load autosave only if its globally enabled
         use {
@@ -177,12 +184,6 @@ return packer.startup(
 				"ARSync"
 			}
 		}
-
-		-- Color scheme
-		use {"sainnhe/gruvbox-material"}
-		-- use {"tomasiser/vim-code-dark"}
-		-- use {"phanviet/vim-monokai-pro"}
-		-- use {"NLKNguyen/papercolor-theme"}
 
 		-- Telescope
 		use {

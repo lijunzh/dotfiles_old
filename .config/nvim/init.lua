@@ -1,7 +1,7 @@
 local chad_modules = {
 	"settings",
+    "theme",
 	"mappings",
-    "colorscheme",
     "utils",
 }
 

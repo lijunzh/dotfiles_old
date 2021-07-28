@@ -3,9 +3,8 @@ if not present then
     return
 end
 
---local global_theme = "themes/" .. vim.g.nvchad_theme
---local colors = require(global_theme)
-colors = require('galaxyline.theme').default
+local global_theme = "themes/" .. vim.g.theme
+local colors = require(global_theme)
 
 icons.setup {
     override = {
@@ -121,4 +120,3 @@ icons.setup {
         }
     }
 }
-
