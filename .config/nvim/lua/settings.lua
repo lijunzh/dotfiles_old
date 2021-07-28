@@ -4,8 +4,8 @@
 --
 --------------------------------------------------------------------------------
 
--- speed up startup time
-vim.opt.foldenable = false
+-- autosave
+vim.g.auto_save = true
 
 -- Map leader to space
 vim.g.mapleader = ' '
@@ -23,6 +23,7 @@ vim.opt.mouse = "a"
 vim.opt.backspace = "" -- use legacy vim backspace settings
 vim.opt.history=1000
 vim.opt.modeline = false
+vim.opt.foldenable = false -- speed up startup time
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
@@ -32,6 +33,7 @@ vim.opt.whichwrap:append("<>hl")
 vim.opt.undofile = true
 vim.opt.backupskip = "/tmp/*,/private/tmp/*"
 vim.opt.autoread = true
+
 vim.api.nvim_exec([[
 augroup file_change
     autocmd!
@@ -40,12 +42,12 @@ augroup file_change
 augroup END
 ]], false)
 
--- save all file on focus lost and remove tailing white space
+-- remove tailing white space and empty line at the end of file
 vim.api.nvim_exec([[
 augroup auto_save_remove_white_space
     autocmd!
-    autocmd FocusLost * silent! wa
-    autocmd BufWritePre * :%s/\s\+$//e
+    autocmd BufWritePre * silent! s/\s\+$//e
+    autocmd BufWritePre * silent! %s#\($\n\s*\)\+\%$##
 augroup END
 ]], false)
 
@@ -175,4 +177,3 @@ local disabled_built_ins = {
 for _, plugin in pairs(disabled_built_ins) do
     vim.g["loaded_" .. plugin] = 1
 end
-

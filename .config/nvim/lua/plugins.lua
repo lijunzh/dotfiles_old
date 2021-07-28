@@ -16,7 +16,6 @@ return packer.startup(
 		use {
 			"wbthomason/packer.nvim",
 			event = "VimEnter",
-			opt = true
 		}
 
 		-- dashboard
@@ -48,9 +47,19 @@ return packer.startup(
 						require("configs.icons")
 					end,
 				},
-				opt = true
 			}
 		}
+
+        -- load autosave only if its globally enabled
+        use {
+            "Pocco81/AutoSave.nvim",
+            config = function()
+                require "configs.autosave"
+            end,
+            cond = function()
+                return vim.g.auto_save == true
+            end
+        }
 
 		-- startup time
 		use {
@@ -268,4 +277,3 @@ return packer.startup(
 		}
 	end
 )
-
