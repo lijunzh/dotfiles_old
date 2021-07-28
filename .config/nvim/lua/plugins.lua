@@ -190,21 +190,34 @@ return packer.startup(
 		}
 
 		-- LSP config
-		use {"kabouzeid/nvim-lspinstall"}
+		use {
+			"kabouzeid/nvim-lspinstall",
+			event = "BufRead",
+		}
 		use {
 			"neovim/nvim-lspconfig",
+			after = "nvim-lspinstall",
 			config = function()
 				require("configs.lspconfig")
 			end
 		}
-		use {"onsails/lspkind-nvim"}
-		use {"sbdchd/neoformat"}
-		use {"ray-x/lsp_signature.nvim"}
 		use {
-			"folke/trouble.nvim",
-			config = function() require("trouble").setup {} end
+			"onsails/lspkind-nvim",
+			event = "BufRead",
+			config = function()
+                require "configs.lspconfig"
+			end
 		}
-		use {"simrat39/symbols-outline.nvim"}
+		use {
+			"sbdchd/neoformat",
+			event = "BufRead",
+		}
+		-- use {"ray-x/lsp_signature.nvim"}
+		-- use {
+		-- 	"folke/trouble.nvim",
+		-- 	config = function() require("trouble").setup {} end
+		-- }
+		-- use {"simrat39/symbols-outline.nvim"}
 
 		-- Completion
 		use {
