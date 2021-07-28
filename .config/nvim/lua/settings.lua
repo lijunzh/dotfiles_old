@@ -34,23 +34,6 @@ vim.opt.undofile = true
 vim.opt.backupskip = "/tmp/*,/private/tmp/*"
 vim.opt.autoread = true
 
-vim.api.nvim_exec([[
-augroup file_change
-    autocmd!
-    autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
-    autocmd FileChangedShellPost * echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
-augroup END
-]], false)
-
--- remove tailing white space and empty line at the end of file
-vim.api.nvim_exec([[
-augroup auto_save_remove_white_space
-    autocmd!
-    autocmd BufWritePre * silent! s/\s\+$//e
-    autocmd BufWritePre * silent! %s#\($\n\s*\)\+\%$##
-augroup END
-]], false)
-
 --------------------------------------------------------------------------------
 -- Appearance
 --------------------------------------------------------------------------------
@@ -82,13 +65,6 @@ vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank()')
 -- line number
 vim.opt.number = true
 vim.opt.numberwidth = 2
-vim.api.nvim_exec([[
-augroup hybrid_line_number
-    autocmd!
-    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-    autocmd BufLeave,FocusLost,InsertEnter * set norelativenumber
-augroup END
-]], false)
 
 -- line wrap
 vim.opt.wrap = false
@@ -100,50 +76,25 @@ vim.opt.list = true
 vim.opt.listchars = 'tab:→ ,eol:¬,trail:⋅,extends:❯,precedes:❮,space:·'
 
 -- 79 column line
+-- excpetions for git and text file are defined in utils.lua
 vim.opt.textwidth = 79
 vim.opt.colorcolumn = "+1"
-vim.api.nvim_exec([[
-augroup column_width
-    autocmd!
-    " no text wrap for text files
-    autocmd Filetype tex,plaintex,markdown,text setlocal tw=0 wrap
-    " 72 columns for git commit
-    autocmd Filetype gitcommit setlocal spell textwidth=72
-augroup END
-]], false)
 
 -- highlight cursor line
 vim.opt.cursorline = true
-vim.api.nvim_exec([[
-augroup cursor_line_current_window
-    autocmd!
-    autocmd WinEnter * setlocal cursorline
-    autocmd WinLeave * setlocal nocursorline
-augroup END
-]], false)
-
--- search highlight only when search
-vim.api.nvim_exec([[
-augroup search_highlighting
-    autocmd!
-    autocmd CmdlineEnter /,\? :set hlsearch
-    autocmd CmdlineLeave /,\? :set nohlsearch
-augroup END
-]], false)
-
 
 --------------------------------------------------------------------------------
 -- Indentation
 --------------------------------------------------------------------------------
 
 -- default indent width
-indent = 2
+local indent = 2
 
 -- indent default to tab
 vim.opt.expandtab = true
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
+vim.opt.shiftwidth = indent
+vim.opt.tabstop = indent
+vim.opt.softtabstop = indent
 vim.opt.smartindent = true
 
 -- file extension specific tabbing
