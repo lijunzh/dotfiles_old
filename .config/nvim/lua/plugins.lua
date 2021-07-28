@@ -105,7 +105,7 @@ return packer.startup(
 		-- lua version of commentary
 		use {
             "terrortylor/nvim-comment",
-            cmd = "CommentToggle",
+			event = "BufRead",
             config = function()
                 require("configs.others").comment()
             end

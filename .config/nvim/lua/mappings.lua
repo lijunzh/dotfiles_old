@@ -23,10 +23,6 @@ vim.cmd("nnoremap <silent> <Leader>f :vertical botright wincmd f<CR>")
 -- map("n", "<Leader>/", "<Cmd>Commentary<CR>", opt)
 -- map("v", "<Leader>/", "<Cmd>Commentary<CR>", opt)
 
--- nvim-comment
-map("n", "<Leader>/", "<Cmd>CommentToggle<CR>", opt)
-map("v", "<Leader>/", "<Cmd>CommentToggle<CR>", opt)
-
 -- Truezen.nvim
 map("n", "<leader>zz", ":TZAtaraxis<CR>", opt)
 map("n", "<leader>zm", ":TZMinimalist<CR>", opt)
