@@ -39,4 +39,3 @@ return packer.init {
         clone_timeout = 600 -- Timeout, in seconds, for git clones
     }
 }
-

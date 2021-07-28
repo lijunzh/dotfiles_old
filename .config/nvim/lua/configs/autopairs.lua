@@ -12,4 +12,3 @@ autopairs_completion.setup(
         map_complete = true -- insert () func completion
     }
 )
-
