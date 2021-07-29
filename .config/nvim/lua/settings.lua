@@ -91,7 +91,7 @@ vim.opt.cursorline = true
 local indent = 2
 
 -- indent default to tab
-vim.opt.expandtab = true
+vim.opt.expandtab = false
 vim.opt.shiftwidth = indent
 vim.opt.tabstop = indent
 vim.opt.softtabstop = indent
