@@ -12,7 +12,6 @@ local opt = {}
 map("n", "<Leader>s", "<Cmd>update<CR>", opt)
 map("n", "<Leader>q", "<Cmd>q<CR>", opt)
 map("n", "<Leader>w", "<Cmd>w<CR>", opt)
-map("n", "<Leader>v", "<Cmd>Reload<CR>", opt)
 
 -- git (fugitive)
 map("n", "<Leader>gs", ":Git<CR>", opt)
