@@ -1,12 +1,6 @@
 # Referenc:
 # https://git-scm.com/docs/git-config#git-config-[tag]-[key]
 
-[user]
-
-	# Default user
-	name = Lijun Zhu
-	email = gatechzhu@gmail.com
-
 
 [core]
 
