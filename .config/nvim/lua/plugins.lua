@@ -91,12 +91,12 @@ return packer.startup(
             end
         }
 
-        -- indent blankline
+        -- indent lines
         use {
-            "lukas-reineke/indent-blankline.nvim",
+            "Yggdroot/indentLine",
             event = "BufRead",
             setup = function()
-                require("configs.others").blankline()
+                require("configs.others").indentline()
             end
         }
 

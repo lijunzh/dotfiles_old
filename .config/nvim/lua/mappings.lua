@@ -13,6 +13,9 @@ map("n", "<Leader>s", "<Cmd>update<CR>", opt)
 map("n", "<Leader>q", "<Cmd>q<CR>", opt)
 map("n", "<Leader>w", "<Cmd>w<CR>", opt)
 
+-- toggle list
+map("n", "<Leader>l", "<Cmd>set nolist!<CR>")
+
 -- git (fugitive)
 map("n", "<Leader>gs", ":Git<CR>", opt)
 map("n", "<Leader>ga", ":Git add %<CR>", opt)
