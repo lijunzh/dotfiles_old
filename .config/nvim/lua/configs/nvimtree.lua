@@ -62,7 +62,7 @@ g.nvim_tree_icons = {
 
 g.nvim_tree_bindings = {
     {key = {"<CR>", "o", "<2-LeftMouse>"}, cb = tree_cb("edit")},
-    {key = {"<2-RightMouse>", "<C-}>"}, cb = tree_cb("cd")},
+    {key = {"<2-RightMouse>", "<C-]>"}, cb = tree_cb("cd")},
     {key = "<C-v>", cb = tree_cb("vsplit")},
     {key = "<C-x>", cb = tree_cb("split")},
     {key = "<C-t>", cb = tree_cb("tabnew")},
