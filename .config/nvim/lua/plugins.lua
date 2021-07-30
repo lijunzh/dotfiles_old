@@ -24,13 +24,21 @@ return packer.startup(
         ------------------------------------------------------------------------
         -- editor
         ------------------------------------------------------------------------
-        -- color scheme and theme
+        -- color, icon, and status line
         use {"sainnhe/gruvbox-material"}
         use {
             "kyazdani42/nvim-web-devicons",
             after = "gruvbox-material",
             config = function()
                 require("configs.icons")
+            end,
+        }
+        use {
+            "glepnir/galaxyline.nvim",
+            after = "nvim-web-devicons",
+            branch = "main",
+            config = function()
+                require("configs.statusline")
             end,
         }
 
@@ -44,17 +52,7 @@ return packer.startup(
             end
         }
 
-        -- status line
-        use {
-            "glepnir/galaxyline.nvim",
-            after = "nvim-web-devicons",
-            branch = "main",
-            config = function()
-                require("configs.statusline")
-            end,
-        }
-
-        -- load autosave (on focus lost only)
+        -- autosave (on focus lost only)
         use {
             "Pocco81/AutoSave.nvim",
             config = function()
@@ -83,7 +81,7 @@ return packer.startup(
             end
         }
 
-        -- lua version of commentary
+        -- comment
         use {
             "terrortylor/nvim-comment",
             -- event = "BufRead",
@@ -92,19 +90,12 @@ return packer.startup(
             end
         }
 
-        -- highlight/move on matching text
-        use {
-            "andymass/vim-matchup",
-            event = "CursorMoved"
-        }
-
         ------------------------------------------------------------------------
         -- LSP
         ------------------------------------------------------------------------
         -- LSP config
         use {
             "kabouzeid/nvim-lspinstall",
-            event = "BufRead",
         }
         use {
             "neovim/nvim-lspconfig",
@@ -117,20 +108,18 @@ return packer.startup(
             "onsails/lspkind-nvim",
             event = "BufRead",
             config = function()
-                require "configs.lspconfig"
+                require "configs.lspkind"
             end
         }
         -- lua version of autopairs
         use {
             "windwp/nvim-autopairs",
-            -- after = "nvim-compe",
             event = 'InsertCharPre',
             after = 'nvim-lspconfig',
             config = function()
                 require "configs.autopairs"
             end
         }
-
         use {
             "sbdchd/neoformat",
             event = "BufRead",
@@ -139,6 +128,7 @@ return packer.startup(
         ------------------------------------------------------------------------
         -- completion
         ------------------------------------------------------------------------
+        -- complete engine
         use {
             "hrsh7th/nvim-compe",
             event = "InsertEnter",
@@ -147,6 +137,8 @@ return packer.startup(
             end,
             wants = "LuaSnip",
         }
+
+        -- AI tools
         use {
             "tzachar/compe-tabnine",
             after = "nvim-compe",
@@ -154,7 +146,7 @@ return packer.startup(
             requires = "hrsh7th/nvim-compe"
         }
 
-        -- Snippets
+        -- snippets
         use {
             "L3MON4D3/LuaSnip",
             after = "nvim-compe",
@@ -230,8 +222,12 @@ return packer.startup(
         use {
             "KenN7/vim-arsync",
             cmd = {
-                "ARSync"
+                "ARsyncUp", "ARsyncConf", "ARsyncDown", "ARsyncUpDelete",
             }
+        }
+        use {
+            "dstein64/vim-startuptime",
+            cmd = "StartupTime"
         }
 
     end
