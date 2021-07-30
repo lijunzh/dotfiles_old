@@ -31,11 +31,6 @@ map("n", "<C-t>t", ":terminal <CR>", opt) -- term buffer
 -- get out of terminal with jk
 map("t", "jk", "<C-\\><C-n>", opt)
 
--- Truezen.nvim
-map("n", "<leader>zz", ":TZAtaraxis<CR>", opt)
-map("n", "<leader>zm", ":TZMinimalist<CR>", opt)
-map("n", "<leader>zf", ":TZFocus<CR>", opt)
-
 -- Packer commands till because we are not loading it at startup
 vim.cmd("silent! command PackerCompile lua require 'plugins' require('packer').compile()")
 vim.cmd("silent! command PackerInstall lua require 'plugins' require('packer').install()")
@@ -107,23 +102,6 @@ map("n", "<C-n>", ":NvimTreeToggle<CR>", opt)
 -- format code
 map("n", "<Leader>fm", "<Cmd>Neoformat<CR>")
 
--- dashboard stuff
-map("n", "<Leader>db", ":Dashboard<CR>", opt)
-map("n", "<Leader>fn", ":DashboardNewFile<CR>", opt)
-map("n", "<Leader>bm", ":DashboardJumpMarks<CR>", opt)
-map("n", "<C-s>l", ":SessionLoad<CR>", opt)
-map("n", "<C-s>s", ":SessionSave<CR>", opt)
-
--- Telescope
-map("n", "<Leader>fw", ":Telescope live_grep<CR>", opt)
-map("n", "<Leader>gt", ":Telescope git_status <CR>", opt)
-map("n", "<Leader>cm", ":Telescope git_commits <CR>", opt)
-map("n", "<Leader>ff", ":Telescope find_files <CR>", opt)
-map("n", "<Leader>fp", ":Telescope media_files <CR>", opt)
-map("n", "<Leader>fb", ":Telescope buffers<CR>", opt)
-map("n", "<Leader>fh", ":Telescope help_tags<CR>", opt)
-map("n", "<Leader>fo", ":Telescope oldfiles<CR>", opt)
-
 -- git (fugitive)
 map("n", "<Leader>gs", ":Git<CR>", opt)
 map("n", "<Leader>ga", ":Git add %<CR>", opt)
@@ -136,5 +114,5 @@ map("n", "<Leader>gf", ":Git fetch --all<CR>", opt)
 -- toggle list
 map("n", "<Leader>l", "<Cmd>set nolist!<CR>")
 
--- get out of terminal with jk
-map("t", "jk", "<C-\\><C-n>", opt)
+-- use ESC to turn off search highlighting
+map("n", "<Esc>", ":noh<CR>", opt)

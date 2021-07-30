@@ -12,12 +12,18 @@ local use = packer.use
 return packer.startup(
     function()
 
+        ------------------------------------------------------------------------
+        -- package manager
+        ------------------------------------------------------------------------
         -- Packer can manage itself as an optional plugin
         use {
             "wbthomason/packer.nvim",
             event = "VimEnter",
         }
 
+        ------------------------------------------------------------------------
+        -- editor
+        ------------------------------------------------------------------------
         -- color scheme and theme
         use {"sainnhe/gruvbox-material"}
         use {
@@ -26,25 +32,10 @@ return packer.startup(
             config = function()
                 require("configs.icons")
             end,
-
         }
 
-        -- dashboard
-        use {
-            "glepnir/dashboard-nvim",
-            cmd = {
-                "Dashboard",
-                "DashboardNewFile",
-                "DashboardJumpMarks",
-                "SessionLoad",
-                "SessionSave"
-            },
-            setup = function()
-                require "configs.dashboard"
-            end
-        }
-
-        -- file managing , picker etc
+        -- file navigator
+        use {"tpope/vim-vinegar"}
         use {
             "kyazdani42/nvim-tree.lua",
             cmd = "NvimTreeToggle",
@@ -63,8 +54,7 @@ return packer.startup(
             end,
         }
 
-
-        -- load autosave only if its globally enabled
+        -- load autosave (on focus lost only)
         use {
             "Pocco81/AutoSave.nvim",
             config = function()
@@ -73,13 +63,6 @@ return packer.startup(
             cond = function()
                 return vim.g.auto_save == true
             end
-        }
-
-        -- startup time
-        use {
-            "dstein64/vim-startuptime",
-            cmd = "StartupTime",
-            config = "vim.g.startuptime_tries = 10"
         }
 
         -- smooth scroll
@@ -100,40 +83,43 @@ return packer.startup(
             end
         }
 
-        -- zen mode
-        use {
-            "Pocco81/TrueZen.nvim",
-            cmd = {
-                "TZAtaraxis",
-                "TZMinimalist",
-                "TZFocus"
-            },
-            config = function()
-                require "configs.zenmode"
-            end
-        }
-
-        -- color highlighter
-        use {
-            "norcalli/nvim-colorizer.lua",
-            event = "BufRead",
-            config = function()
-                require("configs.others").colorizer()
-            end
-        }
-
-        -- file navigator
-        use {"tpope/vim-vinegar"}
-
         -- lua version of commentary
         use {
             "terrortylor/nvim-comment",
-            event = "BufRead",
+            -- event = "BufRead",
             config = function()
                 require("configs.others").comment()
             end
         }
 
+        -- highlight/move on matching text
+        use {
+            "andymass/vim-matchup",
+            event = "CursorMoved"
+        }
+
+        ------------------------------------------------------------------------
+        -- LSP
+        ------------------------------------------------------------------------
+        -- LSP config
+        use {
+            "kabouzeid/nvim-lspinstall",
+            event = "BufRead",
+        }
+        use {
+            "neovim/nvim-lspconfig",
+            after = "nvim-lspinstall",
+            config = function()
+                require("configs.lspconfig")
+            end
+        }
+        use {
+            "onsails/lspkind-nvim",
+            event = "BufRead",
+            config = function()
+                require "configs.lspconfig"
+            end
+        }
         -- lua version of autopairs
         use {
             "windwp/nvim-autopairs",
@@ -145,13 +131,77 @@ return packer.startup(
             end
         }
 
-        -- highlight/move on matching text
         use {
-            "andymass/vim-matchup",
-            event = "CursorMoved"
+            "sbdchd/neoformat",
+            event = "BufRead",
         }
 
-        -- Development
+        ------------------------------------------------------------------------
+        -- completion
+        ------------------------------------------------------------------------
+        use {
+            "hrsh7th/nvim-compe",
+            event = "InsertEnter",
+            config = function()
+                require("configs.compe")
+            end,
+            wants = "LuaSnip",
+        }
+        use {
+            "tzachar/compe-tabnine",
+            after = "nvim-compe",
+            run="./install.sh",
+            requires = "hrsh7th/nvim-compe"
+        }
+
+        -- Snippets
+        use {
+            "L3MON4D3/LuaSnip",
+            after = "nvim-compe",
+            wants = "friendly-snippets",
+            config = function()
+                require "configs.luasnip"
+            end
+        }
+        use {
+            "rafamadriz/friendly-snippets",
+            event = "InsertEnter",
+        }
+
+        ------------------------------------------------------------------------
+        -- syntax
+        ------------------------------------------------------------------------
+        use {
+            "nvim-treesitter/nvim-treesitter",
+            event = "BufRead",
+            run = ":TSUpdate",
+            config = function()
+                require("configs.treesitter")
+            end,
+        }
+        use {
+            "p00f/nvim-ts-rainbow",
+            event = "BufRead",
+        }
+        use {
+            "nvim-treesitter/nvim-treesitter-textobjects",
+            event = "BufRead",
+        }
+        use {
+            "romgrk/nvim-treesitter-context",
+            event = "BufRead",
+            config = function()
+                require("treesitter-context.config").setup {enable = true}
+            end
+        }
+        use {
+            "JoosepAlviste/nvim-ts-context-commentstring",
+            event = "BufRead",
+        }
+
+        ------------------------------------------------------------------------
+        -- utils
+        ------------------------------------------------------------------------
         use {
             "tpope/vim-fugitive",
             cmd = {
@@ -184,103 +234,5 @@ return packer.startup(
             }
         }
 
-        -- telescope
-        use {
-            "nvim-telescope/telescope.nvim",
-            -- cmd = "Telescope",
-        }
-        use {
-            "nvim-telescope/telescope-fzf-native.nvim",
-            run = "make",
-            -- cmd = "Telescope"
-        }
-        use {
-            "nvim-telescope/telescope-media-files.nvim",
-            -- cmd = "Telescope"
-        }
-
-        -- LSP config
-        use {
-            "kabouzeid/nvim-lspinstall",
-            event = "BufRead",
-        }
-        use {
-            "neovim/nvim-lspconfig",
-            after = "nvim-lspinstall",
-            config = function()
-                require("configs.lspconfig")
-            end
-        }
-        use {
-            "onsails/lspkind-nvim",
-            event = "BufRead",
-            config = function()
-                require "configs.lspconfig"
-            end
-        }
-        use {
-            "sbdchd/neoformat",
-            event = "BufRead",
-        }
-
-        -- Completion
-        use {
-            "hrsh7th/nvim-compe",
-            event = "InsertEnter",
-            config = function()
-                require("configs.compe")
-            end,
-            wants = "LuaSnip",
-        }
-        use {
-            "tzachar/compe-tabnine",
-            after = "nvim-compe",
-            run="./install.sh",
-            requires = "hrsh7th/nvim-compe"
-        }
-
-        -- Snippets
-        use {
-            "L3MON4D3/LuaSnip",
-            after = "nvim-compe",
-            wants = "friendly-snippets",
-            config = function()
-                require "configs.luasnip"
-            end
-        }
-        use {
-            "rafamadriz/friendly-snippets",
-            event = "InsertEnter",
-        }
-
-        -- Better syntax
-        use {
-            "nvim-treesitter/nvim-treesitter",
-            event = "BufRead",
-            run = ":TSUpdate",
-            config = function()
-                require("configs.treesitter")
-            end,
-        }
-        -- TODO: Somehow, this plugin does not have effect for now.
-        use {
-            "p00f/nvim-ts-rainbow",
-            event = "BufRead",
-        }
-        use {
-            "nvim-treesitter/nvim-treesitter-textobjects",
-            event = "BufRead",
-        }
-        use {
-            "romgrk/nvim-treesitter-context",
-            event = "BufRead",
-            config = function()
-                require("treesitter-context.config").setup {enable = true}
-            end
-        }
-        use {
-            "JoosepAlviste/nvim-ts-context-commentstring",
-            event = "BufRead",
-        }
     end
 )
