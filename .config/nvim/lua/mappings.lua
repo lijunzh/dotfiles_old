@@ -13,7 +13,7 @@ map("n", "<Leader>s", "<Cmd>update<CR>", opt)
 map("n", "<Leader>q", "<Cmd>q<CR>", opt)
 map("n", "<Leader>w", "<Cmd>w<CR>", opt)
 
--- Don't copy the replaced text after pasting in visual mode
+-- don't copy the replaced text after pasting in visual mode
 map("v", "p", '"_dP', opt)
 
 -- copy whole file content
@@ -116,3 +116,11 @@ map("n", "<Leader>l", "<Cmd>set nolist!<CR>")
 
 -- use ESC to turn off search highlighting
 map("n", "<Esc>", ":noh<CR>", opt)
+
+-- telescope
+map("n", "<Leader>fw", ":Telescope live_grep<CR>", opt)     -- find word
+map("n", "<Leader>fd", ":Telescope git_status <CR>", opt)   -- find diff
+map("n", "<Leader>fc", ":Telescope git_commits <CR>", opt)  -- find commit
+map("n", "<Leader>ff", ":Telescope find_files <CR>", opt)   -- find file
+map("n", "<Leader>fb", ":Telescope buffers<CR>", opt)       -- find buffer
+map("n", "<Leader>fo", ":Telescope oldfiles<CR>", opt)      -- find old files
