@@ -59,10 +59,10 @@ telescope.setup(
                 case_mode = "smart_case" -- or "ignore_case" or "respect_case"
                 -- the default case_mode is "smart_case"
             },
-            media_files = {
-                filetypes = {"png", "webp", "jpg", "jpeg"},
-                find_cmd = "rg" -- find command (defaults to `fd`)
-            }
+            -- media_files = {
+            --     filetypes = {"png", "webp", "jpg", "jpeg"},
+            --     find_cmd = "rg" -- find command (defaults to `fd`)
+            -- }
         }
     }
 )
@@ -71,7 +71,7 @@ if
     not pcall(
         function()
             telescope.load_extension("fzf")
-            telescope.load_extension("media_files")
+            -- telescope.load_extension("media_files")
         end
     )
  then
@@ -80,5 +80,6 @@ if
     -- Trigger packer compile on PackerComplete, so it properly waits for PackerSync
     vim.cmd 'autocmd User PackerComplete ++once lua require("packer").compile()'
     require "plugins"
-    require("packer").sync("telescope-fzf-native.nvim", "telescope-media-files.nvim")
+    -- require("packer").sync("telescope-fzf-native.nvim", "telescope-media-files.nvim")
+    require("packer").sync("telescope-fzf-native.nvim")
 end

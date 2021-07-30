@@ -214,10 +214,10 @@ return packer.startup(
             run = "make",
             after = "popup.nvim"
         }
-        use {
-            "nvim-telescope/telescope-media-files.nvim",
-            after = "popup.nvim"
-        }
+        -- use {
+        --     "nvim-telescope/telescope-media-files.nvim",
+        --     after = "popup.nvim"
+        -- }
 
         ------------------------------------------------------------------------
         -- utils
