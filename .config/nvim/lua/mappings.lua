@@ -13,29 +13,11 @@ map("n", "<Leader>s", "<Cmd>update<CR>", opt)
 map("n", "<Leader>q", "<Cmd>q<CR>", opt)
 map("n", "<Leader>w", "<Cmd>w<CR>", opt)
 
--- toggle list
-map("n", "<Leader>l", "<Cmd>set nolist!<CR>")
-
--- git (fugitive)
-map("n", "<Leader>gs", ":Git<CR>", opt)
-map("n", "<Leader>ga", ":Git add %<CR>", opt)
-map("n", "<Leader>gc", ":Git commit<CR>", opt)
-map("n", "<Leader>gp", ":Git push<CR>", opt)
-map("n", "<Leader>gb", ":GBranches<CR>", opt)
-map("n", "<Leader>gd", ":Gvdiffsplit<CR>", opt)
-map("n", "<Leader>gf", ":Git fetch --all<CR>", opt)
-
 -- Don't copy the replaced text after pasting in visual mode
 map("v", "p", '"_dP', opt)
 
 -- copy whole file content
 map("n", "<C-a>", ":%y+<CR>", opt)
-
--- nvimtree
-map("n", "<C-n>", ":NvimTreeToggle<CR>", opt)
-
--- format code
-map("n", "<Leader>fm", "<Cmd>Neoformat<CR>")
 
 -- navigate file in vertical split:
 vim.cmd("nnoremap <silent> <Leader>] :let word=expand('<cword>')<CR>:vsp<CR>:wincmd w<cr>:exec('tag '. word)<cr>")
@@ -120,3 +102,41 @@ map("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 map("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+
+-- nvimtree
+map("n", "<C-n>", ":NvimTreeToggle<CR>", opt)
+
+-- format code
+map("n", "<Leader>fm", "<Cmd>Neoformat<CR>")
+
+-- dashboard stuff
+map("n", "<Leader>db", ":Dashboard<CR>", opt)
+map("n", "<Leader>fn", ":DashboardNewFile<CR>", opt)
+map("n", "<Leader>bm", ":DashboardJumpMarks<CR>", opt)
+map("n", "<C-s>l", ":SessionLoad<CR>", opt)
+map("n", "<C-s>s", ":SessionSave<CR>", opt)
+
+-- Telescope
+map("n", "<Leader>fw", ":Telescope live_grep<CR>", opt)
+map("n", "<Leader>gt", ":Telescope git_status <CR>", opt)
+map("n", "<Leader>cm", ":Telescope git_commits <CR>", opt)
+map("n", "<Leader>ff", ":Telescope find_files <CR>", opt)
+map("n", "<Leader>fp", ":Telescope media_files <CR>", opt)
+map("n", "<Leader>fb", ":Telescope buffers<CR>", opt)
+map("n", "<Leader>fh", ":Telescope help_tags<CR>", opt)
+map("n", "<Leader>fo", ":Telescope oldfiles<CR>", opt)
+
+-- git (fugitive)
+map("n", "<Leader>gs", ":Git<CR>", opt)
+map("n", "<Leader>ga", ":Git add %<CR>", opt)
+map("n", "<Leader>gc", ":Git commit<CR>", opt)
+map("n", "<Leader>gp", ":Git push<CR>", opt)
+map("n", "<Leader>gb", ":GBranches<CR>", opt)
+map("n", "<Leader>gd", ":Gvdiffsplit<CR>", opt)
+map("n", "<Leader>gf", ":Git fetch --all<CR>", opt)
+
+-- toggle list
+map("n", "<Leader>l", "<Cmd>set nolist!<CR>")
+
+-- get out of terminal with jk
+map("t", "jk", "<C-\\><C-n>", opt)

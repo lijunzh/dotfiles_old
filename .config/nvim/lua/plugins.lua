@@ -182,28 +182,25 @@ return packer.startup(
             }
         }
 
-        -- Telescope
-        use {
-            "jremmen/vim-ripgrep",
-            cmd = "Telescope",
-        }
+        -- telescope
         use {
             "nvim-telescope/telescope.nvim",
             cmd = "Telescope",
         }
         use {
-            "nvim-telescope/telescope-frecency.nvim",
-            cmd = "Telescope",
-            requires = {"tami5/sql.nvim"},
-        }
-        use {
-            "nvim-telescope/telescope-github.nvim",
-            cmd = "Telescope",
-        }
-        use {
             "nvim-telescope/telescope-fzf-native.nvim",
-            cmd = "Telescope",
             run = "make",
+            cmd = "Telescope"
+        }
+        use {
+            "nvim-telescope/telescope-media-files.nvim",
+            cmd = "Telescope"
+        }
+
+        -- ripgrep
+        use {
+            "jremmen/vim-ripgrep",
+            cmd = "Rg",
         }
 
         -- LSP config
@@ -242,6 +239,21 @@ return packer.startup(
             config = function()
                 require("configs.compe")
             end,
+            wants = "LuaSnip",
+            requires = {
+                {
+                    "L3MON4D3/LuaSnip",
+                    wants = "friendly-snippets",
+                    event = "InsertCharPre",
+                    config = function()
+                        require "plugins.luasnip"
+                    end
+                },
+                {
+                    "rafamadriz/friendly-snippets",
+                    event = "InsertCharPre"
+                }
+            }
         }
         use {
             "tzachar/compe-tabnine",

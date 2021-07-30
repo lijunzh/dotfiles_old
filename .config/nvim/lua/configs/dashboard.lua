@@ -32,5 +32,5 @@ vim.g.dashboard_custom_section = {
 
 vim.g.dashboard_custom_footer = {
     "   ",
-    "Startup Loaded " .. plugins_count .. " plugins",
+    "Nvim Loaded " .. plugins_count .. " plugins",
 }
