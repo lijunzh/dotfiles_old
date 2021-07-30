@@ -137,7 +137,9 @@ return packer.startup(
         -- lua version of autopairs
         use {
             "windwp/nvim-autopairs",
-            after = "nvim-compe",
+            -- after = "nvim-compe",
+            event = 'InsertCharPre',
+            after = 'nvim-lspconfig',
             config = function()
                 require "configs.autopairs"
             end
@@ -185,22 +187,16 @@ return packer.startup(
         -- telescope
         use {
             "nvim-telescope/telescope.nvim",
-            cmd = "Telescope",
+            -- cmd = "Telescope",
         }
         use {
             "nvim-telescope/telescope-fzf-native.nvim",
             run = "make",
-            cmd = "Telescope"
+            -- cmd = "Telescope"
         }
         use {
             "nvim-telescope/telescope-media-files.nvim",
-            cmd = "Telescope"
-        }
-
-        -- ripgrep
-        use {
-            "jremmen/vim-ripgrep",
-            cmd = "Rg",
+            -- cmd = "Telescope"
         }
 
         -- LSP config
@@ -226,45 +222,36 @@ return packer.startup(
             "sbdchd/neoformat",
             event = "BufRead",
         }
-        -- use {"ray-x/lsp_signature.nvim"}
-        -- use {
-        --  "folke/trouble.nvim",
-        --  config = function() require("trouble").setup {} end
-        -- }
-        -- use {"simrat39/symbols-outline.nvim"}
 
         -- Completion
         use {
             "hrsh7th/nvim-compe",
+            event = "InsertEnter",
             config = function()
                 require("configs.compe")
             end,
             wants = "LuaSnip",
-            requires = {
-                {
-                    "L3MON4D3/LuaSnip",
-                    wants = "friendly-snippets",
-                    event = "InsertCharPre",
-                    config = function()
-                        require "plugins.luasnip"
-                    end
-                },
-                {
-                    "rafamadriz/friendly-snippets",
-                    event = "InsertCharPre"
-                }
-            }
         }
         use {
             "tzachar/compe-tabnine",
+            after = "nvim-compe",
             run="./install.sh",
             requires = "hrsh7th/nvim-compe"
         }
 
         -- Snippets
-        use {"hrsh7th/vim-vsnip"}
-        use {"cstrap/python-snippets"}
-        use {"ylcnfrht/vscode-python-snippet-pack"}
+        use {
+            "L3MON4D3/LuaSnip",
+            after = "nvim-compe",
+            wants = "friendly-snippets",
+            config = function()
+                require "configs.luasnip"
+            end
+        }
+        use {
+            "rafamadriz/friendly-snippets",
+            event = "InsertEnter",
+        }
 
         -- Better syntax
         use {

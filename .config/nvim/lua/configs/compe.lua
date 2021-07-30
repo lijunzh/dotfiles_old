@@ -25,7 +25,6 @@ compe.setup {
         path = true,
         buffer = true,
         calc = true,
-        vsnip = true,
         nvim_lsp = true,
         nvim_lua = true,
         spell = true,
