@@ -13,12 +13,20 @@ return packer.startup(
     function()
 
         ------------------------------------------------------------------------
-        -- package manager
+        -- minimal plugins
         ------------------------------------------------------------------------
         -- Packer can manage itself as an optional plugin
         use {
             "wbthomason/packer.nvim",
             event = "VimEnter",
+        }
+        use {
+            "nvim-lua/plenary.nvim",
+            event = "VimEnter",
+        }
+        use {
+            "nvim-lua/popup.nvim",
+            after = "plenary.nvim",
         }
 
         ------------------------------------------------------------------------
@@ -91,9 +99,9 @@ return packer.startup(
         }
 
         ------------------------------------------------------------------------
-        -- LSP
+        -- lsp
         ------------------------------------------------------------------------
-        -- LSP config
+        -- lsp config
         use {
             "kabouzeid/nvim-lspinstall",
         }
@@ -192,6 +200,26 @@ return packer.startup(
         }
 
         ------------------------------------------------------------------------
+        -- telescope
+        ------------------------------------------------------------------------
+        use {
+            "nvim-telescope/telescope.nvim",
+            after = "popup.nvim",
+            config = function()
+                require "configs.telescope"
+            end
+        }
+        use {
+            "nvim-telescope/telescope-fzf-native.nvim",
+            run = "make",
+            after = "popup.nvim"
+        }
+        use {
+            "nvim-telescope/telescope-media-files.nvim",
+            after = "popup.nvim"
+        }
+
+        ------------------------------------------------------------------------
         -- utils
         ------------------------------------------------------------------------
         use {
@@ -199,14 +227,6 @@ return packer.startup(
             cmd = {
                 "Git"
             }
-        }
-        use {
-            "nvim-lua/plenary.nvim",
-            event = "BufRead",
-        }
-        use {
-            "nvim-lua/popup.nvim",
-            after = "plenary.nvim",
         }
         use {
             "lewis6991/gitsigns.nvim",
