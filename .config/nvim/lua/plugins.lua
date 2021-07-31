@@ -250,5 +250,17 @@ return packer.startup(
             cmd = "StartupTime"
         }
 
+        use {
+            "Pocco81/TrueZen.nvim",
+            cmd = {
+                "TZAtaraxis",
+                "TZMinimalist",
+                "TZFocus"
+            },
+            config = function()
+                require "configs.zenmode"
+            end
+        }
+
     end
 )

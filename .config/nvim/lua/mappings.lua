@@ -124,3 +124,9 @@ map("n", "<Leader>fc", ":Telescope git_commits <CR>", opt)  -- find commit
 map("n", "<Leader>ff", ":Telescope find_files <CR>", opt)   -- find file
 map("n", "<Leader>fb", ":Telescope buffers<CR>", opt)       -- find buffer
 map("n", "<Leader>fo", ":Telescope oldfiles<CR>", opt)      -- find old files
+
+
+-- zenmode
+map("n", "<leader>zz", ":TZAtaraxis<CR>", opt)
+map("n", "<leader>zm", ":TZMinimalist<CR>", opt)
+map("n", "<leader>zf", ":TZFocus<CR>", opt)
