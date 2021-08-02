@@ -202,18 +202,18 @@ return packer.startup(
         ------------------------------------------------------------------------
         -- telescope
         ------------------------------------------------------------------------
-        use {
-            "nvim-telescope/telescope.nvim",
-            after = "popup.nvim",
-            config = function()
-                require "configs.telescope"
-            end
-        }
-        use {
-            "nvim-telescope/telescope-fzf-native.nvim",
-            run = "make",
-            after = "popup.nvim"
-        }
+        -- use {
+        --     "nvim-telescope/telescope.nvim",
+        --     after = "popup.nvim",
+        --     config = function()
+        --         require "configs.telescope"
+        --     end
+        -- }
+        -- use {
+        --     "nvim-telescope/telescope-fzf-native.nvim",
+        --     run = "make",
+        --     after = "popup.nvim"
+        -- }
         -- use {
         --     "nvim-telescope/telescope-media-files.nvim",
         --     after = "popup.nvim"
@@ -250,28 +250,28 @@ return packer.startup(
             cmd = "StartupTime"
         }
 
-        use {
-            "Pocco81/TrueZen.nvim",
-            cmd = {
-                "TZAtaraxis",
-                "TZMinimalist",
-                "TZFocus"
-            },
-            config = function()
-                require "configs.zenmode"
-            end
-        }
-
-        use {
-            "folke/twilight.nvim",
-            cmd = {
-                "Twilight",
-                "TwilightEnable",
-            },
-            config = function()
-                require("configs.twilight")
-            end
-        }
+--         use {
+--             "Pocco81/TrueZen.nvim",
+--             cmd = {
+--                 "TZAtaraxis",
+--                 "TZMinimalist",
+--                 "TZFocus"
+--             },
+--             config = function()
+--                 require "configs.zenmode"
+--             end
+--         }
+-- 
+--         use {
+--             "folke/twilight.nvim",
+--             cmd = {
+--                 "Twilight",
+--                 "TwilightEnable",
+--             },
+--             config = function()
+--                 require("configs.twilight")
+--             end
+--         }
 
     end
 )
