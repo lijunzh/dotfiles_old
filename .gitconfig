@@ -205,7 +205,6 @@
 
 [commit]
 
-	gpgsign = true
 	template = ~/.gitmessage
 
 
