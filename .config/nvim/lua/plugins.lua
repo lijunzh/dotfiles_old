@@ -262,5 +262,16 @@ return packer.startup(
             end
         }
 
+        use {
+            "folke/twilight.nvim",
+            cmd = {
+                "Twilight",
+                "TwilightEnable",
+            },
+            config = function()
+                require("configs.twilight")
+            end
+        }
+
     end
 )
