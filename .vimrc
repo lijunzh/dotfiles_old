@@ -9,13 +9,6 @@
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Generalize backups, swapfiles and undo history
-set backupdir=~/.vim/backups
-set directory=~/.vim/swaps
-if exists("&undodir")
-    set undodir=~/.vim/undo
-endif
-
 " Do not create backups when editing certain directories
 set backupskip=/tmp/*,/private/tmp/*
 
@@ -24,10 +17,6 @@ set tabstop=4                   " tab = 4 spaces
 set expandtab                   " repace tab by spaces
 set shiftwidth=4                " leading tab is measured in 4 spaces
 set smarttab                    " delete one shiftwidth for leading spaces
-
-" Do not add empty newline at the end of files
-set binary
-set noeol
 
 " Do not respect modeline in source files
 set nomodeline
