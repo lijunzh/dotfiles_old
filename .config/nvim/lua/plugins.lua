@@ -200,7 +200,7 @@ return packer.startup(
         }
 
         ------------------------------------------------------------------------
-        -- telescope
+        -- fuzzy finder
         ------------------------------------------------------------------------
         -- use {
         --     "nvim-telescope/telescope.nvim",
@@ -214,10 +214,14 @@ return packer.startup(
         --     run = "make",
         --     after = "popup.nvim"
         -- }
-        -- use {
-        --     "nvim-telescope/telescope-media-files.nvim",
-        --     after = "popup.nvim"
-        -- }
+        use {
+            "junegunn/fzf",
+            event = "VimEnter",
+        }
+        use {
+            "junegunn/fzf.vim",
+            event = "VimEnter",
+        }
 
         ------------------------------------------------------------------------
         -- utils
@@ -225,7 +229,18 @@ return packer.startup(
         use {
             "tpope/vim-fugitive",
             cmd = {
-                "Git"
+                "Git",
+                "GBranches",
+                "Gvdiffsplit",
+                "Gdiffsplit",
+                "Gread",
+                "Gwrite",
+                "Ggrep",
+                "GMove",
+                "GRename",
+                "GDelete",
+                "GRemove",
+                "GBrowse",
             }
         }
         use {
@@ -249,29 +264,6 @@ return packer.startup(
             "dstein64/vim-startuptime",
             cmd = "StartupTime"
         }
-
---         use {
---             "Pocco81/TrueZen.nvim",
---             cmd = {
---                 "TZAtaraxis",
---                 "TZMinimalist",
---                 "TZFocus"
---             },
---             config = function()
---                 require "configs.zenmode"
---             end
---         }
--- 
---         use {
---             "folke/twilight.nvim",
---             cmd = {
---                 "Twilight",
---                 "TwilightEnable",
---             },
---             config = function()
---                 require("configs.twilight")
---             end
---         }
 
     end
 )

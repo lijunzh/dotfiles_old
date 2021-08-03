@@ -117,16 +117,23 @@ map("n", "<Leader>l", "<Cmd>set nolist!<CR>")
 -- use ESC to turn off search highlighting
 map("n", "<Esc>", ":noh<CR>", opt)
 
--- telescope
-map("n", "<Leader>fw", ":Telescope live_grep<CR>", opt)     -- find word
-map("n", "<Leader>fd", ":Telescope git_status <CR>", opt)   -- find diff
-map("n", "<Leader>fc", ":Telescope git_commits <CR>", opt)  -- find commit
-map("n", "<Leader>ff", ":Telescope find_files <CR>", opt)   -- find file
-map("n", "<Leader>fb", ":Telescope buffers<CR>", opt)       -- find buffer
-map("n", "<Leader>fo", ":Telescope oldfiles<CR>", opt)      -- find old files
+-- -- telescope
+-- map("n", "<Leader>fw", ":Telescope live_grep<CR>", opt)     -- find word
+-- map("n", "<Leader>fd", ":Telescope git_status <CR>", opt)   -- find diff
+-- map("n", "<Leader>fc", ":Telescope git_commits <CR>", opt)  -- find commit
+-- map("n", "<Leader>ff", ":Telescope find_files <CR>", opt)   -- find file
+-- map("n", "<Leader>fb", ":Telescope buffers<CR>", opt)       -- find buffer
+-- map("n", "<Leader>fo", ":Telescope oldfiles<CR>", opt)      -- find old files
 
+-- -- zenmode
+-- map("n", "<leader>zz", ":TZAtaraxis<CR>", opt)
+-- map("n", "<leader>zm", ":TZMinimalist<CR>", opt)
+-- map("n", "<leader>zf", ":TZFocus<CR>", opt)
 
--- zenmode
-map("n", "<leader>zz", ":TZAtaraxis<CR>", opt)
-map("n", "<leader>zm", ":TZMinimalist<CR>", opt)
-map("n", "<leader>zf", ":TZFocus<CR>", opt)
+-- fzf
+map("n", "<Leader>fw", ":Rg <CR>")
+map("n", "<Leader>ff", ":Files <CR>")
+map("n", "<Leader>fl", ":Lines <CR>")
+map("n", "<Leader>fo", ":History <CR>")
+map("n", "<Leader>fb", ":Buffers <CR>")
+map("n", "<Leader>fd", ":GFiles? <CR>")
