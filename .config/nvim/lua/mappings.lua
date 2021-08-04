@@ -104,11 +104,8 @@ map("n", "<Leader>fm", "<Cmd>Neoformat<CR>")
 
 -- git (fugitive)
 map("n", "<Leader>gs", ":Git<CR>", opt)
-map("n", "<Leader>ga", ":Git add %<CR>", opt)
-map("n", "<Leader>gc", ":Git commit<CR>", opt)
-map("n", "<Leader>gp", ":Git push<CR>", opt)
 map("n", "<Leader>gb", ":GBranches<CR>", opt)
-map("n", "<Leader>gd", ":Gvdiffsplit<CR>", opt)
+map("n", "<Leader>gc", ":Gvdiffsplit<CR>", opt)
 map("n", "<Leader>gf", ":Git fetch --all<CR>", opt)
 
 -- toggle list

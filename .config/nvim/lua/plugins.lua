@@ -198,6 +198,10 @@ return packer.startup(
             "JoosepAlviste/nvim-ts-context-commentstring",
             event = "BufRead",
         }
+        use {
+            "ray-x/lsp_signature.nvim",
+            event = "BufRead",
+        }
 
         ------------------------------------------------------------------------
         -- fuzzy finder
