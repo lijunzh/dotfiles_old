@@ -16,9 +16,6 @@ map("n", "<Leader>w", "<Cmd>w<CR>", opt)
 -- don't copy the replaced text after pasting in visual mode
 map("v", "p", '"_dP', opt)
 
--- copy whole file content
-map("n", "<C-a>", ":%y+<CR>", opt)
-
 -- navigate file in vertical split:
 vim.cmd("nnoremap <silent> <Leader>] :let word=expand('<cword>')<CR>:vsp<CR>:wincmd w<cr>:exec('tag '. word)<cr>")
 vim.cmd("nnoremap <silent> <Leader>f :vertical botright wincmd f<CR>")
