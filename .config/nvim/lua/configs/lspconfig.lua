@@ -6,10 +6,10 @@ end
 
 local function on_attach(client, bufnr)
 
-     require'lsp_signature'.on_attach({
-         bind = true,
-         handler_opts = {border = 'single'},
-     })
+     -- require'lsp_signature'.on_attach({
+     --     bind = true,
+     --     handler_opts = {border = 'single'},
+     -- })
 
     vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
