@@ -34,6 +34,9 @@ vim.opt.undofile = true
 vim.opt.backupskip = "/tmp/*,/private/tmp/*"
 vim.opt.autoread = true
 
+-- compe prerequisite
+vim.opt.completeopt = "menuone,noselect"
+
 --------------------------------------------------------------------------------
 -- Appearance
 --------------------------------------------------------------------------------
