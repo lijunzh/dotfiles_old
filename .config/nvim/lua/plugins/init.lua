@@ -1,4 +1,4 @@
-local present, _ = pcall(require, "packer_init")
+local present, _ = pcall(require, "plugins.packer_init")
 local packer
 
 if present then
@@ -38,7 +38,7 @@ return packer.startup(
             "kyazdani42/nvim-web-devicons",
             after = "gruvbox-material",
             config = function()
-                require("configs.icons")
+                require("plugins.configs.icons")
             end,
         }
         use {
@@ -46,7 +46,7 @@ return packer.startup(
             after = "nvim-web-devicons",
             branch = "main",
             config = function()
-                require("configs.statusline")
+                require("plugins.configs.statusline")
             end,
         }
 
@@ -56,7 +56,7 @@ return packer.startup(
             "kyazdani42/nvim-tree.lua",
             cmd = "NvimTreeToggle",
             config = function()
-                require "configs.nvimtree"
+                require "plugins.configs.nvimtree"
             end
         }
 
@@ -64,7 +64,7 @@ return packer.startup(
         use {
             "Pocco81/AutoSave.nvim",
             config = function()
-                require "configs.autosave"
+                require "plugins.configs.autosave"
             end,
             cond = function()
                 return vim.g.auto_save == true
@@ -76,7 +76,7 @@ return packer.startup(
             "karb94/neoscroll.nvim",
             event = "WinScrolled",
             config = function()
-                require("configs.others").neoscroll()
+                require("plugins.configs.others").neoscroll()
             end
         }
 
@@ -85,7 +85,7 @@ return packer.startup(
             "Yggdroot/indentLine",
             event = "BufRead",
             setup = function()
-                require("configs.others").indentline()
+                require("plugins.configs.others").indentline()
             end
         }
 
@@ -94,7 +94,7 @@ return packer.startup(
             "terrortylor/nvim-comment",
             -- event = "BufRead",
             config = function()
-                require("configs.others").comment()
+                require("plugins.configs.others").comment()
             end
         }
 
@@ -109,14 +109,14 @@ return packer.startup(
             "neovim/nvim-lspconfig",
             after = "nvim-lspinstall",
             config = function()
-                require("configs.lspconfig")
+                require("plugins.configs.lspconfig")
             end
         }
         use {
             "onsails/lspkind-nvim",
             event = "BufRead",
             config = function()
-                require "configs.lspkind"
+                require "plugins.configs.lspkind"
             end
         }
         -- lua version of autopairs
@@ -125,7 +125,7 @@ return packer.startup(
             event = 'InsertCharPre',
             after = 'nvim-lspconfig',
             config = function()
-                require "configs.autopairs"
+                require "plugins.configs.autopairs"
             end
         }
         use {
@@ -141,7 +141,7 @@ return packer.startup(
             "hrsh7th/nvim-compe",
             event = "InsertEnter",
             config = function()
-                require("configs.compe")
+                require("plugins.configs.compe")
             end,
             wants = "LuaSnip",
         }
@@ -160,7 +160,7 @@ return packer.startup(
             after = "nvim-compe",
             wants = "friendly-snippets",
             config = function()
-                require "configs.luasnip"
+                require "plugins.configs.luasnip"
             end
         }
         use {
@@ -176,7 +176,7 @@ return packer.startup(
             event = "BufRead",
             run = ":TSUpdate",
             config = function()
-                require("configs.treesitter")
+                require("plugins.configs.treesitter")
             end,
         }
         use {
@@ -191,7 +191,7 @@ return packer.startup(
             "romgrk/nvim-treesitter-context",
             event = "BufRead",
             config = function()
-                require("treesitter-context.config").setup {enable = true}
+                require("treesitter-context").setup {enable = true}
             end
         }
         use {
@@ -210,7 +210,7 @@ return packer.startup(
         --     "nvim-telescope/telescope.nvim",
         --     after = "popup.nvim",
         --     config = function()
-        --         require "configs.telescope"
+        --         require "plugins.configs.telescope"
         --     end
         -- }
         -- use {
@@ -251,7 +251,7 @@ return packer.startup(
             "lewis6991/gitsigns.nvim",
             after = "plenary.nvim",
             config = function()
-                require("configs.gitsigns")
+                require("plugins.configs.gitsigns")
             end
         }
         use {

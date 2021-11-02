@@ -1,4 +1,4 @@
-local global_theme = "themes/" .. vim.g.theme
+local global_theme = "themes." .. vim.g.theme
 local colors = require(global_theme)
 
 local white = colors.white

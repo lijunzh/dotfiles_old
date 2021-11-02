@@ -11,7 +11,7 @@ gl.short_line_list = {" "}
 local left_separator = "" -- or " "
 local right_separator = " " -- or ""
 
-local global_theme = "themes/" .. vim.g.theme
+local global_theme = "themes." .. vim.g.theme
 local colors = require(global_theme)
 
 gls.left[1] = {
