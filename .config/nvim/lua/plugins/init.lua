@@ -41,10 +41,17 @@ return packer.startup(
                 require("plugins.configs.icons")
             end,
         }
+        -- use {
+        --     "glepnir/galaxyline.nvim",
+        --     after = "nvim-web-devicons",
+        --     branch = "main",
+        --     config = function()
+        --         require("plugins.configs.statusline")
+        --     end,
+        -- }
         use {
-            "glepnir/galaxyline.nvim",
+            "famiu/feline.nvim",
             after = "nvim-web-devicons",
-            branch = "main",
             config = function()
                 require("plugins.configs.statusline")
             end,
@@ -148,10 +155,16 @@ return packer.startup(
 
         -- AI tools
         use {
-            "tzachar/compe-tabnine",
+            "tzachar/cmp-tabnine",
             after = "nvim-compe",
             run="./install.sh",
-            requires = "hrsh7th/nvim-compe"
+            requires = "hrsh7th/nvim-cmp",
+            config = function()
+                require("plugins.configs.tabnine")
+            end
+        }
+        use {
+            "github/copilot.vim",
         }
 
         -- snippets

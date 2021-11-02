@@ -1,6 +1,5 @@
 local core_modules = {
     "core.options",
-    "colors",
     "core.autocmds",
     "core.mappings",
 }
@@ -16,5 +15,8 @@ end
 
 -- set all the non plugin mappings
 require("core.mappings").misc()
+
+-- init colorscheme and theme
+require("colors").init()
 
 hooks.run("ready")
