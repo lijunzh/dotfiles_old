@@ -81,7 +81,7 @@ M.mappings = {
     },
 }
 
-M.mappings.plugins = {
+M.mappings.plugin = {
     -- file explorer/tree
     nvimtree = {
         toggle = "<C-n>",

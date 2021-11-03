@@ -21,10 +21,10 @@ return packer.startup(
             "wbthomason/packer.nvim",
             event = "VimEnter",
         }
-        use {
-            "nvim-lua/popup.nvim",
-            after = "plenary.nvim",
-        }
+        -- use {
+        --     "nvim-lua/popup.nvim",
+        --     after = "plenary.nvim",
+        -- }
 
         ------------------------------------------------------------------------
         -- editor
@@ -49,13 +49,17 @@ return packer.startup(
 
         -- file navigator
         use {"tpope/vim-vinegar"}
+
         use {
             "kyazdani42/nvim-tree.lua",
             disable = not status.nvimtree,
             cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-            config = function()
+            setup = function()
                 require("core.mappings").nvimtree()
-            end
+            end,
+            config = function()
+                require("plugins.configs.nvimtree")
+            end,
         }
 
         -- autosave (on focus lost only)
@@ -137,7 +141,7 @@ return packer.startup(
             "onsails/lspkind-nvim",
             event = "BufRead",
             config = function()
-                require("plugins.configs.lspkind")
+                require("plugins.configs.others").lspkind()
             end
         }
 
@@ -145,7 +149,6 @@ return packer.startup(
         use {
             "windwp/nvim-autopairs",
             disable = not status.autopairs,
-            -- after = 'nvim-lspconfig',
             after = "nvim-cmp",
             config = function()
                 require("plugins.configs.others").autopairs()
@@ -218,6 +221,12 @@ return packer.startup(
             after = "cmp-buffer",
         }
 
+        use {
+            "hrsh7th/cmp-cmdline",
+            disable = not status.cmp,
+            after = "cmp-path",
+        }
+
         -- AI tools
         use {
             "tzachar/cmp-tabnine",
@@ -251,10 +260,10 @@ return packer.startup(
             "nvim-treesitter/nvim-treesitter-textobjects",
             event = "BufRead",
         }
-        use {
-            "romgrk/nvim-treesitter-context",
-            event = "BufRead",
-        }
+        -- use {
+        --     "romgrk/nvim-treesitter-context",
+        --     event = "BufRead",
+        -- }
         use {
             "JoosepAlviste/nvim-ts-context-commentstring",
             event = "BufRead",
