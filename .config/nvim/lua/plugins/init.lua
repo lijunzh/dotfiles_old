@@ -99,17 +99,40 @@ return packer.startup(
         ------------------------------------------------------------------------
         -- lsp
         ------------------------------------------------------------------------
-        -- lsp config
-        use {
-            "kabouzeid/nvim-lspinstall",
-        }
         use {
             "neovim/nvim-lspconfig",
-            after = "nvim-lspinstall",
+            opt = true,
+            setup = function()
+                require("core.utils").packer_lazy_load "nvim-lspconfig"
+                -- reload the current file so lsp actually starts for it
+                vim.defer_fn(function()
+                    vim.cmd 'if &ft == "packer" | echo "" | else | silent! e %'
+                end, 0)
+            end,
             config = function()
                 require("plugins.configs.lspconfig")
             end
         }
+
+        use {
+            "williamboman/nvim-lsp-installer",
+            event = "BufRead",
+            config = function()
+                local lsp_installer = require("nvim-lsp-installer")
+                -- Provide settings first!
+                lsp_installer.settings {
+                    ui = {
+                        icons = {
+                            server_installed = "✓",
+                            server_pending = "➜",
+                            server_uninstalled = "✗"
+                        }
+                    }
+                }
+                lsp_installer.on_server_ready(function (server) server:setup {} end)
+            end,
+        }
+
         use {
             "onsails/lspkind-nvim",
             event = "BufRead",
@@ -117,6 +140,7 @@ return packer.startup(
                 require("plugins.configs.lspkind")
             end
         }
+
         -- lua version of autopairs
         use {
             "windwp/nvim-autopairs",
@@ -127,6 +151,7 @@ return packer.startup(
                 require("plugins.configs.others").autopairs()
             end
         }
+
         use {
             "sbdchd/neoformat",
             event = "BufRead",

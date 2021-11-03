@@ -1,25 +1,20 @@
-local present1, lspconfig = pcall(require, "lspconfig")
-local present2, lspinstall = pcall(require, "lspinstall")
-if not (present1 or present2) then
-    return
-end
+local overrides = require("core.hooks").createOverrides "lsp"
 
 local function on_attach(client, bufnr)
-
-     -- require'lsp_signature'.on_attach({
-     --     bind = true,
-     --     handler_opts = {border = 'single'},
-     -- })
-
-    vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
-    local opts = {noremap = true, silent = true}
 
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
+    local function buf_set_option(...)
+        vim.api.nvim_buf_set_option(bufnr, ...)
+    end
+
+    
+    -- Enable completion triggered by <c-x><c-o>
+    buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 
     -- Mappings.
+    local opts = {noremap = true, silent = true}
 
     buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
     buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
@@ -46,54 +41,21 @@ local function on_attach(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-
--- lspInstall + lspconfig stuff
-
-local function setup_servers()
-    lspinstall.setup()
-    local servers = lspinstall.installed_servers()
-
-    for _, lang in pairs(servers) do
-        if lang ~= "lua" then
-            lspconfig[lang].setup {
-                on_attach = on_attach,
-                capabilities = capabilities,
-                root_dir = vim.loop.cwd
-            }
-        elseif lang == "lua" then
-            lspconfig[lang].setup {
-                root_dir = vim.loop.cwd,
-                settings = {
-                    Lua = {
-                        diagnostics = {
-                            globals = {"vim"}
-                        },
-                        workspace = {
-                            library = {
-                                [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                                [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true
-                            },
-                            maxPreload = 100000,
-                            preloadFileSize = 10000
-                        },
-                        telemetry = {
-                            enable = false
-                        }
-                    }
-                }
-            }
-        end
-    end
-end
-
-setup_servers()
-
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-lspinstall.post_install_hook = function()
-    setup_servers() -- reload installed servers
-    vim.cmd("bufdo e") -- triggers FileType autocmd that starts the server
-end
+capabilities.textDocument.completion.completionItem.preselectSupport = true
+capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+   properties = {
+      "documentation",
+      "detail",
+      "additionalTextEdits",
+   },
+}
 
 -- replace the default lsp diagnostic symbols
 function lspSymbol(name, icon)
@@ -105,21 +67,25 @@ lspSymbol("Warning", "")
 lspSymbol("Information", "")
 lspSymbol("Hint", "")
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] =
-    vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics,
-    {
-        virtual_text = {
-            prefix = "",
-            spacing = 0
-        },
-        signs = true,
-        underline = true,
-
-        -- set this to true if you want diagnostics to show in insert mode
-        update_in_insert = false
-    }
+local lsp_publish_diagnostics_options = overrides.get("publish_diagnostics", {
+   virtual_text = {
+      prefix = "",
+      spacing = 0,
+   },
+   signs = true,
+   underline = true,
+   update_in_insert = false, -- update diagnostics insert mode
+})
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+   vim.lsp.diagnostic.on_publish_diagnostics,
+   lsp_publish_diagnostics_options
 )
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+   border = "single",
+})
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+   border = "single",
+})
 
 -- suppress error messages from lang servers
 vim.notify = function(msg, log_level, _opts)
@@ -131,4 +97,11 @@ vim.notify = function(msg, log_level, _opts)
     else
         vim.api.nvim_echo({{msg}}, true, {})
     end
+end
+
+-- custom lsp configs
+local addlsp_confs = require("core.utils").load_config().plugins.options.lspconfig.setup_lspconf
+
+if string.len(addlsp_confs) ~= 0 then
+   require(addlsp_confs).setup_lsp(on_attach, capabilities)
 end
