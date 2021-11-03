@@ -1,9 +1,6 @@
-local present, _ = pcall(require, "plugins.packer_init")
-local packer
+local present, packer = pcall(require, "plugins.packer_init")
 
-if present then
-    packer = require "packer"
-else
+if not present then
     return false
 end
 
@@ -11,17 +8,17 @@ local use = packer.use
 
 return packer.startup(
     function()
+        local status = require("core.utils").load_config().plugins.status
 
         ------------------------------------------------------------------------
         -- minimal plugins
         ------------------------------------------------------------------------
         -- Packer can manage itself as an optional plugin
         use {
-            "wbthomason/packer.nvim",
-            event = "VimEnter",
+            "nvim-lua/plenary.nvim",
         }
         use {
-            "nvim-lua/plenary.nvim",
+            "wbthomason/packer.nvim",
             event = "VimEnter",
         }
         use {
@@ -41,16 +38,9 @@ return packer.startup(
                 require("plugins.configs.icons")
             end,
         }
-        -- use {
-        --     "glepnir/galaxyline.nvim",
-        --     after = "nvim-web-devicons",
-        --     branch = "main",
-        --     config = function()
-        --         require("plugins.configs.statusline")
-        --     end,
-        -- }
         use {
             "famiu/feline.nvim",
+            disable = not status.feline,
             after = "nvim-web-devicons",
             config = function()
                 require("plugins.configs.statusline")
@@ -61,9 +51,10 @@ return packer.startup(
         use {"tpope/vim-vinegar"}
         use {
             "kyazdani42/nvim-tree.lua",
-            cmd = "NvimTreeToggle",
+            disable = not status.nvimtree,
+            cmd = { "NvimTreeToggle", "NvimTreeFocus" },
             config = function()
-                require "plugins.configs.nvimtree"
+                require("core.mappings").nvimtree()
             end
         }
 
@@ -123,40 +114,89 @@ return packer.startup(
             "onsails/lspkind-nvim",
             event = "BufRead",
             config = function()
-                require "plugins.configs.lspkind"
+                require("plugins.configs.lspkind")
             end
         }
         -- lua version of autopairs
         use {
             "windwp/nvim-autopairs",
-            event = 'InsertCharPre',
-            after = 'nvim-lspconfig',
+            disable = not status.autopairs,
+            -- after = 'nvim-lspconfig',
+            after = "nvim-cmp",
             config = function()
-                require "plugins.configs.autopairs"
+                require("plugins.configs.others").autopairs()
             end
         }
         use {
             "sbdchd/neoformat",
             event = "BufRead",
+            config = function()
+                require("core.mappings").neoformat()
+            end
         }
 
         ------------------------------------------------------------------------
         -- completion
         ------------------------------------------------------------------------
-        -- complete engine
+        -- complete and snippet
         use {
-            "hrsh7th/nvim-compe",
+            "rafamadriz/friendly-snippets",
+            disable = not status.cmp,
             event = "InsertEnter",
+        }
+
+        use {
+            "hrsh7th/nvim-cmp",
+            disable = not status.cmp,
+            after = "friendly-snippets",
             config = function()
-                require("plugins.configs.compe")
-            end,
-            wants = "LuaSnip",
+                require("plugins.configs.cmp")
+            end
+        }
+
+        use {
+            "L3MON4D3/LuaSnip",
+            wants = "friendly-snippets",
+            after = "nvim-cmp",
+            config = function()
+                require("plugins.configs.others").luasnip()
+            end
+        }
+
+        use {
+            "saadparwaiz1/cmp_luasnip",
+            disable = not status.cmp,
+            after = "LuaSnip",
+        }
+
+        use {
+            "hrsh7th/cmp-nvim-lua",
+            disable = not status.cmp,
+            after = "cmp_luasnip",
+        }
+
+        use {
+            "hrsh7th/cmp-nvim-lsp",
+            disable = not status.cmp,
+            after = "cmp-nvim-lua",
+        }
+
+        use {
+            "hrsh7th/cmp-buffer",
+            disable = not status.cmp,
+            after = "cmp-nvim-lsp",
+        }
+
+        use {
+            "hrsh7th/cmp-path",
+            disable = not status.cmp,
+            after = "cmp-buffer",
         }
 
         -- AI tools
         use {
             "tzachar/cmp-tabnine",
-            after = "nvim-compe",
+            after = "nvim-cmp",
             run="./install.sh",
             requires = "hrsh7th/nvim-cmp",
             config = function()
@@ -165,20 +205,6 @@ return packer.startup(
         }
         use {
             "github/copilot.vim",
-        }
-
-        -- snippets
-        use {
-            "L3MON4D3/LuaSnip",
-            after = "nvim-compe",
-            wants = "friendly-snippets",
-            config = function()
-                require "plugins.configs.luasnip"
-            end
-        }
-        use {
-            "rafamadriz/friendly-snippets",
-            event = "InsertEnter",
         }
 
         ------------------------------------------------------------------------
@@ -203,9 +229,6 @@ return packer.startup(
         use {
             "romgrk/nvim-treesitter-context",
             event = "BufRead",
-            config = function()
-                require("treesitter-context").setup {enable = true}
-            end
         }
         use {
             "JoosepAlviste/nvim-ts-context-commentstring",

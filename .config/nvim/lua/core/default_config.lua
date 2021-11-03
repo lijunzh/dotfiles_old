@@ -81,4 +81,12 @@ M.mappings = {
     },
 }
 
+M.mappings.plugins = {
+    -- file explorer/tree
+    nvimtree = {
+        toggle = "<C-n>",
+        focus = "<leader>e",
+    },
+}
+
 return M

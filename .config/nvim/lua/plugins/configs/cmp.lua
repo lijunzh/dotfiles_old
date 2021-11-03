@@ -6,6 +6,7 @@ end
 
 vim.opt.completeopt = "menuone,noselect"
 
+local lspkind = require('lspkind')
 local source_mapping = {
     buffer = "[Buffer]",
     nvim_lsp = "[LSP]",
@@ -24,11 +25,12 @@ cmp.setup {
     formatting = {
         format = function(entry, vim_item)
             -- load lspkind icons
-            vim_item.kind = string.format(
-                "%s %s",
-                require("plugins.configs.lspkind_icons").icons[vim_item.kind],
-                vim_item.kind
-            )
+            -- vim_item.kind = string.format(
+            --     "%s %s",
+            --     require("plugins.configs.lspkind_icons").icons[vim_item.kind],
+            --     vim_item.kind
+            -- )
+            vim_item.kind = lspkind.presets.default[vim_item.kind]
 
             local menu = source_mapping[entry.source.name]
             if entry.source.name == 'cmp_tabnine' then
@@ -73,11 +75,11 @@ cmp.setup {
         end,
     },
     sources = {
+        { name = "cmp_tabnine" },
         { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "buffer" },
         { name = "nvim_lua" },
         { name = "path" },
-        { name = "cmp_tabnine" },
     },
 }

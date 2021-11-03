@@ -29,7 +29,7 @@ if not present then
     end
 end
 
-return packer.init {
+packer.init {
     display = {
         open_fn = function()
             return require("packer.util").float {border = "single"}
@@ -37,5 +37,9 @@ return packer.init {
     },
     git = {
         clone_timeout = 600 -- Timeout, in seconds, for git clones
-    }
+    },
+    auto_clean = true,
+    compile_on_sync = true,
 }
+
+return packer

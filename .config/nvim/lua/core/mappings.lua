@@ -127,8 +127,8 @@ M.compe = function()
 end
 
 M.nvimtree = function()
-    map("n", plugin_maps.nvimtree.toggle, ":NvimTreeToggle <CR>")
-    map("n", plugin_maps.nvimtree.focus, ":NvimTreeFocus <CR>")
+    map("n", maps.plugin.nvimtree.toggle, ":NvimTreeToggle <CR>")
+    map("n", maps.plugin.nvimtree.focus, ":NvimTreeFocus <CR>")
 end
 
 M.neoformat = function()
