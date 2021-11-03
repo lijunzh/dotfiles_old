@@ -286,6 +286,9 @@ return packer.startup(
         use {
             "junegunn/fzf.vim",
             event = "VimEnter",
+            config = function()
+                require("core.mappings").fzf()
+            end
         }
 
         ------------------------------------------------------------------------
