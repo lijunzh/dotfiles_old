@@ -120,7 +120,7 @@ return packer.startup(
 
         use {
             "williamboman/nvim-lsp-installer",
-            event = "BufRead",
+            event = "VimEnter",
             config = function()
                 local lsp_installer = require("nvim-lsp-installer")
                 -- Provide settings first!
@@ -139,7 +139,7 @@ return packer.startup(
 
         use {
             "onsails/lspkind-nvim",
-            event = "BufRead",
+            event = "VimEnter",
             config = function()
                 require("plugins.configs.others").lspkind()
             end
