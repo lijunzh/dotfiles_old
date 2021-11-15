@@ -166,3 +166,5 @@ source "/usr/local/opt/fzf/shell/key-bindings.bash"
 
 # custom exports
 [[ -f ~/.bash_exports ]] && . ~/.bash_exports
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
