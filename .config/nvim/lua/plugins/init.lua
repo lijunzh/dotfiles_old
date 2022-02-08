@@ -6,20 +6,19 @@ end
 
 local plugins = {
     ------------------------------------------------------------------------
-    -- minimal plugins
+    -- basic plugins
     ------------------------------------------------------------------------
+    { "nvim-lua/plenary.nvim", },
+
+    -- speed up startup time
+    { "lewis6991/impatient.nvim" },
+    { "nathom/filetype.nvim" },
+
     -- Packer can manage itself as an optional plugin
-    {
-        "nvim-lua/plenary.nvim",
-    },
     {
         "wbthomason/packer.nvim",
         event = "VimEnter",
     },
-    -- {
-    --     "nvim-lua/popup.nvim",
-    --     after = "plenary.nvim",
-    -- },
 
     ------------------------------------------------------------------------
     -- editor
@@ -43,17 +42,6 @@ local plugins = {
 
     -- file navigator
     {"tpope/vim-vinegar"},
-
-    {
-        "kyazdani42/nvim-tree.lua",
-        cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-        setup = function()
-            require("core.mappings").nvimtree()
-        end,
-        config = function()
-            require("plugins.configs.nvimtree")
-        end,
-    },
 
     -- autosave (on focus lost only)
     {
