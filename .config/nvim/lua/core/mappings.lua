@@ -67,11 +67,6 @@ end
 
 -- plugin specific mappings
 
-M.nvimtree = function()
-    map("n", maps.plugin.nvimtree.toggle, ":NvimTreeToggle <CR>")
-    map("n", maps.plugin.nvimtree.focus, ":NvimTreeFocus <CR>")
-end
-
 M.neoformat = function()
     map("n", "<leader>fm", ":Neoformat <CR>")
 end
