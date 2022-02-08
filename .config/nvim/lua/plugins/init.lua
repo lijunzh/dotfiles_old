@@ -110,9 +110,6 @@ local plugins = {
     {
         "onsails/lspkind-nvim",
         event = "VimEnter",
-        config = function()
-            require("plugins.configs.others").lspkind()
-        end
     },
 
     -- lua version of autopairs
