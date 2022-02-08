@@ -27,6 +27,8 @@ gitsigns.setup {
       topdelete = { hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr" },
    },
 
+    current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+
    status_formatter = nil, -- Use default
    watch_gitdir = {
       interval = 100,
