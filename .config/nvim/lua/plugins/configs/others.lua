@@ -1,43 +1,76 @@
 local M = {}
 
-M.autopairs = function()
-   local present1, autopairs = pcall(require, "nvim-autopairs")
-   local present2, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
+local chadrc_config = require("core.utils").load_config()
 
-   if not (present1 or present2) then
-      return
-   end
+M.autopairs = function(override_flag)
+    local present1, autopairs = pcall(require, "nvim-autopairs")
+    local present2, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
 
-   autopairs.setup()
+    if present1 and present2 then
+        local default = { fast_wrap = {} }
+        if override_flag then
+            default = require("core.utils").tbl_override_req("nvim_autopairs", default)
+        end
+        autopairs.setup(default)
 
-   -- not needed if you disable cmp, the above var related to cmp tooo! override default config for autopairs
-   local cmp = require("cmp")
-   cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-end
-
-M.comment = function()
-   local present, nvim_comment = pcall(require, "nvim_comment")
-   if present then
-        nvim_comment.setup({
-            hook = function()
-                require("ts_context_commentstring.internal").update_commentstring()
-            end,
-        })
-   end
-end
-
-M.luasnip = function()
-    local present, luasnip = pcall(require, "luasnip")
-    if not present then
-        return
+        local cmp = require "cmp"
+        cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end
+end
 
-    luasnip.config.set_config {
-        history = true,
-        updateevents = "TextChanged,TextChangedI",
-    }
 
-    require("luasnip/loaders/from_vscode").load()
+M.comment = function(override_flag)
+    local present, nvim_comment = pcall(require, "Comment")
+    if present then
+        local default = {}
+        if override_flag then
+            default = require("core.utils").tbl_override_req("nvim_comment", default)
+        end
+        nvim_comment.setup(default)
+    end
+end
+
+M.luasnip = function(override_flag)
+    local present, luasnip = pcall(require, "luasnip")
+    if present then
+        local default = {
+            history = true,
+            updateevents = "TextChanged,TextChangedI",
+        }
+        if override_flag then
+            default = require("core.utils").tbl_override_req("luasnip", default)
+        end
+        luasnip.config.set_config(default)
+        require("luasnip/loaders/from_vscode").load { paths = chadrc_config.plugins.options.luasnip.snippet_path }
+        require("luasnip/loaders/from_vscode").load()
+    end
+end
+
+M.signature = function(override_flag)
+    local present, lspsignature = pcall(require, "lsp_signature")
+    if present then
+        local default = {
+            bind = true,
+            doc_lines = 0,
+            floating_window = true,
+            fix_pos = true,
+            hint_enable = true,
+            hint_prefix = " ",
+            hint_scheme = "String",
+            hi_parameter = "Search",
+            max_height = 22,
+            max_width = 120, -- max_width of signature floating_window, line will be wrapped if exceed max_width
+            handler_opts = {
+                border = "single", -- double, single, shadow, none
+            },
+            zindex = 200, -- by default it will be on top of all floating windows, set to 50 send it to bottom
+            padding = "", -- character to pad on left and right of signature can be ' ', or '|'  etc
+        }
+        if override_flag then
+            default = require("core.utils").tbl_override_req("signature", default)
+        end
+        lspsignature.setup(default)
+    end
 end
 
 M.lsp_handlers = function()
@@ -53,7 +86,7 @@ M.lsp_handlers = function()
 
     vim.diagnostic.config {
         virtual_text = {
-           prefix = "",
+            prefix = "",
         },
         signs = true,
         underline = true,
@@ -77,6 +110,25 @@ M.lsp_handlers = function()
         else
             vim.api.nvim_echo({ { msg } }, true, {})
         end
+    end
+end
+
+M.gitsigns = function(override_flag)
+    local present, gitsigns = pcall(require, "gitsigns")
+    if present then
+        local default = {
+            signs = {
+                add = { hl = "DiffAdd", text = "│", numhl = "GitSignsAddNr" },
+                change = { hl = "DiffChange", text = "│", numhl = "GitSignsChangeNr" },
+                delete = { hl = "DiffDelete", text = "", numhl = "GitSignsDeleteNr" },
+                topdelete = { hl = "DiffDelete", text = "‾", numhl = "GitSignsDeleteNr" },
+                changedelete = { hl = "DiffChangeDelete", text = "~", numhl = "GitSignsChangeNr" },
+            },
+        }
+        if override_flag then
+            default = require("core.utils").tbl_override_req("gitsigns", default)
+        end
+        gitsigns.setup(default)
     end
 end
 

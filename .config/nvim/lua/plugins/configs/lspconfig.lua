@@ -1,13 +1,5 @@
 require("plugins.configs.others").lsp_handlers()
-
-local function on_attach(client, bufnr)
-    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-    -- Enable completion triggered by <c-x><c-o>
-    buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
-
-    require("core.mappings").lspconfig()
-end
+require("core.mappings").lspconfig()
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }

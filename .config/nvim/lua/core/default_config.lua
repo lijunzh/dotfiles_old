@@ -67,6 +67,7 @@ M.plugins = {
         feline = true, -- statusline
         gitsigns = true, -- gitsigns in statusline
         lspsignature = true, -- lsp enhancements
+        lspkind = true,
         vim_matchup = true, -- % operator enhancements
         cmp = true,
         autopairs = true,
@@ -134,7 +135,12 @@ M.mappings = {
     },
 }
 
-M.mappings.plugin = {
+M.mappings.plugins = {
+
+    comment = {
+        toggle = "gcc",
+    },
+
     -- lsp bindings
     lspconfig = {
         declaration = "gD",
@@ -152,7 +158,7 @@ M.mappings.plugin = {
         float_diagnostics = "ge",
         goto_prev = "[d",
         goto_next = "]d",
-        set_loclist = "<leader>q",
+        set_loclist = "<leader>ll",
         formatting = "<leader>lfm",
     },
 }

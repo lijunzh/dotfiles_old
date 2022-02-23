@@ -76,6 +76,13 @@ M.misc = function()
     configurable_mappings()
 end
 
+M.comment = function()
+    local m = plugin_maps.comment.toggle
+    map("n", m, ":lua require('Comment.api').toggle_current_linewise()<CR>")
+    map("v", m, ":lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>")
+end
+
+
 -- below are all plugin related mappings
 
 M.lspconfig = function()
