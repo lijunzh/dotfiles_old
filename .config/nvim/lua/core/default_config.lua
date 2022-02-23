@@ -8,7 +8,6 @@ M.options = {
     clipboard = "unnamedplus",
     cmdheight = 1,
     colorcolumn = "+1",
-    cursorline = true,
     expandtab = true,
     foldenable = false,         -- speed up startup time
     hidden = true,
@@ -44,8 +43,14 @@ M.options = {
 }
 
 M.ui = {
+    hl_override = "", -- path of your file that contains highlights
     italic_comments = true,
     theme = "gruvbox",
+    -- Change terminal bg to nvim theme's bg color so it'll match well
+    -- For Ex : if you have onedark set in nvchad, set onedark's bg color on your terminal
+    transparency = false,
+    -- display cursor line
+    cursorline = true,
 }
 
 -- these are plugin related options

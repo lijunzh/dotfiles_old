@@ -21,6 +21,7 @@ local colors = {
     yellow = "#d6b676",
     sun = "#d1b171",
     purple = "#b4bbc8",
+    pmenu_bg = "#6d8dad",
     dark_purple = "#cc7f94",
     teal = "#749689",
     orange = "#e78a4e",

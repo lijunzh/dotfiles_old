@@ -1,119 +1,152 @@
-local global_theme = "themes." .. vim.g.theme
-local colors = require(global_theme)
+local override = require("core.utils").load_config().ui.hl_override
+local colors = require("colors").get()
+local ui = require("core.utils").load_config().ui
 
-local white = colors.white
-local darker_black = colors.darker_black
 local black = colors.black
 local black2 = colors.black2
-local one_bg = colors.one_bg
-local one_bg2 = colors.one_bg2
-local one_bg3 = colors.one_bg3
-local light_grey = colors.light_grey
+local blue = colors.blue
+local darker_black = colors.darker_black
+local green = colors.green
 local grey = colors.grey
 local grey_fg = colors.grey_fg
 local grey_fg2 = colors.grey_fg2
-local red = colors.red
+local light_grey = colors.light_grey
 local line = colors.line
-local green = colors.green
--- local nord_blue = colors.nord_blue
-local nord_blue = colors.grey_fg
--- local blue = colors.blue
-local blue = colors.grey_fg
-local yellow = colors.yellow
+local nord_blue = colors.nord_blue
+local one_bg = colors.one_bg
+local one_bg2 = colors.one_bg2
+local one_bg3 = colors.one_bg3
+local orange = colors.orange
+local pmenu_bg = colors.pmenu_bg
 local purple = colors.purple
+local red = colors.red
+local white = colors.white
+local yellow = colors.yellow
 
--- for guifg , bg
+-- functions for setting highlights
+local fg = require("core.utils").fg
+local fg_bg = require("core.utils").fg_bg
+local bg = require("core.utils").bg
 
-local function fg(group, color)
-    vim.cmd("hi " .. group .. " guifg=" .. color)
+-- Comments
+if ui.italic_comments then
+   fg("Comment", grey_fg .. " gui=italic")
+else
+   fg("Comment", grey_fg)
 end
 
-local function bg(group, color)
-    vim.cmd("hi " .. group .. " guibg=" .. color)
+-- Disable cursor line
+if ui.cursorline then
+    vim.api.nvim_exec([[
+    augroup cursor_line_current_window
+        autocmd!
+        autocmd WinEnter * setlocal cursorline
+        autocmd WinLeave * setlocal nocursorline
+    augroup END
+    ]], false)
+else
+    vim.cmd "hi clear CursorLine"
 end
 
-local function fg_bg(group, fgcol, bgcol)
-    vim.cmd("hi " .. group .. " guifg=" .. fgcol .. " guibg=" .. bgcol)
-end
+-- Line number
+fg("cursorlinenr", white)
 
--- blankline
-
-fg("IndentBlanklineChar", line)
-
--- misc --
-fg("LineNr", grey)
-fg("Comment", grey_fg)
-fg("NvimInternalError", red)
-fg("VertSplit", line)
+-- same it bg, so it doesn't appear
 fg("EndOfBuffer", black)
+
+-- For floating windows
+fg("FloatBorder", blue)
+bg("NormalFloat", darker_black)
 
 -- Pmenu
 bg("Pmenu", one_bg)
 bg("PmenuSbar", one_bg2)
-bg("PmenuSel", green)
+bg("PmenuSel", pmenu_bg)
 bg("PmenuThumb", nord_blue)
+fg("CmpItemAbbr", white)
+fg("CmpItemAbbrMatch", white)
+fg("CmpItemKind", white)
+fg("CmpItemMenu", white)
 
--- inactive statuslines as thin splitlines
-vim.cmd("hi! StatusLineNC gui=underline guifg=" .. line)
+-- misc --
 
--- line n.o
-vim.cmd "hi clear CursorLine"
-fg("cursorlinenr", white)
+-- inactive statuslines as thin lines
+fg("StatusLineNC", one_bg3 .. " gui=underline")
 
--- git signs ---
-fg_bg("DiffAdd", nord_blue, "none")
-fg_bg("DiffChange", grey_fg, "none")
-fg_bg("DiffModified", nord_blue, "none")
+fg("LineNr", grey)
+fg("NvimInternalError", red)
+fg("VertSplit", one_bg2)
 
--- NvimTree
-fg("NvimTreeFolderIcon", blue)
-fg("NvimTreeFolderName", blue)
-fg("NvimTreeOpenedFolderName", blue)
-fg("NvimTreeEmptyFolderName", blue)
-fg("NvimTreeIndentMarker", one_bg2)
-fg("NvimTreeVertSplit", darker_black)
-bg("NvimTreeVertSplit", darker_black)
-fg("NvimTreeEndOfBuffer", darker_black)
+if ui.transparency then
+   bg("Normal", "NONE")
+   bg("Folded", "NONE")
+   fg("Folded", "NONE")
+   fg("Comment", grey)
+end
 
-vim.cmd("hi NvimTreeRootFolder gui=underline guifg="..purple)
-bg("NvimTreeNormal", darker_black)
-fg_bg("NvimTreeStatuslineNc", darker_black, darker_black)
-fg_bg("NvimTreeWindowPicker", red, black2)
+-- [[ Plugin Highlights
 
--- telescope
-fg("TelescopeBorder", line)
-fg("TelescopePromptBorder", line)
-fg("TelescopeResultsBorder", line)
-fg("TelescopePreviewBorder", grey)
+-- Dashboard
+fg("AlphaHeader", grey_fg)
+fg("AlphaButtons", light_grey)
 
--- LspDiagnostics ---
+-- Git signs
+fg_bg("DiffAdd", blue, "NONE")
+fg_bg("DiffChange", grey_fg, "NONE")
+fg_bg("DiffChangeDelete", red, "NONE")
+fg_bg("DiffModified", red, "NONE")
+fg_bg("DiffDelete", red, "NONE")
 
--- error / warnings
-fg("LspDiagnosticsSignError", red)
-fg("LspDiagnosticsVirtualTextError", red)
-fg("LspDiagnosticsSignWarning", yellow)
-fg("LspDiagnosticsVirtualTextWarning", yellow)
+-- Indent blankline plugin
+fg("IndentBlanklineChar", line)
+fg("IndentBlanklineSpaceChar", line)
 
--- info
-fg("LspDiagnosticsSignInformation", green)
-fg("LspDiagnosticsVirtualTextInformation", green)
+-- Lsp diagnostics
 
--- hint
-fg("LspDiagnosticsSignHint", purple)
-fg("LspDiagnosticsVirtualTextHint", purple)
+fg("DiagnosticHint", purple)
+fg("DiagnosticError", red)
+fg("DiagnosticWarn", yellow)
+fg("DiagnosticInformation", green)
 
--- dashboard
+-- keybinds cheatsheet
 
-fg("DashboardHeader", grey_fg)
-fg("DashboardCenter", grey_fg)
-fg("DashboardShortcut", grey_fg)
-fg("DashboardFooter", grey_fg)
+fg_bg("CheatsheetBorder", black, black)
+bg("CheatsheetSectionContent", black)
+fg("CheatsheetHeading", white)
 
--- packer's floating window
+local section_title_colors = {
+   white,
+   blue,
+   red,
+   green,
+   yellow,
+   purple,
+   orange,
+}
+for i, color in ipairs(section_title_colors) do
+   vim.cmd("highlight CheatsheetTitle" .. i .. " guibg = " .. color .. " guifg=" .. black)
+end
 
-bg("NormalFloat", black2)
-bg("FloatBorder", black2)
-fg("FloatBorder", black2)
+-- Disable some highlight in nvim tree if transparency enabled
+if ui.transparency then
+   bg("NormalFloat", "NONE")
+   bg("NvimTreeNormal", "NONE")
+   bg("NvimTreeNormalNC", "NONE")
+   bg("NvimTreeStatusLineNC", "NONE")
+   fg_bg("NvimTreeVertSplit", grey, "NONE")
 
--- set bg color for nvim
--- bg("Normal", black)
+   -- telescope
+   bg("TelescopeBorder", "NONE")
+   bg("TelescopePrompt", "NONE")
+   bg("TelescopeResults", "NONE")
+   bg("TelescopePromptBorder", "NONE")
+   bg("TelescopePromptNormal", "NONE")
+   bg("TelescopeNormal", "NONE")
+   bg("TelescopePromptPrefix", "NONE")
+   fg("TelescopeBorder", one_bg)
+   fg_bg("TelescopeResultsTitle", black, blue)
+end
+
+if #override ~= 0 then
+   require(override)
+end

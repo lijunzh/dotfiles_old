@@ -56,7 +56,7 @@ vim.opt.title = options.title
 vim.opt.scrolloff = options.scrolloff
 
 -- comment font
-vim.cmd("highlight Comment cterm=italic gui=italic")
+-- vim.cmd("highlight Comment cterm=italic gui=italic")
 
 -- disable nvim intro
 vim.opt.shortmess:append("sI")
@@ -86,7 +86,7 @@ vim.opt.textwidth = options.textwidth
 vim.opt.colorcolumn = options.colorcolumn
 
 -- highlight cursor line
-vim.opt.cursorline = options.cursorline
+-- vim.opt.cursorline = options.cursorline
 
 --------------------------------------------------------------------------------
 -- Indentation

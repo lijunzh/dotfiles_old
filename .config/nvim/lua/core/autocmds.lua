@@ -54,12 +54,3 @@ augroup column_width
     autocmd Filetype gitcommit setlocal spell textwidth=72
 augroup END
 ]], false)
-
--- only highlight cursor line for current window
-vim.api.nvim_exec([[
-augroup cursor_line_current_window
-    autocmd!
-    autocmd WinEnter * setlocal cursorline
-    autocmd WinLeave * setlocal nocursorline
-augroup END
-]], false)
