@@ -1,3 +1,4 @@
+local options = require("core.utils").load_config().options
 --------------------------------------------------------------------------------
 --
 -- Editing
@@ -8,31 +9,32 @@
 vim.g.auto_save = true
 
 -- Map leader to space
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ','
+vim.g.mapleader = options.mapleader
+vim.g.maplocalleader = options.maplocalleader
 
 -- general
-vim.opt.hidden = true
-vim.opt.smartcase = true
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-vim.opt.updatetime = 250 -- update interval for gitsigns
-vim.opt.timeoutlen = 400
-vim.opt.clipboard = "unnamedplus"
-vim.opt.mouse = "a"
-vim.opt.backspace = "" -- use legacy vim backspace settings
-vim.opt.history=1000
-vim.opt.modeline = false
-vim.opt.foldenable = false -- speed up startup time
+vim.opt.hidden = options.hidden
+vim.opt.ignorecase = options.ignorecase
+vim.opt.smartcase = options.smartcase
+vim.opt.splitbelow = options.splitbelow
+vim.opt.splitright = options.splitright
+vim.opt.updatetime = options.updatetime 
+vim.opt.timeoutlen = options.timeoutlen
+vim.opt.clipboard = options.clipboard
+vim.opt.mouse = options.mouse
+vim.opt.backspace = options.backspace
+vim.opt.history=options.history
+vim.opt.modeline = options.modeline
+vim.opt.foldenable = options.foldenable
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
 vim.opt.whichwrap:append("<>hl")
 
 -- file change (autoread on change + notification on change)
-vim.opt.undofile = true
-vim.opt.backupskip = "/tmp/*,/private/tmp/*"
-vim.opt.autoread = true
+vim.opt.undofile = options.undofile
+vim.opt.backupskip = options.backupskip
+vim.opt.autoread = options.autoread
 
 -- compe prerequisite
 vim.opt.completeopt = "menuone,noselect"
@@ -42,16 +44,16 @@ vim.opt.completeopt = "menuone,noselect"
 --------------------------------------------------------------------------------
 
 -- general
-vim.opt.termguicolors = true
-vim.opt.ruler = false
-vim.opt.signcolumn = "yes"
-vim.opt.cmdheight = 1
-vim.opt.showmatch = true
-vim.opt.wildmode = "longest,list,full"
-vim.opt.title = true
+vim.opt.termguicolors = options.termguicolors
+vim.opt.ruler = options.ruler
+vim.opt.signcolumn = options.signcolumn
+vim.opt.cmdheight = options.cmdheight
+vim.opt.showmatch = options.showmatch
+vim.opt.wildmode = options.wildmode
+vim.opt.title = options.title
 
 -- have some line above and below cursor
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = options.scrolloff
 
 -- comment font
 vim.cmd("highlight Comment cterm=italic gui=italic")
@@ -66,39 +68,37 @@ vim.cmd("let &fcs='eob: '")
 vim.cmd('au TextYankPost * silent! lua vim.highlight.on_yank()')
 
 -- line number
-vim.opt.number = true
-vim.opt.numberwidth = 2
+vim.opt.number = options.number
+vim.opt.numberwidth = options.numberwidth
 
 -- line wrap
-vim.opt.wrap = false
-vim.opt.linebreak = true
-vim.opt.showbreak = "↪"
+vim.opt.wrap = options.wrap
+vim.opt.linebreak = options.linebreak
+vim.opt.showbreak = options.showbreak
 
 -- list
-vim.opt.list = true
-vim.opt.listchars = 'tab:→ ,eol:¬,trail:⋅,extends:❯,precedes:❮,space:·'
+vim.opt.list = options.list
+vim.opt.listchars = options.listchars
 
 -- 79 column line
 -- excpetions for git and text file are defined in utils.lua
-vim.opt.textwidth = 79
-vim.opt.colorcolumn = "+1"
+vim.opt.textwidth = options.textwidth
+vim.opt.colorcolumn = options.colorcolumn
 
 -- highlight cursor line
-vim.opt.cursorline = true
+vim.opt.cursorline = options.cursorline
 
 --------------------------------------------------------------------------------
 -- Indentation
 --------------------------------------------------------------------------------
 
 -- default indent width
-local indent = 2
-
 -- indent default to tab
-vim.opt.expandtab = false
-vim.opt.shiftwidth = indent
-vim.opt.tabstop = indent
-vim.opt.softtabstop = indent
-vim.opt.smartindent = true
+vim.opt.expandtab = options.expandtab
+vim.opt.shiftwidth = options.indent
+vim.opt.tabstop = options.indent
+vim.opt.softtabstop = options.indent
+vim.opt.smartindent = options.smartindent
 
 -- file extension specific tabbing
 vim.cmd([[autocmd Filetype python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4]])
@@ -108,24 +108,24 @@ vim.cmd([[autocmd Filetype lua setlocal expandtab tabstop=4 shiftwidth=4 softtab
 -- Disable builtin vim plugins
 --------------------------------------------------------------------------------
 local disabled_built_ins = {
-    -- "netrw",
-    -- "netrwPlugin",
-    "netrwSettings",
-    "netrwFileHandlers",
-    "gzip",
-    "zip",
-    "zipPlugin",
-    "tar",
-    "tarPlugin",
+    "2html_plugin",
     "getscript",
     "getscriptPlugin",
-    "vimball",
-    "vimballPlugin",
-    "2html_plugin",
+    "gzip",
     "logipat",
+    -- "netrw",
+    -- "netrwPlugin",
+    -- "netrwSettings",
+    -- "netrwFileHandlers",
+    "matchit",
+    "tar",
+    "tarPlugin",
     "rrhelper",
     "spellfile_plugin",
-    "matchit"
+    "vimball",
+    "vimballPlugin",
+    "zip",
+    "zipPlugin",
 }
 
 for _, plugin in pairs(disabled_built_ins) do

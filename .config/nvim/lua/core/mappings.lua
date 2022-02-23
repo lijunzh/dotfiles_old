@@ -1,8 +1,8 @@
 local utils = require("core.utils")
-local hooks = require("core.hooks")
-local config = require("core.default_config")
 
+local config = utils.load_config()
 local map = utils.map
+
 local maps = config.mappings
 
 local M = {}
@@ -31,12 +31,12 @@ M.misc = function()
 
     local function configurable_mappings()
         -- buffer mappings --
-        map("n", maps.new_buffer, ":enew <CR>") -- new buffer
-        map("n", maps.new_tab, ":tabnew <CR>") -- new tabs
-        map("n", maps.save_file, ":w <CR>") -- save buffer to file
-        map("n", maps.update_file, ":update <CR>") -- save buffer if updated
-        map("n", maps.close_window, ":q <CR>") -- close current window but leave buffer on
-        map("n", maps.close_buffer, ":lua require('core.utils').close_buffer() <CR>") -- close buffer
+        map("n", maps.misc.new_buffer, ":enew <CR>") -- new buffer
+        map("n", maps.misc.new_tab, ":tabnew <CR>") -- new tabs
+        map("n", maps.misc.save_file, ":w <CR>") -- save buffer to file
+        map("n", maps.misc.update_file, ":update <CR>") -- save buffer if updated
+        map("n", maps.misc.close_window, ":q <CR>") -- close current window but leave buffer on
+        map("n", maps.misc.close_buffer, ":lua require('core.utils').close_buffer() <CR>") -- close buffer
 
         -- terminal mappings --
         map("t", maps.terminal.esc_termmode, "<C-\\><C-n>")
@@ -62,10 +62,32 @@ M.misc = function()
     packer_mappings()
     non_configurable_mappsing()
     configurable_mappings()
-    hooks.run("setup_mappings", map)
 end
 
 -- plugin specific mappings
+M.lspconfig = function()
+    local m = plugin_maps.lspconfig
+ 
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    map("n", m.declaration, "<cmd>lua vim.lsp.buf.declaration()<CR>")
+    map("n", m.definition, "<cmd>lua vim.lsp.buf.definition()<CR>")
+    map("n", m.hover, "<cmd>lua vim.lsp.buf.hover()<CR>")
+    map("n", m.implementation, "<cmd>lua vim.lsp.buf.implementation()<CR>")
+    map("n", m.signature_help, "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+    map("n", m.add_workspace_folder, "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
+    map("n", m.remove_workspace_folder, "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>")
+    map("n", m.list_workspace_folders, "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>")
+    map("n", m.type_definition, "<cmd>lua vim.lsp.buf.type_definition()<CR>")
+    map("n", m.rename, "<cmd>lua vim.lsp.buf.rename()<CR>")
+    map("n", m.code_action, "<cmd>lua vim.lsp.buf.code_action()<CR>")
+    map("n", m.references, "<cmd>lua vim.lsp.buf.references()<CR>")
+    map("n", m.float_diagnostics, "<cmd>lua vim.diagnostic.open_float()<CR>")
+    map("n", m.goto_prev, "<cmd>lua vim.diagnostic.goto_prev()<CR>")
+    map("n", m.goto_next, "<cmd>lua vim.diagnostic.goto_next()<CR>")
+    map("n", m.set_loclist, "<cmd>lua vim.diagnostic.setloclist()<CR>")
+    map("n", m.formatting, "<cmd>lua vim.lsp.buf.formatting()<CR>")
+end
+
 
 M.neoformat = function()
     map("n", "<leader>fm", ":Neoformat <CR>")

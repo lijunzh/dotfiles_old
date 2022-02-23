@@ -1,4 +1,5 @@
-local present, packer = pcall(require, "plugins.packer_init")
+local plugin_settings = require("core.utils").load_config().plugins
+local present, packer = pcall(require, plugin_settings.options.packer.init_file)
 
 if not present then
     return false
