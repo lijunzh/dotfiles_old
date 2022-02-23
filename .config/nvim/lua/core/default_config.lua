@@ -1,7 +1,9 @@
 local M = {}
-M.options, M.ui, M.mappings, M.plugins = {}, {}, {}, {}
 
 M.options = {
+    -- custom = {}
+    -- general nvim/vim options , check :h optionname to know more about an option
+
     autoread = true,
     backupskip = "/tmp/*,/private/tmp/*",
     backspace = "",             -- legacy vim backspace settings
@@ -25,6 +27,7 @@ M.options = {
     numberwidth = 2,
     ruler = false,
     scrolloff = 8,
+    shadafile = vim.opt.shadafile,
     showbreak = "↪",
     showmatch = true,
     signcolumn = "yes",
@@ -42,6 +45,8 @@ M.options = {
     wrap = false,
 }
 
+---- UI ----
+
 M.ui = {
     hl_override = "", -- path of your file that contains highlights
     italic_comments = true,
@@ -53,23 +58,17 @@ M.ui = {
     cursorline = true,
 }
 
--- these are plugin related options
+---- PLUGIN OPTIONS ----
+
 M.plugins = {
    -- enable and disable plugins (false for disable)
     status = {
-        blankline = true, -- show code scope with symbols
-        bufferline = true, -- list open buffers up the top, easy switching too
-        colorizer = false, -- color RGB, HEX, CSS, NAME color codes
         comment = true, -- easily (un)comment code, language aware
-        dashboard = false, -- NeoVim 'home screen' on open
-        esc_insertmode = true, -- map to <ESC> with no lag
         feline = true, -- statusline
         gitsigns = true, -- gitsigns in statusline
         lspsignature = true, -- lsp enhancements
-        telescope_media = false, -- media previews within telescope finders
         vim_matchup = true, -- % operator enhancements
         cmp = true,
-        nvimtree = true,
         autopairs = true,
     },
     options = {
@@ -83,15 +82,12 @@ M.plugins = {
         lspconfig = {
             setup_lspconf = "", -- path of file containing setups of different lsps
         },
-       nvimtree = {
-            lazy_load = ture,
-       },
-       luasnip = {
-            snippet_path = {},
-       },
-       statusline = { -- statusline related options
-          -- these are filetypes, not pattern matched
-          -- shown filetypes will overrule hidden filetypes
+        luasnip = {
+             snippet_path = {},
+        },
+        statusline = {  -- statusline related options
+                        -- these are filetypes, not pattern matched
+                        -- shown filetypes will overrule hidden filetypes
             hidden = {
                 "help",
                 "NvimTree",
@@ -158,12 +154,6 @@ M.mappings.plugin = {
         goto_next = "]d",
         set_loclist = "<leader>q",
         formatting = "<leader>lfm",
-    },
-
-    -- file explorer/tree
-    nvimtree = {
-        toggle = "<C-n>",
-        focus = "<leader>e",
     },
 }
 
