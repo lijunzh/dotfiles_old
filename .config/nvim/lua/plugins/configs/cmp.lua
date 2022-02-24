@@ -1,10 +1,8 @@
 local present, cmp = pcall(require, "cmp")
 
 if not present then
-   return
+    return
 end
-
-vim.opt.completeopt = "menuone,noselect"
 
 local lspkind = require('lspkind')
 local source_mapping = {
@@ -15,8 +13,9 @@ local source_mapping = {
     path = "[Path]",
 }
 
--- nvim-cmp setup
-cmp.setup({
+vim.opt.completeopt = "menuone,noselect"
+
+local default = {
     snippet = {
         expand = function(args)
             require("luasnip").lsp_expand(args.body)
@@ -24,14 +23,8 @@ cmp.setup({
     },
     formatting = {
         format = function(entry, vim_item)
-            -- load lspkind icons
-            -- vim_item.kind = string.format(
-            --     "%s %s",
-            --     require("plugins.configs.lspkind_icons").icons[vim_item.kind],
-            --     vim_item.kind
-            -- )
             vim_item.kind = lspkind.presets.default[vim_item.kind]
-
+            
             local menu = source_mapping[entry.source.name]
             if entry.source.name == 'cmp_tabnine' then
                 if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
@@ -45,44 +38,59 @@ cmp.setup({
         end,
     },
     mapping = {
-        ["<C-p>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
-        ["<C-n>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
-        ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-        ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-        ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-        ["<C-e>"] = cmp.mapping({
-            i = cmp.mapping.abort(),
-            c = cmp.mapping.close(),
-        }),
-        ["<CR>"] = cmp.mapping.confirm({
+        ["<C-p>"] = cmp.mapping.select_prev_item(),
+        ["<C-n>"] = cmp.mapping.select_next_item(),
+        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<C-e>"] = cmp.mapping.close(),
+        ["<CR>"] = cmp.mapping.confirm {
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
-        }),
+        },
+        ["<Tab>"] = function(fallback)
+            if cmp.visible() then
+                cmp.select_next_item()
+            elseif require("luasnip").expand_or_jumpable() then
+                vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+            else
+                fallback()
+            end
+        end,
+        ["<S-Tab>"] = function(fallback)
+            if cmp.visible() then
+                cmp.select_prev_item()
+            elseif require("luasnip").jumpable(-1) then
+                vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+            else
+                fallback()
+            end
+        end,
     },
-    sources = cmp.config.sources({
+    sources = {
         { name = "cmp_tabnine" },
         { name = "nvim_lsp" },
         { name = "luasnip" },
         { name = "buffer" },
         { name = "nvim_lua" },
         { name = "path" },
-    }, {
         { name = "buffer" },
-    })
-})
+        { name = 'cmdline' },
+    },
+}
 
--- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline('/', {
-    sources = {
-        { name = 'buffer' }
-    }
-})
-
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(':', {
-    sources = cmp.config.sources({
-        { name = 'path' }
-    }, {
-        { name = 'cmdline' }
+local M = {}
+M.setup = function(override_flag)
+    if override_flag then
+        default = require("core.utils").tbl_override_req("nvim_cmp", default)
+    end
+    cmp.setup(default)
+    -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+    cmp.setup.cmdline('/', {
+        sources = {
+            { name = 'buffer' }
+        }
     })
-})
+end
+
+return M
