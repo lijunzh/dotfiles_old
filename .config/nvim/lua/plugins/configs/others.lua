@@ -158,7 +158,7 @@ M.tabnine = function(override_flag)
         if override_flag then
             default = require("core.utils").tbl_override_req("tabnine", default)
         end
-        tabnine.setup(default)
+        tabnine:setup(default)
     end
 end
 
