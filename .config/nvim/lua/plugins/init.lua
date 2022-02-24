@@ -51,9 +51,10 @@ local plugins = {
         config = function()
             require("plugins.configs.autosave")
         end,
-        cond = function()
-            return vim.g.auto_save == true
-        end
+        cond = vim.g.auto_save,
+        -- cond = function()
+        --     return vim.g.auto_save == true
+        -- end
     },
 
     -- smooth scroll
