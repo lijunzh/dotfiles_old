@@ -241,6 +241,10 @@ local plugins = {
         "JoosepAlviste/nvim-ts-context-commentstring",
         event = "BufRead",
     },
+    {
+        "romgrk/nvim-treesitter-context",
+        event = "BufRead",
+    },
 
     ------------------------------------------------------------------------
     -- fuzzy finder
