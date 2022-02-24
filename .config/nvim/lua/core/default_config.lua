@@ -138,7 +138,7 @@ M.mappings = {
 M.mappings.plugins = {
 
     comment = {
-        toggle = "gcc",
+        toggle = "gc",
     },
 
     -- lsp bindings
