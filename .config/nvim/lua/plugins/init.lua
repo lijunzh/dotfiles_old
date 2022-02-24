@@ -48,13 +48,8 @@ local plugins = {
     -- autosave (on focus lost only)
     {
         "Pocco81/AutoSave.nvim",
-        config = function()
-            require("plugins.configs.autosave")
-        end,
+        config = override_req("autosave", "plugins.configs.others", "autosave"),
         cond = vim.g.auto_save,
-        -- cond = function()
-        --     return vim.g.auto_save == true
-        -- end
     },
 
     -- smooth scroll
@@ -219,9 +214,7 @@ local plugins = {
         after = "nvim-cmp",
         run="./install.sh",
         requires = "hrsh7th/nvim-cmp",
-        config = function()
-            require("plugins.configs.tabnine")
-        end
+        config = override_req("tabnine", "plugins.configs.others", "tabnine"),
     },
     {
         "github/copilot.vim",

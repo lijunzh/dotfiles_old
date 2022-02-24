@@ -145,4 +145,44 @@ M.indentline = function()
     vim.g.indentLine_char = "▏"
 end
 
+M.tabnine = function(override_flag)
+    local present, tabnine = pcall(require, "cmp_tabnine.config")
+    if present then
+        local default = {
+            max_lines = 1000;
+            max_num_results = 20;
+            sort = true;
+            run_on_every_keystroke = true;
+            snippet_placeholder = '..';
+        }
+        if override_flag then
+            default = require("core.utils").tbl_override_req("tabnine", default)
+        end
+        tabnine.setup(default)
+    end
+end
+
+M.autosave = function(override_flag)
+    local present, autosave = pcall(require, "autosave")
+    if present then
+        local default = {
+            enabled = vim.g.auto_save, -- takes boolean value from init.lua
+            execution_message = "autosaved at : " .. vim.fn.strftime("%H:%M:%S"),
+            events = {"FocusLost"},
+            conditions = {
+                exists = true,
+                filetype_is_not = {},
+                modifiable = true
+            },
+            write_all_buffers = false,
+            on_off_commands = true,
+            clean_command_line_interval = 2500
+        }
+        if override_flag then
+            default = require("core.utils").tbl_override_req("autosave", default)
+        end
+        autosave.setup(default)
+    end
+end
+
 return M
