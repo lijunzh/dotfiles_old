@@ -113,13 +113,18 @@ M.neoformat = function()
     map("n", "<leader>fm", ":Neoformat <CR>")
 end
 
-M.fzf = function()
-    map("n", "<Leader>fw", ":Rg <CR>")
-    map("n", "<Leader>ff", ":Files <CR>")
-    map("n", "<Leader>fl", ":Lines <CR>")
-    map("n", "<Leader>fo", ":History <CR>")
-    map("n", "<Leader>fb", ":Buffers <CR>")
-    map("n", "<Leader>fd", ":GFiles? <CR>")
+M.telescope = function()
+   local m = plugin_maps.telescope
+
+   map("n", m.buffers, ":Telescope buffers <CR>")
+   map("n", m.find_files, ":Telescope find_files <CR>")
+   map("n", m.find_hiddenfiles, ":Telescope find_files follow=true no_ignore=true hidden=true <CR>")
+   map("n", m.git_commits, ":Telescope git_commits <CR>")
+   map("n", m.git_status, ":Telescope git_status <CR>")
+   map("n", m.help_tags, ":Telescope help_tags <CR>")
+   map("n", m.live_grep, ":Telescope live_grep <CR>")
+   map("n", m.oldfiles, ":Telescope oldfiles <CR>")
+   map("n", m.themes, ":Telescope themes <CR>")
 end
 
 return M

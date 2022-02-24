@@ -123,6 +123,8 @@ M.mappings = {
     -- terminal mappings --
     terminal = {
         esc_termmode = { "jk", "esc" }, -- multiple mappings allowed
+        -- show & recover hidden terminal buffers in a telescope picker
+        pick_term = "<C-t>t",
         -- below three are for spawning terminals
         new_horizontal = "<C-t>h",
         new_vertical = "<C-t>v",
@@ -160,6 +162,18 @@ M.mappings.plugins = {
         goto_next = "]d",
         set_loclist = "<leader>ll",
         formatting = "<leader>lfm",
+    },
+
+    telescope = {
+        buffers = "<leader>fb",
+        find_files = "<leader>ff",
+        find_hiddenfiles = "<leader>fa",
+        git_commits = "<leader>cm",
+        git_status = "<leader>gt",
+        help_tags = "<leader>fh",
+        live_grep = "<leader>fw",
+        oldfiles = "<leader>fo",
+        themes = "<leader>th", -- NvChad theme picker
     },
 }
 

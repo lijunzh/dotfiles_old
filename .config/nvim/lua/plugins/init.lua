@@ -251,17 +251,14 @@ local plugins = {
     ------------------------------------------------------------------------
 
     {
-        "junegunn/fzf",
-        event = "VimEnter",
+        "nvim-telescope/telescope.nvim",
+        module = "telescope",
+        cmd = "Telescope",
+        config = override_req("telescope", "plugins.configs.telescope", "setup"),
+        setup = function()
+            require("core.mappings").telescope()
+        end,
     },
-    {
-        "junegunn/fzf.vim",
-        event = "VimEnter",
-        config = function()
-            require("core.mappings").fzf()
-        end
-    },
-
 
     ------------------------------------------------------------------------
     -- git
